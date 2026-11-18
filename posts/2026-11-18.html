@@ -387,14 +387,30 @@
 </footer>
 
 <script>
-  document.querySelectorAll("details.detail").forEach(function (d) {
-    d.addEventListener("toggle", function () {
-      if (!d.open) return;
-      document.querySelectorAll("details.detail[open]").forEach(function (o) {
-        if (o !== d) o.open = false;
+  (function () {
+    var cards = document.querySelectorAll("details.detail");
+
+    // 1) 单开互斥：打开一张，其它已展开的自动收起
+    cards.forEach(function (d) {
+      d.addEventListener("toggle", function () {
+        if (!d.open) return;
+        document.querySelectorAll("details.detail[open]").forEach(function (o) {
+          if (o !== d) o.open = false;
+        });
       });
     });
-  });
+
+    // 2) 点击空白处：有卡片展开时，点在卡片与详情之外（页面留白、板块标题、页脚等）
+    //    就把所有展开的卡片收起；卡片内的文字选择、链接与展开按钮都不受影响
+    document.addEventListener("click", function (e) {
+      var open = document.querySelectorAll("details.detail[open]");
+      if (!open.length) return;
+      var t = e.target;
+      if (t && t.nodeType !== 1) t = t.parentElement;
+      if (t && t.closest && t.closest(".card, details.detail")) return;
+      open.forEach(function (o) { o.open = false; });
+    });
+  })();
 </script>
 </body>
 </html>
