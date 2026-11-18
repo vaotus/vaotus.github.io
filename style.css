@@ -135,6 +135,10 @@ body {
   color: var(--ink);
 }
 
+.section-head h2.long {
+  letter-spacing: 0.06em;
+}
+
 .section-head .count {
   font-size: 12px;
   letter-spacing: 0.12em;
