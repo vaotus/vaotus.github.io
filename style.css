@@ -195,7 +195,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-  gap: 6px 12px;
+  gap: 8px 18px;
 }
 
 .meta a {
@@ -224,8 +224,16 @@ body {
 
 .pill.ended { background: #F0EDE6; color: var(--ink-faint); }
 
-.dot {
-  color: var(--line);
+.about a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 1px;
+}
+
+.about a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent-soft);
 }
 
 /* ---------- 关于 / 页脚 ---------- */
