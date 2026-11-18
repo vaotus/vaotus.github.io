@@ -861,8 +861,10 @@ code {
   .items { gap: 10px; margin-top: 18px; }
   .card { border-radius: 12px; }
   .detail-toggle { min-height: 44px; padding: 10px 2px; }
-  .secnav-inner { gap: 6px; }
-  .secnav a { min-height: 38px; font-size: 12.5px; padding: 6px 9px; }
-  .secnav .to-top { min-height: 38px; padding: 6px 10px; }
+  .secnav-bar { padding: 8px 14px; gap: 8px; }
+  .secnav-inner { gap: 5px; }
+  .secnav a { min-height: 38px; font-size: 12.5px; padding: 6px 8px; border-radius: 999px; }
+  .secnav .n { font-size: 10px; }
+  .secnav .to-top { min-height: 38px; padding: 6px 9px; }
   .section { scroll-margin-top: 68px; }
 }
