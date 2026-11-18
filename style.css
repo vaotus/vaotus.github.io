@@ -581,3 +581,251 @@ code {
   .post-nav { gap: 10px; }
   .post-nav a { min-height: 44px; padding: 10px 0; }
 }
+
+/* =====================================================================
+   v2：紧凑预览卡片 + 板块快速导航（窄屏吸顶胶囊栏 / 宽屏粘性侧边栏）
+   —— 卡片默认只露「编号 / 标题 / 一句摘要 / 状态与来源」，
+      全文放在原生 <details> 里，始终留在 HTML 中（不影响 SEO 抓取）。
+   ===================================================================== */
+
+/* ---------- 条目卡片 ---------- */
+
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.item {
+  padding: 0;
+  border-bottom: none;
+}
+
+.card {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #FFFDF8;
+  padding: clamp(16px, 2.1vw, 20px) clamp(16px, 2.4vw, 22px) clamp(12px, 1.8vw, 16px);
+  transition: border-color 0.18s ease, background 0.18s ease;
+}
+
+.card:hover { border-color: #D8D4C7; }
+
+.card h3 {
+  font-size: clamp(17px, 0.9vw + 13.5px, 20px);
+  line-height: 1.5;
+  margin: 0 0 8px;
+}
+
+.summary {
+  margin: 0 0 12px;
+  color: var(--ink-soft);
+  font-size: clamp(14.5px, 0.25vw + 13.6px, 16px);
+  line-height: 1.72;
+  overflow-wrap: break-word;
+}
+
+.card .meta {
+  font-size: 12.5px;
+  gap: 6px 14px;
+}
+
+.card .meta .due { color: var(--ink-soft); }
+
+/* ---------- 展开详情 ---------- */
+
+.detail {
+  margin-top: 10px;
+  border-top: 1px dashed var(--line);
+  padding-top: 2px;
+}
+
+.detail-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 36px;
+  padding: 6px 2px;
+  font-size: 12.5px;
+  letter-spacing: 0.06em;
+  color: var(--ink-faint);
+  cursor: pointer;
+  list-style: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.detail-toggle::-webkit-details-marker { display: none; }
+.detail-toggle::marker { content: ""; }
+
+.detail-toggle::after {
+  content: "▾";
+  font-size: 10px;
+  line-height: 1;
+  transition: transform 0.18s ease;
+}
+
+.detail[open] .detail-toggle::after { transform: rotate(180deg); }
+
+.detail-toggle:hover,
+.detail-toggle:focus-visible { color: var(--accent); }
+
+.detail-toggle:focus-visible { outline: 2px solid var(--accent-soft); outline-offset: 3px; border-radius: 4px; }
+
+.t-close { display: none; }
+.detail[open] .t-open { display: none; }
+.detail[open] .t-close { display: inline; }
+
+.detail-body { padding-top: 8px; }
+
+.detail-body .body,
+.item .detail-body p.body {
+  margin: 0 0 12px;
+  color: var(--ink-soft);
+  font-size: clamp(14.5px, 0.25vw + 13.6px, 16.5px);
+  line-height: 1.85;
+}
+
+.detail-body .body:last-child { margin-bottom: 4px; }
+
+/* 板块标题的手机锚点偏移（吸顶栏高度） */
+.section { scroll-margin-top: 76px; }
+
+/* ---------- 窄屏 / 平板：顶部吸顶胶囊栏 ---------- */
+
+.secnav {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: rgba(250, 250, 247, 0.97);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+
+.secnav-inner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 10px var(--gutter);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+
+.secnav-inner::-webkit-scrollbar { display: none; }
+
+.secnav a {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 12px;
+  min-height: 36px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--ink-soft);
+  font-size: 13px;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.secnav a:hover,
+.secnav a:focus-visible {
+  color: var(--accent);
+  border-color: var(--accent-soft);
+}
+
+.secnav .n {
+  font-size: 10.5px;
+  color: var(--ink-faint);
+  font-variant-numeric: tabular-nums;
+}
+
+.secnav .to-top {
+  margin-left: auto;
+  color: var(--ink-faint);
+}
+
+/* ---------- 宽屏：侧边粘性导航 ---------- */
+
+.side-nav { display: none; }
+
+@media (min-width: 1024px) {
+  .secnav { display: none; }
+
+  .wrap.layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 208px;
+    column-gap: clamp(40px, 4vw, 64px);
+    align-items: start;
+    max-width: 1140px;
+  }
+
+  .content { min-width: 0; }
+
+  .side-nav {
+    display: block;
+    position: sticky;
+    top: 24px;
+    align-self: start;
+    padding-top: clamp(52px, 5.5vw, 76px);
+  }
+
+  .side-title {
+    margin: 0 0 10px;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--ink-faint);
+  }
+
+  .side-links { display: flex; flex-direction: column; }
+
+  .side-links a {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--line);
+    color: var(--ink-faint);
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  .side-links a:hover,
+  .side-links a:focus-visible { color: var(--accent); }
+
+  .side-links .n {
+    font-size: 11px;
+    color: var(--ink-faint);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .section { scroll-margin-top: 24px; }
+
+  /* 侧边广告位：空时由 .ad-slot 的 display:none 管住，不占位 */
+  .ad-slot--sidebar:not(:empty),
+  .ad-slot--sidebar.ad-slot--active {
+    margin: 26px 0 0;
+    max-width: 100%;
+  }
+}
+
+/* ---------- 窄屏细节：触控目标与留白 ---------- */
+
+@media (max-width: 640px) {
+  .items { gap: 10px; margin-top: 18px; }
+  .card { border-radius: 12px; }
+  .detail-toggle { min-height: 44px; padding: 10px 2px; }
+  .secnav a { min-height: 38px; }
+  .section { scroll-margin-top: 68px; }
+}

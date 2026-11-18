@@ -68,7 +68,7 @@
 }
 </script>
 </head>
-<body>
+<body id="top">
 
 <header class="site-header">
   <div class="wrap">
@@ -78,8 +78,14 @@
     </nav>
   </div>
 </header>
+<nav class="secnav" aria-label="板块快速跳转">
+  <div class="secnav-inner">
+    <a href="#hot">AI 热点<span class="n">3</span></a><a href="#free">限免<span class="n">3</span></a><a href="#deal">折扣<span class="n">3</span></a><a href="#sites">AI 应用<span class="n">3</span></a><a class="to-top" href="#top" aria-label="回到顶部">↑ 顶部</a>
+  </div>
+</nav>
 
-<main class="wrap">
+<main class="wrap layout">
+  <div class="content">
 
   <section class="masthead">
     <p class="date"><time datetime="2026-11-18">2026-11-18 周三</time></p>
@@ -97,35 +103,53 @@
     <ol class="items">
 
       <li class="item">
-        <article>
+        <article class="card">
           <h3><span class="num">01</span>OpenAI 发布 GPT-6.2 Astra 与 GPT-6.2 Sol</h3>
-          <p class="body">一次给两个模型：Astra 打最难的专业工作，Sol 打日常工作，两者都用更少的输出 token 换更好的结果，同一份套餐能干更多活。API 价格上，Astra 输入 8 美元、缓存输入 0.40 美元、输出 40 美元（每百万 token），比 GPT-6 Astra 的输入输出便宜 20%、缓存命中便宜 60%；Sol 沿用 GPT-6.1 Sol 的 2 / 0.10 / 10 美元。</p>
-          <p class="body">发布当日即向 Plus、Pro、Enterprise、Edu 用户在 ChatGPT Work 与 Codex 开放；开发者可通过 API 调用 <code>gpt-6.2-astra</code> 与 <code>gpt-6.2-sol</code>。</p>
+          <p class="summary">一次上两个模型：Astra 打专业硬活、Sol 打日常，API 价按输入输出算比上一代低 20%。</p>
           <p class="meta">
             <span class="pill">已上线</span> <span>来源：<a href="https://openai.com/index/introducing-gpt-6-2-astra-sol/" target="_blank" rel="noopener">OpenAI 官方博客「Introducing GPT-6.2 Astra and Sol」</a></span> <span>发布 <time datetime="2026-11-17">2026-11-17</time></span>
           </p>
+          <details class="detail">
+            <summary class="detail-toggle"><span class="t-open">展开详情</span><span class="t-close">收起</span></summary>
+            <div class="detail-body">
+              <p class="body">一次给两个模型：Astra 打最难的专业工作，Sol 打日常工作，两者都用更少的输出 token 换更好的结果，同一份套餐能干更多活。API 价格上，Astra 输入 8 美元、缓存输入 0.40 美元、输出 40 美元（每百万 token），比 GPT-6 Astra 的输入输出便宜 20%、缓存命中便宜 60%；Sol 沿用 GPT-6.1 Sol 的 2 / 0.10 / 10 美元。</p>
+              <p class="body">发布当日即向 Plus、Pro、Enterprise、Edu 用户在 ChatGPT Work 与 Codex 开放；开发者可通过 API 调用 <code>gpt-6.2-astra</code> 与 <code>gpt-6.2-sol</code>。</p>
+            </div>
+          </details>
         </article>
       </li>
 
       <li class="item">
-        <article>
+        <article class="card">
           <h3><span class="num">02</span>商汤开源 SenseNova-Loop-9B 正式版，9B 参数跑到 512K 上下文</h3>
-          <p class="body">用「循环」省参数：24 个解码层先后跑两遍，把 32 个物理层算成 56 次层计算，等效深度变大而体积不变。约 9B 参数，支持文本与图像输入、512K 上下文；4bit 权重加 8bit KV 缓存下，256K 上下文的推理大约占 15 GiB 显存。</p>
-          <p class="body">权重与代码按 Apache 2.0 开源，官方同日给出 AWQ 4bit 量化版。官方跑分：Terminal-Bench 2.1 得 59.55、GAIA 69.90、AIDABench 65.31（对照 Qwen3.8-27B 的 65.01）。</p>
+          <p class="summary">24 个解码层跑两遍换等效深度，约 9B 参数、512K 上下文，Apache 2.0 全开源。</p>
           <p class="meta">
             <span class="pill">已开源</span> <span>来源：<a href="https://huggingface.co/sensenova/SenseNova-Loop-9B" target="_blank" rel="noopener">Hugging Face · sensenova/SenseNova-Loop-9B</a></span> <span>发布 <time datetime="2026-11-17">2026-11-17</time></span>
           </p>
+          <details class="detail">
+            <summary class="detail-toggle"><span class="t-open">展开详情</span><span class="t-close">收起</span></summary>
+            <div class="detail-body">
+              <p class="body">用「循环」省参数：24 个解码层先后跑两遍，把 32 个物理层算成 56 次层计算，等效深度变大而体积不变。约 9B 参数，支持文本与图像输入、512K 上下文；4bit 权重加 8bit KV 缓存下，256K 上下文的推理大约占 15 GiB 显存。</p>
+              <p class="body">权重与代码按 Apache 2.0 开源，官方同日给出 AWQ 4bit 量化版。官方跑分：Terminal-Bench 2.1 得 59.55、GAIA 69.90、AIDABench 65.31（对照 Qwen3.8-27B 的 65.01）。</p>
+            </div>
+          </details>
         </article>
       </li>
 
       <li class="item">
-        <article>
+        <article class="card">
           <h3><span class="num">03</span>Google 把 Gemini 的 Tasks 免费开放到六个国家</h3>
-          <p class="body">Gemini 首页从 Chat 切到 Tasks，它就能替你跑腿：打电话给商家比价、查库存、预约，用 Google Pay 按 AP2 协议付款，读邮件后回邀约、加日程。基于 Gemini 4 Hydrogen，免费用户可用，覆盖美国、日本、韩国、加拿大、澳大利亚、印度。</p>
-          <p class="body">打电话、发短信、代发邮件与付款先在美国上线；拨打功能在印第安纳、路易斯安那、明尼苏达、蒙大拿、内布拉斯加暂不可用。通话时它先自报是 AI，商家可随时退出。</p>
+          <p class="summary">Gemini 切到 Tasks 就能替你打电话比价、查库存、预约并付款，六国免费用户可用。</p>
           <p class="meta">
             <span class="pill">已上线</span> <span>来源：<a href="https://blog.google/innovation-and-ai/products/gemini-app/tasks-in-gemini-free-new-features/" target="_blank" rel="noopener">Google 官方博客「Put Gemini to work for you」</a></span> <span>发布 <time datetime="2026-11-17">2026-11-17</time></span> <span>官方未注明截止日期</span>
           </p>
+          <details class="detail">
+            <summary class="detail-toggle"><span class="t-open">展开详情</span><span class="t-close">收起</span></summary>
+            <div class="detail-body">
+              <p class="body">Gemini 首页从 Chat 切到 Tasks，它就能替你跑腿：打电话给商家比价、查库存、预约，用 Google Pay 按 AP2 协议付款，读邮件后回邀约、加日程。基于 Gemini 4 Hydrogen，免费用户可用，覆盖美国、日本、韩国、加拿大、澳大利亚、印度。</p>
+              <p class="body">打电话、发短信、代发邮件与付款先在美国上线；拨打功能在印第安纳、路易斯安那、明尼苏达、蒙大拿、内布拉斯加暂不可用。通话时它先自报是 AI，商家可随时退出。</p>
+            </div>
+          </details>
         </article>
       </li>
 
@@ -142,34 +166,52 @@
     <ol class="items">
 
       <li class="item">
-        <article>
+        <article class="card">
           <h3><span class="num">01</span>腾讯混元 Hy4 flash 在 WorkBuddy 限时免费</h3>
-          <p class="body">模型列表里选 Hy4 flash 就能免费聊，国内版与国际版同步。总参数 224B（含 64B Engram）、激活 12B，支持多模态与 1M 上下文，官方称其为「迄今为止最高性价比的 Hy 模型」。免费额度按天发放，当天用完继续用会正常扣积分，页面会提示重置时间。</p>
+          <p class="summary">模型列表选 Hy4 flash 就免费聊：224B 总参数 / 12B 激活 / 1M 上下文，额度按天重置。</p>
           <p class="meta">
-            <span class="pill">进行中</span> <span>截止 <time datetime="2026-11-30T23:59+08:00">2026-11-30 23:59</time></span> <span>来源：<a href="https://news.qq.com/rain/a/20261116A08ULD00" target="_blank" rel="noopener">腾讯新闻 · 腾讯科技《腾讯混元 Hy4 flash 发布》</a></span> <span>发布 <time datetime="2026-11-16">2026-11-16</time></span>
+            <span class="pill">进行中</span> <span class="due">截止 <time datetime="2026-11-30T23:59+08:00">2026-11-30 23:59</time></span> <span>来源：<a href="https://news.qq.com/rain/a/20261116A08ULD00" target="_blank" rel="noopener">腾讯新闻 · 腾讯科技《腾讯混元 Hy4 flash 发布》</a></span> <span>发布 <time datetime="2026-11-16">2026-11-16</time></span>
           </p>
+          <details class="detail">
+            <summary class="detail-toggle"><span class="t-open">展开详情</span><span class="t-close">收起</span></summary>
+            <div class="detail-body">
+              <p class="body">模型列表里选 Hy4 flash 就能免费聊，国内版与国际版同步。总参数 224B（含 64B Engram）、激活 12B，支持多模态与 1M 上下文，官方称其为「迄今为止最高性价比的 Hy 模型」。免费额度按天发放，当天用完继续用会正常扣积分，页面会提示重置时间。</p>
+            </div>
+          </details>
         </article>
       </li>
 
       <li class="item">
-        <article>
+        <article class="card">
           <h3><span class="num">02</span>腾讯云 TokenHub 新人免费体验包：每个模型 100 万 Tokens</h3>
-          <p class="body">每个主账号一次，覆盖语言模型与视觉生成等多类模型；语言模型统一给 100 万 Tokens 免费额度，有效期 1 年。领取方式二选一：模型广场右上角「新用户福利免费体验」，或首次调用时系统自动领取。</p>
-          <p class="body">要注意的是，领取免费包或开启后付费会预冻结账户部分金额（混元语言模型 30 美元、其他语言模型 10 美元），删除对应 endpoint 后退回。</p>
+          <p class="summary">每个主账号一次，每模型 100 万 Tokens、有效期 1 年；领取会预冻结部分金额，删 endpoint 退回。</p>
           <p class="meta">
-            <span class="pill">进行中</span> <span>活动截至 <time datetime="2026-12-31">2026-12-31</time></span> <span>来源：<a href="https://www.tencentcloud.com/zh/document/product/1300/80423" target="_blank" rel="noopener">腾讯云文档《新人免费体验包》</a></span> <span>页面更新 <time datetime="2026-11-17">2026-11-17</time></span>
+            <span class="pill">进行中</span> <span class="due">活动截至 <time datetime="2026-12-31">2026-12-31</time></span> <span>来源：<a href="https://www.tencentcloud.com/zh/document/product/1300/80423" target="_blank" rel="noopener">腾讯云文档《新人免费体验包》</a></span> <span>页面更新 <time datetime="2026-11-17">2026-11-17</time></span>
           </p>
+          <details class="detail">
+            <summary class="detail-toggle"><span class="t-open">展开详情</span><span class="t-close">收起</span></summary>
+            <div class="detail-body">
+              <p class="body">每个主账号一次，覆盖语言模型与视觉生成等多类模型；语言模型统一给 100 万 Tokens 免费额度，有效期 1 年。领取方式二选一：模型广场右上角「新用户福利免费体验」，或首次调用时系统自动领取。</p>
+              <p class="body">要注意的是，领取免费包或开启后付费会预冻结账户部分金额（混元语言模型 30 美元、其他语言模型 10 美元），删除对应 endpoint 后退回。</p>
+            </div>
+          </details>
         </article>
       </li>
 
       <li class="item">
-        <article>
+        <article class="card">
           <h3><span class="num">03</span>阿里云百炼新人免费额度：每个模型通常 100 万 Token</h3>
-          <p class="body">首次开通百炼即自动发放，需先完成实名认证，额度仅华北 2（北京）地域的模型享有。免费有效期 90 天，从开通、模型发布或申请通过之日中较晚者起算；不同模型的额度互不通用。</p>
-          <p class="body">额度用完会自动转按量付费，可以在控制台打开「免费额度用完即停」，额度耗尽即停止调用、不再扣费。</p>
+          <p class="summary">首次开通即发放，每模型通常 100 万 Token、90 天；可设「用完即停」不再自动扣费。</p>
           <p class="meta">
-            <span class="pill">长期可用</span> <span>额度有效期 90 天 · 无活动截止日期</span> <span>来源：<a href="https://help.aliyun.com/zh/model-studio/new-free-quota" target="_blank" rel="noopener">阿里云帮助中心《新人免费额度》</a></span>
+            <span class="pill">长期可用</span> <span class="due">额度有效期 90 天 · 无活动截止日期</span> <span>来源：<a href="https://help.aliyun.com/zh/model-studio/new-free-quota" target="_blank" rel="noopener">阿里云帮助中心《新人免费额度》</a></span>
           </p>
+          <details class="detail">
+            <summary class="detail-toggle"><span class="t-open">展开详情</span><span class="t-close">收起</span></summary>
+            <div class="detail-body">
+              <p class="body">首次开通百炼即自动发放，需先完成实名认证，额度仅华北 2（北京）地域的模型享有。免费有效期 90 天，从开通、模型发布或申请通过之日中较晚者起算；不同模型的额度互不通用。</p>
+              <p class="body">额度用完会自动转按量付费，可以在控制台打开「免费额度用完即停」，额度耗尽即停止调用、不再扣费。</p>
+            </div>
+          </details>
         </article>
       </li>
 
@@ -195,32 +237,50 @@
     <ol class="items">
 
       <li class="item">
-        <article>
+        <article class="card">
           <h3><span class="num">01</span>千问办公个人版双 11 首月特惠，低至 3.1 折</h3>
-          <p class="body">个人标准版、个人高级版的月付与连续包月首月，分别按 29.9 元、69.9 元结算，之后按标准价续费，可随时取消。年包与企业版不参与。只限从未购买、兑换或直充过订阅的账号，每人一次，名额有限、先到先得。</p>
+          <p class="summary">个人版首月 29.9 / 69.9 元，之后按标准价续费、可随时取消，仅限新账号且每人一次。</p>
           <p class="meta">
-            <span class="pill">进行中</span> <span>截止 <time datetime="2026-11-30T00:00+08:00">2026-11-30 00:00</time>（北京时间）</span> <span>来源：<a href="https://help.aliyun.com/zh/qwenwork/personal-double11-offer" target="_blank" rel="noopener">阿里云帮助中心《千问办公个人版双 11 特惠》</a></span>
+            <span class="pill">进行中</span> <span class="due">截止 <time datetime="2026-11-30T00:00+08:00">2026-11-30 00:00</time>（北京时间）</span> <span>来源：<a href="https://help.aliyun.com/zh/qwenwork/personal-double11-offer" target="_blank" rel="noopener">阿里云帮助中心《千问办公个人版双 11 特惠》</a></span>
           </p>
+          <details class="detail">
+            <summary class="detail-toggle"><span class="t-open">展开详情</span><span class="t-close">收起</span></summary>
+            <div class="detail-body">
+              <p class="body">个人标准版、个人高级版的月付与连续包月首月，分别按 29.9 元、69.9 元结算，之后按标准价续费，可随时取消。年包与企业版不参与。只限从未购买、兑换或直充过订阅的账号，每人一次，名额有限、先到先得。</p>
+            </div>
+          </details>
         </article>
       </li>
 
       <li class="item">
-        <article>
+        <article class="card">
           <h3><span class="num">02</span>阿里云百炼 Token Plan：Qwen4-Max-Preview 预览期 Credits 2 折</h3>
-          <p class="body">预览期内 Credits 消耗低至标准费率的 2 折；个人版在 22:00 至 08:00 再享 4 折，合标准费率的 8%。个人版与团队版都支持这个模型。预览期结束后按正常费率计费。</p>
+          <p class="summary">预览期 Credits 只按标准费率 2 折，个人版 22:00–08:00 再 4 折，合 8%。</p>
           <p class="meta">
-            <span class="pill">进行中</span> <span>截止 <time datetime="2026-11-25T24:00+08:00">2026-11-25 24:00</time>（UTC+8）</span> <span>来源：<a href="https://www.alibabacloud.com/help/zh/model-studio/token-plan-product-updates" target="_blank" rel="noopener">阿里云百炼《Token Plan 产品动态》</a></span> <span>页面更新 <time datetime="2026-11-17">2026-11-17</time></span>
+            <span class="pill">进行中</span> <span class="due">截止 <time datetime="2026-11-25T24:00+08:00">2026-11-25 24:00</time>（UTC+8）</span> <span>来源：<a href="https://www.alibabacloud.com/help/zh/model-studio/token-plan-product-updates" target="_blank" rel="noopener">阿里云百炼《Token Plan 产品动态》</a></span> <span>页面更新 <time datetime="2026-11-17">2026-11-17</time></span>
           </p>
+          <details class="detail">
+            <summary class="detail-toggle"><span class="t-open">展开详情</span><span class="t-close">收起</span></summary>
+            <div class="detail-body">
+              <p class="body">预览期内 Credits 消耗低至标准费率的 2 折；个人版在 22:00 至 08:00 再享 4 折，合标准费率的 8%。个人版与团队版都支持这个模型。预览期结束后按正常费率计费。</p>
+            </div>
+          </details>
         </article>
       </li>
 
       <li class="item">
-        <article>
+        <article class="card">
           <h3><span class="num">03</span>腾讯云 TokenHub 上的 Hy4 flash API 限时 5 折</h3>
-          <p class="body">和上面的 WorkBuddy 限免同一条发布公告：11 月 30 日前，Hy4 flash 的 TokenHub API 按五折使用。官方定价为每百万 token 输入 0.5 元、输出 2 元、缓存命中 0.02 元，比 Hy4 大幅下调。</p>
+          <p class="summary">Hy4 flash 的 API 五折：每百万 token 输入 0.5 元、输出 2 元、缓存命中 0.02 元。</p>
           <p class="meta">
-            <span class="pill">进行中</span> <span>截止 <time datetime="2026-11-30">2026-11-30</time></span> <span>来源：<a href="https://www.stdaily.com/web/gdxw/2026-11/16/content_614064.html" target="_blank" rel="noopener">科技日报《腾讯混元 Hy4 flash 发布》</a></span> <span>发布 <time datetime="2026-11-16">2026-11-16</time></span>
+            <span class="pill">进行中</span> <span class="due">截止 <time datetime="2026-11-30">2026-11-30</time></span> <span>来源：<a href="https://www.stdaily.com/web/gdxw/2026-11/16/content_614064.html" target="_blank" rel="noopener">科技日报《腾讯混元 Hy4 flash 发布》</a></span> <span>发布 <time datetime="2026-11-16">2026-11-16</time></span>
           </p>
+          <details class="detail">
+            <summary class="detail-toggle"><span class="t-open">展开详情</span><span class="t-close">收起</span></summary>
+            <div class="detail-body">
+              <p class="body">和上面的 WorkBuddy 限免同一条发布公告：11 月 30 日前，Hy4 flash 的 TokenHub API 按五折使用。官方定价为每百万 token 输入 0.5 元、输出 2 元、缓存命中 0.02 元，比 Hy4 大幅下调。</p>
+            </div>
+          </details>
         </article>
       </li>
 
@@ -237,35 +297,53 @@
     <ol class="items">
 
       <li class="item">
-        <article>
+        <article class="card">
           <h3><span class="num">01</span>산사 Sansa：一座浏览器里的韩国山寺</h3>
-          <p class="body">打开 sansatemple.com 就进寺：你变成一个随机取名的童子僧，在木造法堂里走动、合掌、行礼、拨满 108 颗念珠、听《般若心经》与风声鸟鸣。没有聊天框，几十上百人只是安静地坐在一起，蒲团坐满了就在门口排队。</p>
-          <p class="body">做它的是韩国一位 26 岁、正在找工作的开发者朴镇元，他本人不会写代码，用 AI 编程工具把「想找个地方坐下」这件事做成了可进入的 3D 空间，第一版约 30 分钟上线；2026 年 10 月下旬发布后不到一周访问破 100 万，蒲团从 20 个一路加到 1 万个。现在站点已扩展成「산사 · 넓어진 마을」（山寺 · 变大的村子）：入口村落、咖啡、莲池、竹林、梵钟、挂灯笼，部分区域标着「공사 중」（施工中）。</p>
+          <p class="summary">进站变成小和尚，在 3D 山寺里走动、行礼、拨 108 颗念珠；多人静坐，蒲团满了要排队。</p>
           <p class="meta">
-            <span class="pill">可访问 · 村落版施工中</span> <span>上线 2026 年 10 月下旬</span> <span>站点：<a href="https://sansatemple.com/" target="_blank" rel="noopener">sansatemple.com</a> · 报道：<a href="https://www.hk01.com/%E9%96%8B%E7%BD%90/60405380/%E9%9F%93%E5%9C%8B-%E7%B7%9A%E4%B8%8A%E5%AF%BA%E5%BB%9F-%E9%81%8A%E6%88%B2%E7%88%86%E7%B4%85-%E6%89%93%E5%B7%A5%E4%BB%94%E6%90%B6%E5%85%A5%E8%B7%AA%E6%8B%9C%E8%81%BD%E7%B6%93-%E7%B6%B2%E6%B0%91-%E6%B6%88%E6%A5%AD%E9%9A%9C" target="_blank" rel="noopener">HK01（2026-10-30）</a></span>
+            <span class="pill">可访问 · 村落版施工中</span> <span class="due">上线 2026 年 10 月下旬</span> <span>站点：<a href="https://sansatemple.com/" target="_blank" rel="noopener">sansatemple.com</a> · 报道：<a href="https://www.hk01.com/%E9%96%8B%E7%BD%90/60405380/%E9%9F%93%E5%9C%8B-%E7%B7%9A%E4%B8%8A%E5%AF%BA%E5%BB%9F-%E9%81%8A%E6%88%B2%E7%88%86%E7%B4%85-%E6%89%93%E5%B7%A5%E4%BB%94%E6%90%B6%E5%85%A5%E8%B7%AA%E6%8B%9C%E8%81%BD%E7%B6%93-%E7%B6%B2%E6%B0%91-%E6%B6%88%E6%A5%AD%E9%9A%9C" target="_blank" rel="noopener">HK01（2026-10-30）</a></span>
           </p>
+          <details class="detail">
+            <summary class="detail-toggle"><span class="t-open">展开详情</span><span class="t-close">收起</span></summary>
+            <div class="detail-body">
+              <p class="body">打开 sansatemple.com 就进寺：你变成一个随机取名的童子僧，在木造法堂里走动、合掌、行礼、拨满 108 颗念珠、听《般若心经》与风声鸟鸣。没有聊天框，几十上百人只是安静地坐在一起，蒲团坐满了就在门口排队。</p>
+              <p class="body">做它的是韩国一位 26 岁、正在找工作的开发者朴镇元，他本人不会写代码，用 AI 编程工具把「想找个地方坐下」这件事做成了可进入的 3D 空间，第一版约 30 分钟上线；2026 年 10 月下旬发布后不到一周访问破 100 万，蒲团从 20 个一路加到 1 万个。现在站点已扩展成「산사 · 넓어진 마을」（山寺 · 变大的村子）：入口村落、咖啡、莲池、竹林、梵钟、挂灯笼，部分区域标着「공사 중」（施工中）。</p>
+            </div>
+          </details>
         </article>
       </li>
 
       <li class="item">
-        <article>
+        <article class="card">
           <h3><span class="num">02</span>Fable 5.2 Games：一条提示词生成的游戏，打开就能玩</h3>
-          <p class="body">fable52.games 是个「AI 自己写游戏」的展示馆：里面的 3D/2D 小游戏大多由 Claude Fable 5.2 从一条提示词出发，自己规划、写码、试玩、改到能用，最后压进一个 .html 文件——模型、纹理、音效都在运行时用代码生成，不挂外部素材。站上现在列着 87 个浏览器小游戏，数字随投稿增长。</p>
-          <p class="body">每个游戏都能直接开玩，旁边并排着原始提示词和逐行源码，也能下载 .html 自己改；跑在独立的沙箱 iframe 里，碰不到站点的 Cookie 和存储。作者 felixne 于 2026-11-12 发在 Hacker News 的 Show HN，非 Anthropic 官方项目。</p>
+          <p class="summary">87 个浏览器小游戏由 Claude 从一条提示词写出来，能直接玩、看提示词与源码、下载 .html。</p>
           <p class="meta">
             <span class="pill">在线 · 免费</span> <span>站点：<a href="https://fable52.games/" target="_blank" rel="noopener">fable52.games</a> · 首发：<a href="https://news.ycombinator.com/item?id=50469007" target="_blank" rel="noopener">Show HN（2026-11-12）</a></span> <span>发布 <time datetime="2026-11-12">2026-11-12</time></span>
           </p>
+          <details class="detail">
+            <summary class="detail-toggle"><span class="t-open">展开详情</span><span class="t-close">收起</span></summary>
+            <div class="detail-body">
+              <p class="body">fable52.games 是个「AI 自己写游戏」的展示馆：里面的 3D/2D 小游戏大多由 Claude Fable 5.2 从一条提示词出发，自己规划、写码、试玩、改到能用，最后压进一个 .html 文件——模型、纹理、音效都在运行时用代码生成，不挂外部素材。站上现在列着 87 个浏览器小游戏，数字随投稿增长。</p>
+              <p class="body">每个游戏都能直接开玩，旁边并排着原始提示词和逐行源码，也能下载 .html 自己改；跑在独立的沙箱 iframe 里，碰不到站点的 Cookie 和存储。作者 felixne 于 2026-11-12 发在 Hacker News 的 Show HN，非 Anthropic 官方项目。</p>
+            </div>
+          </details>
         </article>
       </li>
 
       <li class="item">
-        <article>
+        <article class="card">
           <h3><span class="num">03</span>Tiny València：把整座城市重画成一张会走动的地图</h3>
-          <p class="body">真实 3D 城市数据先从固定的等距视角渲染一遍，再由一个专门训练过的图像模型逐块重绘成像素画风格——每块接着邻块的笔触画下去，整座瓦伦西亚才不裂缝。从菜园到 Albufera 潟湖，全市域都被画了下来，只有几处没有 3D 影像的农舍飞地留白。</p>
-          <p class="body">拖动移图、滚轮或双指缩放、双击放大，「/」搜索，「R」随便落到一处；地址栏一直存着当前视角，复制链接就能把人带到同一块街区。免费、无广告，靠 Patreon 支持。作者 leugim 于 2026-11-10 发在 Show HN，262 分、63 条评论。</p>
+          <p class="summary">真实 3D 城市数据被逐块重绘成像素风瓦伦西亚，可拖动缩放，复制链接就能带人看同一街区。</p>
           <p class="meta">
             <span class="pill">在线 · 免费</span> <span>站点：<a href="https://tinyvalencia.com/" target="_blank" rel="noopener">tinyvalencia.com</a> · 首发：<a href="https://news.ycombinator.com/item?id=50441518" target="_blank" rel="noopener">Show HN（2026-11-10）</a></span> <span>发布 <time datetime="2026-11-10">2026-11-10</time></span>
           </p>
+          <details class="detail">
+            <summary class="detail-toggle"><span class="t-open">展开详情</span><span class="t-close">收起</span></summary>
+            <div class="detail-body">
+              <p class="body">真实 3D 城市数据先从固定的等距视角渲染一遍，再由一个专门训练过的图像模型逐块重绘成像素画风格——每块接着邻块的笔触画下去，整座瓦伦西亚才不裂缝。从菜园到 Albufera 潟湖，全市域都被画了下来，只有几处没有 3D 影像的农舍飞地留白。</p>
+              <p class="body">拖动移图、滚轮或双指缩放、双击放大，「/」搜索，「R」随便落到一处；地址栏一直存着当前视角，复制链接就能把人带到同一块街区。免费、无广告，靠 Patreon 支持。作者 leugim 于 2026-11-10 发在 Show HN，262 分、63 条评论。</p>
+            </div>
+          </details>
         </article>
       </li>
 
@@ -281,8 +359,25 @@
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   --></aside>
 
-  <p class="about-mini" id="about">关于 · 四块内容：AI 热点 / 限免 / 折扣 / AI 应用展现，每条都带原链接、日期与截止状态。信源：Hacker News、Product Hunt、NodeSeek、NodeLoc、LINUX DO、linux.sb、naixi.net、V2EX、1a2x.com、sb.sb · <a href="https://t.me/+aAqP0DbW_YMxMmNh" target="_blank" rel="noopener">加入 Telegram 交流群</a></p>
+  <p class="about-mini" id="about">关于 · 每日更新 AI 热点、限免、折扣与 AI 应用展现 · <a href="https://t.me/+aAqP0DbW_YMxMmNh" target="_blank" rel="noopener">加入 Telegram 交流群</a></p>
 
+  </div>
+
+  <aside class="side-nav" aria-label="板块导航">
+    <p class="side-title">本期板块</p>
+    <nav class="side-links">
+      <a href="#hot"><span>AI 热点</span><span class="n">3</span></a>
+      <a href="#free"><span>限免</span><span class="n">3</span></a>
+      <a href="#deal"><span>折扣</span><span class="n">3</span></a>
+      <a href="#sites"><span>AI 应用</span><span class="n">3</span></a>
+    </nav>
+    <aside class="ad-slot ad-slot--sidebar" aria-label="Advertisement"><!-- 侧边广告位（AdSense）：空时不占位
+      <ins class="adsbygoogle" style="display:block"
+           data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="2222222222"
+           data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    --></aside>
+  </aside>
 </main>
 
 <footer class="site-footer">
