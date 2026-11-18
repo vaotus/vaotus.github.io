@@ -1,5 +1,6 @@
 /* AI早报 · 统一样式表
-   气质：安静、克制、大量留白；浅米白纸张底 + 深墨灰字 + 细分割线 */
+   气质：安静、克制、大量留白；浅米白纸张底 + 深墨灰字 + 细分割线
+   布局：桌面内容宽度 820px，窄屏自适应，无横向滚动 */
 
 :root {
   --paper: #FAFAF7;
@@ -11,11 +12,21 @@
   --accent: #8C5A3C;
   --accent-soft: #B98A66;
   --pill: #EDEAE1;
+  --maxw: 820px;
+  --gutter: clamp(20px, 4.5vw, 48px);
 }
 
 * { box-sizing: border-box; }
 
-html { -webkit-text-size-adjust: 100%; }
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
 
 body {
   margin: 0;
@@ -23,17 +34,21 @@ body {
   color: var(--ink);
   font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB",
     "Noto Sans SC", "Microsoft YaHei", "Segoe UI", sans-serif;
-  font-size: 17px;
+  font-size: clamp(16px, 0.35vw + 15px, 18px);
   line-height: 1.9;
   letter-spacing: 0.01em;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 .wrap {
-  max-width: 720px;
+  width: 100%;
+  max-width: var(--maxw);
   margin: 0 auto;
-  padding: 0 28px;
+  padding: 0 var(--gutter);
 }
+
+img, svg, iframe { max-width: 100%; }
 
 /* ---------- 页头 ---------- */
 
@@ -46,24 +61,26 @@ body {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  gap: 20px;
-  padding-top: 26px;
-  padding-bottom: 26px;
+  gap: 12px 24px;
+  padding-top: clamp(18px, 2.4vw, 30px);
+  padding-bottom: clamp(18px, 2.4vw, 30px);
   flex-wrap: wrap;
 }
 
 .brand {
   font-family: "Songti SC", "Noto Serif SC", "Source Han Serif SC", Georgia, serif;
-  font-size: 22px;
+  font-size: clamp(20px, 1.6vw + 14px, 23px);
   letter-spacing: 0.14em;
   color: var(--ink);
   text-decoration: none;
   font-weight: 600;
+  line-height: 1.4;
 }
 
 .nav {
   display: flex;
-  gap: 22px;
+  flex-wrap: wrap;
+  gap: 4px clamp(14px, 2.4vw, 26px);
   font-size: 14px;
   letter-spacing: 0.06em;
 }
@@ -71,8 +88,11 @@ body {
 .nav a {
   color: var(--ink-faint);
   text-decoration: none;
-  padding-bottom: 2px;
+  padding: 6px 0;
   border-bottom: 1px solid transparent;
+  min-height: 34px;
+  display: inline-flex;
+  align-items: center;
 }
 
 .nav a:hover { color: var(--ink); }
@@ -85,44 +105,48 @@ body {
 /* ---------- 抬头 ---------- */
 
 .masthead {
-  padding: 76px 0 64px;
+  padding: clamp(46px, 7vw, 88px) 0 clamp(36px, 5vw, 64px);
   border-bottom: 1px solid var(--line);
 }
 
 .date {
-  margin: 0 0 18px;
+  margin: 0 0 clamp(14px, 1.6vw, 20px);
   font-size: 13px;
   letter-spacing: 0.22em;
   color: var(--ink-faint);
   font-variant-numeric: tabular-nums;
 }
 
-.masthead h1 {
+.masthead h1,
+.post-head h1 {
   font-family: "Songti SC", "Noto Serif SC", "Source Han Serif SC", Georgia, serif;
-  font-size: 34px;
+  font-size: clamp(25px, 3vw, 38px);
   line-height: 1.42;
   font-weight: 600;
-  margin: 0 0 22px;
+  margin: 0 0 clamp(16px, 2vw, 22px);
   letter-spacing: 0.02em;
+  overflow-wrap: break-word;
 }
 
 .lede {
   margin: 0;
   color: var(--ink-soft);
-  font-size: 16px;
-  max-width: 34em;
+  font-size: clamp(15px, 0.3vw + 14px, 16.5px);
+  line-height: 1.85;
+  max-width: 36em;
 }
 
 /* ---------- 板块 ---------- */
 
 .section {
-  padding: 62px 0 8px;
+  padding: clamp(40px, 5.5vw, 66px) 0 8px;
 }
 
 .section-head {
   display: flex;
   align-items: baseline;
-  gap: 14px;
+  flex-wrap: wrap;
+  gap: 6px 14px;
   margin-bottom: 8px;
 }
 
@@ -158,7 +182,7 @@ body {
 }
 
 .item {
-  padding: 34px 0 30px;
+  padding: clamp(26px, 3.4vw, 36px) 0 clamp(22px, 3vw, 32px);
   border-bottom: 1px solid var(--line);
 }
 
@@ -166,16 +190,18 @@ body {
 
 .item h3 {
   font-family: "Songti SC", "Noto Serif SC", "Source Han Serif SC", Georgia, serif;
-  font-size: 21px;
+  font-size: clamp(19px, 1.3vw + 14px, 22px);
   line-height: 1.55;
   font-weight: 600;
   margin: 0 0 12px;
   letter-spacing: 0.01em;
+  overflow-wrap: break-word;
 }
 
 .item p.body {
   margin: 0 0 14px;
   color: var(--ink-soft);
+  overflow-wrap: break-word;
 }
 
 .item p.body:last-of-type { margin-bottom: 16px; }
@@ -199,15 +225,18 @@ body {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-  gap: 8px 18px;
+  gap: 8px 16px;
 }
+
+.meta > span { max-width: 100%; }
 
 .meta a {
   color: var(--ink-soft);
   text-decoration: none;
   border-bottom: 1px solid var(--line);
   padding-bottom: 1px;
-  word-break: break-all;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .meta a:hover {
@@ -226,25 +255,21 @@ body {
   white-space: nowrap;
 }
 
-.pill.ended { background: #F0EDE6; color: var(--ink-faint); }
-
-.about a {
-  color: var(--ink);
-  text-decoration: none;
-  border-bottom: 1px solid var(--line);
-  padding-bottom: 1px;
-}
-
-.about a:hover {
-  color: var(--accent);
-  border-bottom-color: var(--accent-soft);
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.88em;
+  background: var(--paper-soft);
+  padding: 1px 6px;
+  border-radius: 3px;
+  color: var(--ink-soft);
+  overflow-wrap: anywhere;
 }
 
 /* ---------- 关于 / 页脚 ---------- */
 
 .about {
-  margin-top: 72px;
-  padding: 40px 0 0;
+  margin-top: clamp(48px, 6vw, 76px);
+  padding: clamp(28px, 4vw, 42px) 0 0;
   border-top: 1px solid var(--line);
   color: var(--ink-soft);
   font-size: 15px;
@@ -261,29 +286,22 @@ body {
 
 .about p { margin: 0 0 12px; }
 
-code {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 0.88em;
-  background: var(--paper-soft);
-  padding: 1px 6px;
-  border-radius: 3px;
-  color: var(--ink-soft);
-  word-break: break-all;
+.about a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 1px;
 }
 
-.about code {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 13px;
-  background: var(--paper-soft);
-  padding: 1px 6px;
-  border-radius: 3px;
-  color: var(--ink-soft);
+.about a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent-soft);
 }
 
 .site-footer {
-  margin-top: 56px;
+  margin-top: clamp(40px, 5vw, 60px);
   border-top: 1px solid var(--line);
-  padding: 30px 0 64px;
+  padding: clamp(24px, 3vw, 32px) 0 clamp(40px, 6vw, 68px);
   font-size: 13px;
   color: var(--ink-faint);
   letter-spacing: 0.04em;
@@ -292,28 +310,30 @@ code {
 .site-footer .wrap {
   display: flex;
   justify-content: space-between;
-  gap: 16px;
+  gap: 10px 16px;
   flex-wrap: wrap;
 }
 
+.footer-links {
+  margin-top: 14px;
+}
+
 .site-footer a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 6px 14px;
   color: var(--ink-soft);
   text-decoration: none;
-  border-bottom: 1px solid var(--line);
-  padding-bottom: 1px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  line-height: 1.4;
 }
 
-.site-footer a:hover {
+.site-footer a:hover,
+.site-footer a:focus-visible {
   color: var(--accent);
-  border-bottom-color: var(--accent-soft);
-}
-
-.footer-links {
-  margin-top: 10px;
-}
-
-.footer-links span {
-  letter-spacing: 0.04em;
+  border-color: var(--accent-soft);
 }
 
 /* ---------- 归档页 ---------- */
@@ -346,8 +366,9 @@ code {
 .archive-item {
   display: flex;
   align-items: baseline;
-  gap: 18px;
-  padding: 20px 0;
+  gap: 8px 18px;
+  flex-wrap: wrap;
+  padding: 18px 0;
   border-bottom: 1px solid var(--line);
   text-decoration: none;
   color: var(--ink);
@@ -373,11 +394,10 @@ code {
   font-size: 12.5px;
   color: var(--ink-faint);
   letter-spacing: 0.04em;
-  white-space: nowrap;
 }
 
 .empty {
-  padding: 40px 0;
+  padding: 36px 0;
   color: var(--ink-faint);
   font-size: 15px;
 }
@@ -385,23 +405,16 @@ code {
 /* ---------- 文章页 ---------- */
 
 .post-head {
-  padding: 64px 0 40px;
+  padding: clamp(44px, 6vw, 72px) 0 clamp(28px, 4vw, 44px);
   border-bottom: 1px solid var(--line);
-}
-
-.post-head h1 {
-  font-family: "Songti SC", "Noto Serif SC", "Source Han Serif SC", Georgia, serif;
-  font-size: 30px;
-  line-height: 1.5;
-  margin: 0 0 16px;
-  font-weight: 600;
 }
 
 .post-nav {
   display: flex;
   justify-content: space-between;
-  gap: 16px;
-  padding: 34px 0 0;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  padding: clamp(24px, 3vw, 34px) 0 0;
   margin-top: 20px;
   border-top: 1px solid var(--line);
   font-size: 14px;
@@ -411,23 +424,81 @@ code {
   color: var(--ink-soft);
   text-decoration: none;
   border-bottom: 1px solid var(--line);
+  padding: 6px 0;
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
 }
 
 .post-nav a:hover { color: var(--accent); border-bottom-color: var(--accent-soft); }
 
-/* ---------- 窄屏 ---------- */
+/* ---------- 宽屏（≥1024px）：更宽的栏、更大留白 ---------- */
+
+@media (min-width: 1024px) {
+  :root { --maxw: 860px; }
+  body { line-height: 1.95; }
+  .masthead { border-bottom: 1px solid var(--line); }
+  .about p { font-size: 15px; }
+}
+
+@media (min-width: 1440px) {
+  :root { --maxw: 900px; }
+}
+
+/* ---------- 窄屏（≤640px） ---------- */
 
 @media (max-width: 640px) {
   body { font-size: 16px; line-height: 1.85; }
-  .wrap { padding: 0 20px; }
-  .masthead { padding: 52px 0 44px; }
-  .masthead h1 { font-size: 26px; }
-  .section { padding: 44px 0 4px; }
-  .item { padding: 28px 0 24px; }
-  .item h3 { font-size: 19px; }
-  .site-header .wrap { padding-top: 20px; padding-bottom: 20px; }
-  .nav { gap: 18px; }
-  .archive-item { flex-wrap: wrap; gap: 6px 14px; }
+
+  .site-header .wrap {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .nav {
+    width: 100%;
+    gap: 0 18px;
+  }
+
+  .nav a {
+    min-height: 44px;
+    padding: 8px 0;
+  }
+
+  .masthead { padding: 42px 0 34px; }
+
+  .section { padding: 38px 0 4px; }
+
+  .item { padding: 26px 0 22px; }
+
+  .meta {
+    gap: 6px 12px;
+    font-size: 13px;
+  }
+
+  .meta .pill { white-space: normal; }
+
+  .archive-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    padding: 16px 0;
+  }
+
   .archive-tags { margin-left: 0; }
-  .post-head h1 { font-size: 25px; }
+
+  .site-footer .wrap { flex-direction: column; gap: 8px; }
+
+  .footer-links { margin-top: 12px; }
+
+  .site-footer a {
+    min-height: 44px;
+    padding: 10px 18px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .post-nav { gap: 10px; }
+  .post-nav a { min-height: 44px; padding: 10px 0; }
 }
