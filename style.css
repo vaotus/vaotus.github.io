@@ -779,12 +779,12 @@ code {
 
 .side-nav { display: none; }
 
-@media (min-width: 1024px) {
+@media (min-width: 900px) {
   .secnav { display: none; }
 
   .wrap.layout {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 208px;
+    grid-template-columns: minmax(0, 1fr) clamp(176px, 17vw, 208px);
     column-gap: clamp(40px, 4vw, 64px);
     align-items: start;
     max-width: 1140px;
