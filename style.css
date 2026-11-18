@@ -296,6 +296,26 @@ code {
   flex-wrap: wrap;
 }
 
+.site-footer a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 1px;
+}
+
+.site-footer a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent-soft);
+}
+
+.footer-links {
+  margin-top: 10px;
+}
+
+.footer-links span {
+  letter-spacing: 0.04em;
+}
+
 /* ---------- 归档页 ---------- */
 
 .archive-list {
