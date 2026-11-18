@@ -315,8 +315,13 @@ code {
   flex-wrap: wrap;
 }
 
-.footer-links {
+.site-footer .footer-links {
   margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px 12px;
 }
 
 .site-footer a {
@@ -578,6 +583,9 @@ code {
     width: 100%;
     justify-content: center;
   }
+
+  .footer-links { flex-direction: column; align-items: stretch; gap: 10px; }
+  .footer-links > span { width: 100%; }
 
   .post-nav { gap: 10px; }
   .post-nav a { min-height: 44px; padding: 10px 0; }
