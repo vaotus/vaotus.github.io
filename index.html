@@ -393,5 +393,15 @@
   </div>
 </footer>
 
+<script>
+  document.querySelectorAll("details.detail").forEach(function (d) {
+    d.addEventListener("toggle", function () {
+      if (!d.open) return;
+      document.querySelectorAll("details.detail[open]").forEach(function (o) {
+        if (o !== d) o.open = false;
+      });
+    });
+  });
+</script>
 </body>
 </html>
