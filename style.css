@@ -703,17 +703,26 @@ code {
   border-bottom: 1px solid var(--line);
 }
 
-.secnav-inner {
+.secnav-bar {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   width: 100%;
   max-width: var(--maxw);
   margin: 0 auto;
-  padding: 10px var(--gutter);
+  padding: 9px var(--gutter);
+}
+
+.secnav-inner {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex: 1 1 auto;
+  min-width: 0;
   overflow-x: auto;
   overscroll-behavior-x: contain;
   scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
 }
 
 .secnav-inner::-webkit-scrollbar { display: none; }
@@ -749,8 +758,20 @@ code {
 }
 
 .secnav .to-top {
-  margin-left: auto;
+  flex: 0 0 auto;
+  padding: 6px 11px;
+  min-height: 36px;
+  font-size: 12px;
   color: var(--ink-faint);
+  background: var(--paper-soft);
+  border-color: transparent;
+}
+
+.secnav .to-top:hover,
+.secnav .to-top:focus-visible {
+  color: var(--accent);
+  background: var(--paper);
+  border-color: var(--accent-soft);
 }
 
 /* ---------- 宽屏：侧边粘性导航 ---------- */
@@ -826,6 +847,7 @@ code {
   .items { gap: 10px; margin-top: 18px; }
   .card { border-radius: 12px; }
   .detail-toggle { min-height: 44px; padding: 10px 2px; }
-  .secnav a { min-height: 38px; }
+  .secnav a { min-height: 38px; font-size: 12.5px; padding: 6px 10px; }
+  .secnav .to-top { min-height: 38px; padding: 6px 10px; }
   .section { scroll-margin-top: 68px; }
 }
