@@ -106,12 +106,12 @@ img, svg, iframe { max-width: 100%; }
 /* ---------- 抬头 ---------- */
 
 .masthead {
-  padding: clamp(46px, 7vw, 88px) 0 clamp(36px, 5vw, 64px);
+  padding: clamp(18px, 2.4vw, 28px) 0 clamp(12px, 1.6vw, 18px);
   border-bottom: 1px solid var(--line);
 }
 
 .date {
-  margin: 0 0 clamp(14px, 1.6vw, 20px);
+  margin: 0 0 8px;
   font-size: 13px;
   letter-spacing: 0.22em;
   color: var(--ink-faint);
@@ -121,26 +121,27 @@ img, svg, iframe { max-width: 100%; }
 .masthead h1,
 .post-head h1 {
   font-family: "Songti SC", "Noto Serif SC", "Source Han Serif SC", Georgia, serif;
-  font-size: clamp(25px, 3vw, 38px);
-  line-height: 1.42;
+  font-size: clamp(24px, 2.7vw, 34px);
+  line-height: 1.36;
   font-weight: 600;
-  margin: 0 0 clamp(16px, 2vw, 22px);
+  margin: 0 0 clamp(8px, 1vw, 12px);
   letter-spacing: 0.02em;
   overflow-wrap: break-word;
 }
 
 .lede {
   margin: 0;
-  color: var(--ink-soft);
-  font-size: clamp(15px, 0.3vw + 14px, 16.5px);
-  line-height: 1.85;
+  color: var(--ink-faint);
+  font-size: 13.5px;
+  line-height: 1.7;
+  letter-spacing: 0.08em;
   max-width: 36em;
 }
 
 /* ---------- 板块 ---------- */
 
 .section {
-  padding: clamp(40px, 5.5vw, 66px) 0 8px;
+  padding: clamp(26px, 3.4vw, 42px) 0 8px;
 }
 
 .section-head {
@@ -490,7 +491,7 @@ code {
 /* ---------- 文章页 ---------- */
 
 .post-head {
-  padding: clamp(44px, 6vw, 72px) 0 clamp(28px, 4vw, 44px);
+  padding: clamp(20px, 2.6vw, 32px) 0 clamp(14px, 2vw, 20px);
   border-bottom: 1px solid var(--line);
 }
 
@@ -551,9 +552,9 @@ code {
     padding: 8px 0;
   }
 
-  .masthead { padding: 42px 0 34px; }
+  .masthead { padding: 18px 0 14px; }
 
-  .section { padding: 38px 0 4px; }
+  .section { padding: 26px 0 4px; }
 
   .item { padding: 26px 0 22px; }
 
