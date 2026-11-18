@@ -336,6 +336,54 @@ code {
   border-color: var(--accent-soft);
 }
 
+/* ---------- 广告位（AdSense 预留） ----------
+   默认隐藏：空容器或未激活时完全不占位，不会留下空白盒子；
+   一旦放入 <ins class="adsbygoogle">（或加上 .ad-slot--active）自动展开：
+   桌面居中 728px，移动端 100% 宽，上方带 Sponsored 标识，与内容留出间距。 */
+
+.ad-slot {
+  display: none;
+}
+
+.ad-slot:not(:empty),
+.ad-slot--active {
+  display: block;
+  position: relative;
+  width: 100%;
+  max-width: 728px;
+  margin: clamp(32px, 4.5vw, 52px) auto;
+  padding: 0;
+  text-align: center;
+  overflow: hidden;
+}
+
+.ad-slot::before {
+  content: "Sponsored";
+  display: block;
+  margin-bottom: 6px;
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  text-align: center;
+  line-height: 1.4;
+}
+
+.ad-slot ins,
+.ad-slot iframe {
+  display: block;
+  width: 100% !important;
+  margin: 0 auto;
+}
+
+@media (max-width: 640px) {
+  .ad-slot:not(:empty),
+  .ad-slot--active {
+    max-width: 100%;
+    margin: clamp(28px, 6vw, 40px) auto;
+  }
+}
+
 /* ---------- 极简「关于」一行 ---------- */
 
 .about-mini {
