@@ -1,0 +1,401 @@
+/* AI早报 · 统一样式表
+   气质：安静、克制、大量留白；浅米白纸张底 + 深墨灰字 + 细分割线 */
+
+:root {
+  --paper: #FAFAF7;
+  --paper-soft: #F4F3EE;
+  --ink: #1F2328;
+  --ink-soft: #55595E;
+  --ink-faint: #8A8D91;
+  --line: #E4E2DA;
+  --accent: #8C5A3C;
+  --accent-soft: #B98A66;
+  --pill: #EDEAE1;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB",
+    "Noto Sans SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+  font-size: 17px;
+  line-height: 1.9;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* ---------- 页头 ---------- */
+
+.site-header {
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.site-header .wrap {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+  padding-top: 26px;
+  padding-bottom: 26px;
+  flex-wrap: wrap;
+}
+
+.brand {
+  font-family: "Songti SC", "Noto Serif SC", "Source Han Serif SC", Georgia, serif;
+  font-size: 22px;
+  letter-spacing: 0.14em;
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.nav {
+  display: flex;
+  gap: 22px;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+}
+
+.nav a {
+  color: var(--ink-faint);
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+}
+
+.nav a:hover { color: var(--ink); }
+
+.nav a[aria-current="page"] {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+}
+
+/* ---------- 抬头 ---------- */
+
+.masthead {
+  padding: 76px 0 64px;
+  border-bottom: 1px solid var(--line);
+}
+
+.date {
+  margin: 0 0 18px;
+  font-size: 13px;
+  letter-spacing: 0.22em;
+  color: var(--ink-faint);
+  font-variant-numeric: tabular-nums;
+}
+
+.masthead h1 {
+  font-family: "Songti SC", "Noto Serif SC", "Source Han Serif SC", Georgia, serif;
+  font-size: 34px;
+  line-height: 1.42;
+  font-weight: 600;
+  margin: 0 0 22px;
+  letter-spacing: 0.02em;
+}
+
+.lede {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 16px;
+  max-width: 34em;
+}
+
+/* ---------- 板块 ---------- */
+
+.section {
+  padding: 62px 0 8px;
+}
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 8px;
+}
+
+.section-head h2 {
+  font-family: "Songti SC", "Noto Serif SC", "Source Han Serif SC", Georgia, serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  margin: 0;
+  color: var(--ink);
+}
+
+.section-head .count {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: var(--ink-faint);
+}
+
+.section-rule {
+  height: 1px;
+  background: var(--line);
+  margin: 14px 0 0;
+}
+
+.items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  padding: 34px 0 30px;
+  border-bottom: 1px solid var(--line);
+}
+
+.item:last-child { border-bottom: none; }
+
+.item h3 {
+  font-family: "Songti SC", "Noto Serif SC", "Source Han Serif SC", Georgia, serif;
+  font-size: 21px;
+  line-height: 1.55;
+  font-weight: 600;
+  margin: 0 0 12px;
+  letter-spacing: 0.01em;
+}
+
+.item p.body {
+  margin: 0 0 14px;
+  color: var(--ink-soft);
+}
+
+.item p.body:last-of-type { margin-bottom: 16px; }
+
+.item .num {
+  display: inline-block;
+  min-width: 1.6em;
+  color: var(--ink-faint);
+  font-variant-numeric: tabular-nums;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+}
+
+/* ---------- 来源与状态 ---------- */
+
+.meta {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.8;
+  color: var(--ink-faint);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 12px;
+}
+
+.meta a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 1px;
+  word-break: break-all;
+}
+
+.meta a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent-soft);
+}
+
+.pill {
+  display: inline-block;
+  padding: 1px 9px;
+  border-radius: 999px;
+  background: var(--pill);
+  color: var(--ink-soft);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.pill.ended { background: #F0EDE6; color: var(--ink-faint); }
+
+.dot {
+  color: var(--line);
+}
+
+/* ---------- 关于 / 页脚 ---------- */
+
+.about {
+  margin-top: 72px;
+  padding: 40px 0 0;
+  border-top: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-size: 15px;
+}
+
+.about h2 {
+  font-family: "Songti SC", "Noto Serif SC", "Source Han Serif SC", Georgia, serif;
+  font-size: 15px;
+  letter-spacing: 0.24em;
+  font-weight: 600;
+  margin: 0 0 16px;
+  color: var(--ink);
+}
+
+.about p { margin: 0 0 12px; }
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.88em;
+  background: var(--paper-soft);
+  padding: 1px 6px;
+  border-radius: 3px;
+  color: var(--ink-soft);
+  word-break: break-all;
+}
+
+.about code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 13px;
+  background: var(--paper-soft);
+  padding: 1px 6px;
+  border-radius: 3px;
+  color: var(--ink-soft);
+}
+
+.site-footer {
+  margin-top: 56px;
+  border-top: 1px solid var(--line);
+  padding: 30px 0 64px;
+  font-size: 13px;
+  color: var(--ink-faint);
+  letter-spacing: 0.04em;
+}
+
+.site-footer .wrap {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ---------- 归档页 ---------- */
+
+.archive-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.archive-month {
+  padding: 40px 0 10px;
+  border-bottom: 1px solid var(--line);
+}
+
+.archive-month h2 {
+  font-family: "Songti SC", "Noto Serif SC", "Source Han Serif SC", Georgia, serif;
+  font-size: 18px;
+  letter-spacing: 0.12em;
+  margin: 0 0 6px;
+  font-weight: 600;
+}
+
+.archive-month .note {
+  margin: 0;
+  font-size: 13.5px;
+  color: var(--ink-faint);
+}
+
+.archive-item {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.archive-item:hover .archive-title { color: var(--accent); }
+
+.archive-date {
+  font-variant-numeric: tabular-nums;
+  font-size: 13.5px;
+  letter-spacing: 0.06em;
+  color: var(--ink-faint);
+  min-width: 6.5em;
+}
+
+.archive-title {
+  font-family: "Songti SC", "Noto Serif SC", "Source Han Serif SC", Georgia, serif;
+  font-size: 18px;
+}
+
+.archive-tags {
+  margin-left: auto;
+  font-size: 12.5px;
+  color: var(--ink-faint);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.empty {
+  padding: 40px 0;
+  color: var(--ink-faint);
+  font-size: 15px;
+}
+
+/* ---------- 文章页 ---------- */
+
+.post-head {
+  padding: 64px 0 40px;
+  border-bottom: 1px solid var(--line);
+}
+
+.post-head h1 {
+  font-family: "Songti SC", "Noto Serif SC", "Source Han Serif SC", Georgia, serif;
+  font-size: 30px;
+  line-height: 1.5;
+  margin: 0 0 16px;
+  font-weight: 600;
+}
+
+.post-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 34px 0 0;
+  margin-top: 20px;
+  border-top: 1px solid var(--line);
+  font-size: 14px;
+}
+
+.post-nav a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+}
+
+.post-nav a:hover { color: var(--accent); border-bottom-color: var(--accent-soft); }
+
+/* ---------- 窄屏 ---------- */
+
+@media (max-width: 640px) {
+  body { font-size: 16px; line-height: 1.85; }
+  .wrap { padding: 0 20px; }
+  .masthead { padding: 52px 0 44px; }
+  .masthead h1 { font-size: 26px; }
+  .section { padding: 44px 0 4px; }
+  .item { padding: 28px 0 24px; }
+  .item h3 { font-size: 19px; }
+  .site-header .wrap { padding-top: 20px; padding-bottom: 20px; }
+  .nav { gap: 18px; }
+  .archive-item { flex-wrap: wrap; gap: 6px 14px; }
+  .archive-tags { margin-left: 0; }
+  .post-head h1 { font-size: 25px; }
+}
