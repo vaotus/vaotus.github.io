@@ -613,8 +613,9 @@ function setScreen(c){ c.setTransform(DPR,0,0,DPR,0,0); }
 var items=[];
 function cube(x,z,y,w,d,h,c){ items.push({x:x,z:z,y:y,w:w,d:d,h:h,c:c}); }
 
-var LAMP={x:1.97,z:3.07,y:1.42};
-var CHIME={x:6.0,z:7.12,y:2.42};
+var LAMP={x:0.85,z:4.3,y:1.55};
+var LBOX={x:0.49,z:3.94,w:0.72,y:1.25,h:0.6};
+var CHIME={x:7.15,z:7.62,y:2.42};
 var LIGHTS=[];
 
 function has(id){ return S.unlocked.indexOf(id)>=0; }
@@ -650,21 +651,21 @@ function buildScene(){
   cube(8.86,2.6,-1.05,0.14,0.14,0.9,'#6f8b58');
 
   /* 石径 */
-  var path=[[4.85,8.05],[4.55,7.25],[4.25,6.5],[3.95,5.85],[3.55,5.35]];
+  var path=[[6.3,8.5],[5.95,7.85],[5.55,7.2],[5.15,6.65],[4.7,6.25]];
   for(i=0;i<path.length;i++){
     cube(path[i][0],path[i][1],0.3,0.9,0.78,0.09,'#cdc6b6');
     if(has('moss') && i%2===0) cube(path[i][0]+0.1,path[i][1]+0.12,0.39,0.4,0.34,0.045,'#8ea96a');
   }
 
-  /* 石灯笼 */
-  cube(1.15,2.25,0,1.7,1.7,0.22,'#bcb5a5');
-  cube(1.42,2.52,0.22,1.16,1.16,0.12,'#ada696');
-  cube(1.68,2.78,0.34,0.36,0.36,0.72,'#c4bdad');
-  cube(1.5,2.6,1.06,0.9,0.9,0.1,'#b2ab9b');
-  cube(1.63,2.73,1.16,0.72,0.72,0.5,'#f3e7c9');
-  cube(1.4,2.5,1.66,1.2,1.2,0.16,'#a8a192');
-  cube(1.55,2.65,1.82,0.9,0.9,0.12,'#b6af9f');
-  cube(1.8,2.9,1.94,0.24,0.24,0.2,'#a19a8a');
+  /* 石灯笼（左前） */
+  cube(0.10,3.55,0,1.5,1.5,0.22,'#bcb5a5');
+  cube(0.30,3.75,0.22,1.1,1.1,0.12,'#ada696');
+  cube(0.67,4.12,0.34,0.36,0.36,0.81,'#c4bdad');
+  cube(0.40,3.85,1.15,0.9,0.9,0.1,'#b2ab9b');
+  cube(0.49,3.94,1.25,0.72,0.72,0.6,'#f3e7c9');
+  cube(0.19,3.64,1.85,1.32,1.32,0.16,'#a8a192');
+  cube(0.40,3.85,2.01,0.9,0.9,0.12,'#b6af9f');
+  cube(0.73,4.18,2.13,0.24,0.24,0.2,'#a19a8a');
 
   /* 老树（右后） */
   cube(6.15,1.2,0,0.72,0.72,2.25,'#8b6a47');
@@ -689,7 +690,7 @@ function buildScene(){
   cube(1.5,0.7,2.0,0.8,0.8,0.5,'#9cbe7e');
 
   /* 茶桌 */
-  var TX=2.15, TZ=4.35;
+  var TX=2.5, TZ=4.9;
   cube(TX+0.16,TZ+0.14,0,0.15,0.15,0.55,'#8d6b46');
   cube(TX+1.58,TZ+0.14,0,0.15,0.15,0.55,'#8d6b46');
   cube(TX+0.16,TZ+0.96,0,0.15,0.15,0.55,'#8d6b46');
@@ -703,18 +704,18 @@ function buildScene(){
   cube(TX+1.18,TZ+0.36,0.68,0.19,0.19,0.13,'#d3ccba');
   cube(TX+1.22,TZ+0.72,0.68,0.17,0.17,0.11,'#d3ccba');
   /* 坐垫 */
-  cube(2.95,5.75,0.3,0.8,0.55,0.11,'#8a9a72');
+  cube(2.85,6.35,0.3,0.8,0.55,0.11,'#8a9a72');
   cube(TX+1.55,TZ-0.52,0.3,0.72,0.5,0.1,'#8a9a72');
 
-  /* 风铃架（右前，横梁伸向院心） */
-  cube(7.0,7.0,0,0.26,0.26,2.55,'#9b7a52');
-  cube(6.94,6.94,2.55,0.38,0.38,0.14,'#8d6e48');
-  cube(5.5,6.99,2.55,1.5,0.2,0.14,'#9b7a52');
-  cube(5.42,6.93,2.68,0.16,0.3,0.09,'#8d6e48');
+  /* 风铃架（右前角，横梁伸向院心） */
+  cube(8.3,7.6,0,0.26,0.26,2.55,'#9b7a52');
+  cube(8.24,7.54,2.55,0.38,0.38,0.14,'#8d6e48');
+  cube(6.8,7.59,2.55,1.5,0.2,0.14,'#9b7a52');
+  cube(6.72,7.53,2.68,0.16,0.3,0.09,'#8d6e48');
 
-  /* 解锁：小竹丛（左前） */
+  /* 解锁：小竹丛（左前角） */
   if(has('bamboo')){
-    var bam=[[1.05,6.6,2.55],[1.32,6.86,2.1],[1.12,7.14,2.75],[1.42,6.58,1.75]];
+    var bam=[[0.55,7.75,2.55],[0.82,8.01,2.1],[0.62,8.29,2.75],[0.92,7.73,1.75]];
     for(i=0;i<bam.length;i++){
       cube(bam[i][0],bam[i][1],0.3,0.15,0.15,bam[i][2],'#93ab68');
       cube(bam[i][0]-0.24,bam[i][1]+0.04,0.3+bam[i][2]*0.62,0.52,0.11,0.07,'#7fa05f');
@@ -722,49 +723,49 @@ function buildScene(){
       cube(bam[i][0]-0.2,bam[i][1]+0.1,0.3+bam[i][2]*0.86,0.45,0.1,0.07,'#7fa05f');
     }
   }
-  /* 解锁：石凳（右中） */
+  /* 解锁：石凳（左前） */
   if(has('bench')){
-    cube(6.85,4.75,0.3,0.28,0.28,0.32,'#bcb5a7');
-    cube(7.42,4.75,0.3,0.28,0.28,0.32,'#bcb5a7');
-    cube(6.72,4.62,0.62,1.25,0.52,0.13,'#c9c2b3');
+    cube(1.95,7.15,0.3,0.28,0.28,0.32,'#bcb5a7');
+    cube(2.52,7.15,0.3,0.28,0.28,0.32,'#bcb5a7');
+    cube(1.82,7.02,0.62,1.25,0.52,0.13,'#c9c2b3');
   }
-  /* 解锁：花圃（前中） */
+  /* 解锁：花圃（前左） */
   if(has('flowers')){
-    var fl=[[2.65,7.6,'#e8c87e'],[3.0,7.85,'#d5ddb8'],[3.7,7.75,'#dcbda6'],[2.3,7.95,'#cfd8b2'],[4.05,7.9,'#ecd9a8'],[3.35,7.45,'#d8c98f']];
+    var fl=[[2.65,7.95,'#e8c87e'],[3.05,8.18,'#d5ddb8'],[3.7,8.05,'#dcbda6'],[2.35,8.25,'#cfd8b2'],[4.0,8.22,'#ecd9a8'],[3.4,7.7,'#d8c98f']];
     for(i=0;i<fl.length;i++){
       cube(fl[i][0],fl[i][1],0.3,0.09,0.09,0.28,'#7fa05f');
       cube(fl[i][0]-0.055,fl[i][1]-0.055,0.58,0.19,0.19,0.11,fl[i][2]);
     }
   }
-  /* 解锁：纸灯笼串（树 → 风铃架） */
+  /* 解锁：纸灯笼串（两棵树之间） */
   if(has('string')){
-    for(i=0;i<6;i++){
-      var tt=i/5;
-      var lx=lerp(6.55,6.95,tt)+Math.sin(tt*2.4)*0.1;
-      var lz=lerp(2.05,6.65,tt);
-      var ly=2.5-Math.sin(tt*Math.PI)*0.35;
+    for(i=0;i<5;i++){
+      var tt=i/4;
+      var lx=lerp(2.78,5.12,tt);
+      var lz=1.08+Math.sin(tt*Math.PI)*0.06;
+      var ly=2.0-Math.sin(tt*Math.PI)*0.28;
       cube(lx,lz,ly,0.24,0.24,0.32,'#f2dcae');
       LIGHTS.push({x:lx+0.12,z:lz+0.12,y:ly+0.16});
     }
   }
   /* 解锁：石水缸（右后） */
   if(has('jar')){
-    cube(7.55,3.05,0,0.95,0.95,0.6,'#ada696');
-    cube(7.48,2.98,0.6,1.09,1.09,0.11,'#b8b1a1');
-    cube(7.62,3.12,0.64,0.81,0.81,0.05,'#a2b8bb');
+    cube(7.55,3.15,0,0.95,0.95,0.6,'#ada696');
+    cube(7.48,3.08,0.6,1.09,1.09,0.11,'#b8b1a1');
+    cube(7.62,3.22,0.64,0.81,0.81,0.05,'#a2b8bb');
   }
-  /* 解锁：小木牌 */
+  /* 解锁：小木牌（前中） */
   if(has('sign')){
-    cube(4.75,7.85,0,0.17,0.17,1.0,'#9b7a52');
-    cube(4.32,7.8,0.74,0.9,0.13,0.46,'#b48a58');
-    cube(4.46,7.79,0.98,0.55,0.04,0.055,'#7c5b3a');
-    cube(4.46,7.79,0.85,0.38,0.04,0.05,'#7c5b3a');
+    cube(4.55,8.3,0,0.17,0.17,1.0,'#9b7a52');
+    cube(4.12,8.25,0.74,0.9,0.13,0.46,'#b48a58');
+    cube(4.26,8.24,0.98,0.55,0.04,0.055,'#7c5b3a');
+    cube(4.26,8.24,0.85,0.38,0.04,0.05,'#7c5b3a');
   }
   /* 解锁：青苔 */
   if(has('moss')){
-    cube(1.2,2.3,0.22,1.5,1.5,0.05,'#9aad7c');
+    cube(0.2,3.6,0.24,1.3,1.3,0.05,'#9aad7c');
     cube(6.4,1.1,0.3,0.9,0.9,0.045,'#97aa79');
-    cube(4.35,7.3,0.3,1.0,0.8,0.045,'#9aad7c');
+    cube(4.35,7.4,0.3,0.9,0.75,0.045,'#9aad7c');
   }
 
   /* 碎石子与草叶 */
@@ -817,13 +818,13 @@ function drawBox(c,b){
 
 /* ================= 6. 小精灵 ================= */
 var sp={
-  x:5.15, z:6.55, tx:5.15, tz:6.55,
+  x:6.3, z:5.45, tx:6.3, tz:5.45,
   state:'idle', timer:2.5, speed:0, face:1,
   bob:0, blink:0, blinkT:3, mood:'calm', intent:null,
   sit:0, look:0
 };
-var ROAM=[[5.0,6.55],[5.95,6.15],[4.55,6.05],[5.35,7.05],[6.35,5.7],[4.9,7.35],[6.1,6.7]];
-var CUSHION=[3.35,6.15];
+var ROAM=[[6.05,5.05],[6.65,5.6],[6.2,6.2],[6.95,6.05],[5.8,5.85],[6.6,4.9]];
+var CUSHION=[2.95,6.45];
 function dist(ax,az,bx,bz){ var dx=ax-bx,dz=az-bz; return Math.sqrt(dx*dx+dz*dz); }
 function walkTo(x,z,intent){
   sp.tx=x; sp.tz=z; sp.state='walk'; sp.intent=intent||null;
@@ -855,7 +856,7 @@ function updateSpirit(dt,t){
         sp.state='idle'; sp.timer=2+Math.random()*3;
       }
     }else{
-      var v=Math.min(0.62, d*1.6);
+      var v=Math.min(0.52, d*1.4);
       sp.speed=v;
       sp.x+=dx/d*v*dt;
       sp.z+=dz/d*v*dt;
@@ -1310,13 +1311,13 @@ function drawHills(t){
   ctx.lineTo(CW+8,CH+2);
   ctx.closePath(); ctx.fill();
 
-  // 远雾
-  var mg=ctx.createLinearGradient(0,baseY-CH*0.16,0,baseY+CH*0.06);
+  // 远雾（只在山脚一带，不能压住岛）
+  var mg=ctx.createLinearGradient(0,baseY-CH*0.10,0,baseY+CH*0.02);
   mg.addColorStop(0,css(mixc(pal.bot,'#ffffff',0.5),0));
-  mg.addColorStop(0.6,css(mixc(pal.bot,'#ffffff',0.42),0.35+W.mist*0.25));
+  mg.addColorStop(0.6,css(mixc(pal.bot,'#ffffff',0.42),0.10+W.mist*0.10));
   mg.addColorStop(1,css(mixc(pal.bot,'#ffffff',0.4),0));
   ctx.fillStyle=mg;
-  ctx.fillRect(0,baseY-CH*0.16,CW,CH*0.28);
+  ctx.fillRect(0,baseY-CH*0.10,CW,CH*0.14);
 }
 
 function nowHours(){
@@ -1343,11 +1344,12 @@ function drawLampLight(g,t){
   g.beginPath(); g.arc(lp[0],lp[1],R,0,Math.PI*2); g.fill();
   // 灯箱里的纸窗
   g.globalCompositeOperation='source-over';
-  g.fillStyle='rgba(255,224,164,'+(0.55*lampLevel)+')';
-  poly(g,[proj(1.65,3.45,1.64),proj(2.33,3.45,1.64),proj(2.33,3.45,1.18),proj(1.65,3.45,1.18)]);
+  var bx=LBOX.x, bz=LBOX.z, bw=LBOX.w, by=LBOX.y, bh=LBOX.h;
+  g.fillStyle='rgba(255,224,164,'+(0.62*lampLevel)+')';
+  poly(g,[proj(bx,bz+bw,by+bh),proj(bx+bw,bz+bw,by+bh),proj(bx+bw,bz+bw,by),proj(bx,bz+bw,by)]);
   g.fill();
-  g.fillStyle='rgba(255,236,196,'+(0.30*lampLevel)+')';
-  poly(g,[proj(2.35,2.75,1.66),proj(2.35,3.45,1.66),proj(2.35,3.45,1.18),proj(2.35,2.75,1.18)]);
+  g.fillStyle='rgba(255,236,196,'+(0.34*lampLevel)+')';
+  poly(g,[proj(bx+bw,bz,by+bh),proj(bx+bw,bz+bw,by+bh),proj(bx+bw,bz+bw,by),proj(bx+bw,bz,by)]);
   g.fill();
   g.restore();
 }
@@ -1423,7 +1425,7 @@ function drawParticlesWorld(g,t){
   for(i=0;i<P.steam.length;i++){
     p=P.steam[i];
     if(p.x===0&&p.y===0){
-      var tp=proj(2.62,4.72,1.02);
+      var tp=proj(3.1,5.42,1.06);
       p.x=tp[0]+ (Math.random()-0.5)*6; p.y=tp[1];
     }
     var k2=p.life/p.max;
@@ -1509,13 +1511,13 @@ function drawScreenFx(t){
   }
   // 薄雾
   if(W.mist>0.05){
-    var a=W.mist*0.15;
-    var mg=ctx.createLinearGradient(0,CH*0.42,0,CH*0.95);
+    var a=W.mist*0.10;
+    var mg=ctx.createLinearGradient(0,CH*0.60,0,CH*1.0);
     mg.addColorStop(0,'rgba(255,255,255,0)');
-    mg.addColorStop(0.55,'rgba(255,255,255,'+a+')');
+    mg.addColorStop(0.5,'rgba(255,255,255,'+a+')');
     mg.addColorStop(1,'rgba(255,255,255,0)');
     ctx.fillStyle=mg;
-    ctx.fillRect(0,CH*0.42,CW,CH*0.55);
+    ctx.fillRect(0,CH*0.60,CW,CH*0.40);
   }
   // 暗角
   var vg=ctx.createRadialGradient(CW/2,CH*0.46,Math.min(CW,CH)*0.28,CW/2,CH*0.5,Math.max(CW,CH)*0.78);
