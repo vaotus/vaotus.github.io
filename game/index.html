@@ -68,6 +68,27 @@
     transition:opacity .8s ease; white-space:nowrap; letter-spacing:.04em;
   }
   .hint.gone{opacity:0}
+  /* 声音开关：画布右上角的小胶囊 */
+  .volbtn{
+    position:absolute; top:10px; right:10px; z-index:3;
+    appearance:none; display:inline-flex; align-items:center; gap:6px;
+    font:inherit; font-size:11.5px; letter-spacing:.05em; color:#5d5546;
+    background:rgba(255,253,247,.86); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
+    border:1px solid rgba(59,53,44,.14); border-radius:999px;
+    padding:7px 12px 7px 9px; min-height:32px; cursor:pointer;
+    box-shadow:0 4px 14px -8px rgba(59,53,44,.5);
+    transition:background .18s, border-color .18s, color .18s, transform .14s, box-shadow .18s;
+    touch-action:manipulation; -webkit-tap-highlight-color:transparent;
+  }
+  .volbtn:hover{background:#fffdf7; border-color:rgba(125,143,106,.45); box-shadow:0 6px 16px -10px rgba(59,53,44,.6)}
+  .volbtn:active{transform:scale(.97)}
+  .volbtn:focus-visible{outline:2px solid rgba(125,143,106,.6); outline-offset:2px}
+  .volbtn svg{width:16px; height:16px; flex:0 0 auto; color:#77875f}
+  .volbtn .i-off{display:none}
+  .volbtn.off{color:#8b8274; background:rgba(247,242,232,.9); border-color:rgba(59,53,44,.2)}
+  .volbtn.off svg{color:#a39a8b}
+  .volbtn.off .i-on{display:none}
+  .volbtn.off .i-off{display:block}
   /* ---------- panel ---------- */
   .panel{flex:0 0 auto; display:flex; flex-direction:column; gap:10px}
   .caption{padding:2px 4px 0; min-height:44px}
@@ -191,6 +212,11 @@
   <main class="stage" id="stage">
     <canvas id="cv" aria-label="方块小院：浮在云上的小院与方块小精灵"></canvas>
     <div class="hint" id="hint">轻触画面，山里的声音就来了</div>
+    <button class="volbtn" type="button" id="btnVol" aria-pressed="false" aria-label="声音开，点击静音" title="点一下静音">
+      <svg class="i-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.2 9.4h3.2L12 5.6v12.8L7.4 14.6H4.2z"/><path d="M15.4 8.6a4.8 4.8 0 0 1 0 6.8"/><path d="M17.9 6.2a8.2 8.2 0 0 1 0 11.6"/></svg>
+      <svg class="i-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.2 9.4h3.2L12 5.6v12.8L7.4 14.6H4.2z"/><path d="M16.1 9.5l4.4 5"/><path d="M20.5 9.5l-4.4 5"/></svg>
+      <span id="volTx">声音开</span>
+    </button>
   </main>
 
   <section class="panel">
@@ -595,6 +621,33 @@ var Snd={
     this.tone(f*1.02,0.07,{vol:v,attack:0.005,delay:0.1,type:'sine'});
   }
 };
+
+/* 声音开关：画布右上角的小胶囊，与「手记与设置」里的复选框共用一份状态 */
+var volBtn=$('#btnVol');
+function paintVol(){
+  var m=!!S.muted, b=$('#soundChk');
+  if(!volBtn) return;
+  volBtn.classList.toggle('off',m);
+  $('#volTx').textContent=m?'已静音':'声音开';
+  volBtn.setAttribute('aria-pressed',m?'true':'false');
+  volBtn.setAttribute('aria-label',m?'已静音，点击恢复声音':'声音开，点击静音');
+  volBtn.setAttribute('title',m?'点一下恢复声音':'点一下静音');
+  if(b) b.checked=!m;
+}
+function setMuted(m,quiet){
+  S.muted=!!m;
+  save(true);
+  paintVol();
+  Snd.start();
+  if(Snd.started){
+    Snd.mute(S.muted);
+    if(!S.muted){
+      Snd.setWeather(W);
+      if(!quiet) Snd.soft(523.25,659.25);
+    }
+  }
+  return S.muted;
+}
 
 /* ================= 5. 场景 ================= */
 var cv=$('#cv'), ctx=cv.getContext('2d');
@@ -1881,13 +1934,16 @@ function boot(){
     if(e.key==='Escape'){ closeNote(); closeSheet(); }
   });
   $('#soundChk').addEventListener('change',function(){
-    S.muted=!$('#soundChk').checked;
-    save(true);
-    Snd.start();
-    if(Snd.started) Snd.mute(S.muted);
-    if(!S.muted && Snd.started) Snd.setWeather(W);
+    setMuted(!$('#soundChk').checked);
   });
-  $('#soundChk').checked=!S.muted;
+  if(volBtn){
+    volBtn.addEventListener('click',function(e){
+      e.preventDefault();
+      var m=setMuted(!S.muted);
+      if(!m) hideHint();
+    });
+  }
+  paintVol();
 
   var resetArmed=false, resetT=null;
   $('#resetBtn').addEventListener('click',function(){
@@ -1906,6 +1962,8 @@ function boot(){
       S=loadState();
       S.lastDay=TODAY; S.streak=1; S.visits=1; S.warmth=6;
       save(true);
+      paintVol();
+      if(Snd.started){ Snd.mute(S.muted); if(!S.muted) Snd.setWeather(W); }
       lampLevel=0; lampTarget=0;
       b.classList.remove('warn'); b.textContent='重置小院';
       resetArmed=false;
