@@ -34,9 +34,10 @@
       radial-gradient(700px 380px at 85% 110%, rgba(214,226,200,.35), rgba(255,255,255,0) 70%);
   }
   .app{
-    position:relative; z-index:1; min-height:100dvh; max-width:1180px; margin:0 auto;
-    display:flex; flex-direction:column; gap:10px;
-    padding:14px 14px calc(14px + env(safe-area-inset-bottom));
+    position:relative; z-index:1; width:100%; max-width:800px; margin:0 auto;
+    min-height:100dvh; display:flex; flex-direction:column; justify-content:flex-start;
+    gap:10px;
+    padding:16px 14px calc(16px + env(safe-area-inset-bottom));
   }
   /* ---------- header ---------- */
   .top{display:flex; align-items:center; justify-content:space-between; gap:10px; flex:0 0 auto}
@@ -54,7 +55,7 @@
   }
   /* ---------- stage ---------- */
   .stage{
-    position:relative; flex:1 1 auto; min-height:230px; border-radius:20px; overflow:hidden;
+    position:relative; flex:0 0 auto; height:clamp(238px,40vh,352px); border-radius:20px; overflow:hidden;
     background:#dfe8ea; box-shadow:0 10px 30px -18px rgba(59,53,44,.45), inset 0 0 0 1px rgba(255,255,255,.5);
     isolation:isolate;
   }
@@ -153,23 +154,19 @@
     border-radius:11px; padding:8px 16px; cursor:pointer; transition:background .18s;
   }
   .primary:hover{background:#6d7f5b}
-  /* ---------- desktop ---------- */
-  @media (min-width:900px) and (min-height:620px){
-    .app{
-      display:grid; grid-template-columns:minmax(0,1fr) 372px;
-      grid-template-rows:auto minmax(0,1fr); grid-template-areas:"top top" "stage panel";
-      gap:16px 22px; padding:22px 26px 20px; height:100dvh;
-    }
-    .top{grid-area:top}
-    .stage{grid-area:stage; min-height:0; border-radius:24px}
-    .panel{grid-area:panel; min-height:0; display:flex; flex-direction:column; gap:12px; padding-bottom:2px}
-    .caption{min-height:58px}
+  /* ---------- 桌面：仍是上下单栏，只是更宽一点 ---------- */
+  @media (min-width:820px){
+    .app{max-width:800px; gap:13px; padding:22px 22px calc(20px + env(safe-area-inset-bottom)); justify-content:center; justify-content:safe center}
+    .stage{height:clamp(340px,52vh,520px); border-radius:24px}
+    .caption{min-height:56px; padding-top:4px}
     .caption p{font-size:16.5px}
-    .actions{grid-template-columns:repeat(2,minmax(0,1fr)); gap:9px}
-    .act{padding:11px 6px 9px; flex-direction:row; gap:9px; justify-content:flex-start; padding-left:13px}
+    .actions{grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px}
+    .act{padding:11px 13px; flex-direction:row; gap:10px; justify-content:flex-start; border-radius:15px}
     .act svg{width:22px; height:22px}
-    .act .bodywrap{display:flex; flex-direction:column; align-items:flex-start; line-height:1.25}
-    .links{margin-top:auto}
+    .act .bodywrap{align-items:flex-start; gap:2px}
+    .act .tx{font-size:13.5px}
+    .act .sub{font-size:10.5px; transform:none}
+    h1{font-size:15px}
   }
   @media (max-width:380px){
     .act .sub{display:none}
@@ -1804,7 +1801,7 @@ function resize(){
   cv.style.width=CW+'px';
   cv.style.height=CH+'px';
   var vw=VB.x1-VB.x0, vh=VB.y1-VB.y0;
-  SC=Math.min(CW/vw, CH/vh);
+  SC=Math.min(CW/vw, CH/(vh*0.88));
   OX=CW/2 - ((VB.x0+VB.x1)/2)*SC;
   OY=(CH - vh*SC)*0.53 - VB.y0*SC;
   scn.width=Math.round(CW*DPR);
