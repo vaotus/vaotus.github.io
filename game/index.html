@@ -98,7 +98,6 @@
   .links a:hover{color:#5f7150}
   .lnk{appearance:none; background:none; border:0; padding:0; font:inherit; color:#8b8274; cursor:pointer}
   .lnk:hover{color:#5d5546}
-  .disc{font-size:10.5px; color:#a9a093; line-height:1.5; margin:0; letter-spacing:.02em}
   /* ---------- sheet ---------- */
   .sheet{
     position:fixed; inset:0; z-index:40; display:flex; align-items:flex-end; justify-content:center;
@@ -171,7 +170,6 @@
     .act svg{width:22px; height:22px}
     .act .bodywrap{display:flex; flex-direction:column; align-items:flex-start; line-height:1.25}
     .links{margin-top:auto}
-    .disc{padding-bottom:2px}
   }
   @media (max-width:380px){
     .act .sub{display:none}
@@ -239,7 +237,6 @@
       <button class="lnk" type="button" id="btnSheet">手记与设置</button>
       <a href="/">返回 AI早报</a>
     </div>
-    <p class="disc">本页为原创方块小游戏，与 sansatemple.com 无关。</p>
   </section>
 </div>
 
@@ -282,6 +279,7 @@
 
 /* ================= 0. 工具 ================= */
 var VERSION = '1.0.0';
+window.addEventListener('error',function(e){ if(!document.documentElement.getAttribute('data-js-err')) document.documentElement.setAttribute('data-js-err',String((e&&e.message)||'error').slice(0,140)); });
 function $(s,r){ return (r||document).querySelector(s); }
 var clamp=function(v,a,b){ return v<a?a:(v>b?b:v); };
 var lerp=function(a,b,t){ return a+(b-a)*t; };
@@ -443,8 +441,8 @@ var SKY=[
   {h:4.5, top:'#152036', bot:'#3f4f68', tint:'#2a4066', ta:0.36, night:0.86},
   {h:6.0, top:'#a3b9c9', bot:'#f2e3ce', tint:'#ffd9b0', ta:0.10, night:0.14},
   {h:8.0, top:'#c3d9e8', bot:'#f4f1e6', tint:'#fff4e2', ta:0.06, night:0.00},
-  {h:12.0,top:'#b6d3e6', bot:'#f1f4ee', tint:'#fff8ec', ta:0.05, night:0.00},
-  {h:15.5,top:'#d9d5c0', bot:'#f7e6c4', tint:'#ffd9a0', ta:0.10, night:0.04},
+  {h:12.0,top:'#b4d6ea', bot:'#eef4f2', tint:'#fff8ec', ta:0.05, night:0.00},
+  {h:15.5,top:'#cfe0e4', bot:'#f8ecd6', tint:'#ffdfae', ta:0.09, night:0.04},
   {h:17.8,top:'#e0a878', bot:'#f7d5a6', tint:'#ffa05e', ta:0.16, night:0.18},
   {h:19.4,top:'#8d6f7c', bot:'#c99179', tint:'#d98058', ta:0.21, night:0.44},
   {h:21.0,top:'#2d3c59', bot:'#566780', tint:'#3c5a8a', ta:0.32, night:0.80},
@@ -615,7 +613,7 @@ function cube(x,z,y,w,d,h,c){ items.push({x:x,z:z,y:y,w:w,d:d,h:h,c:c}); }
 
 var LAMP={x:0.85,z:4.3,y:1.55};
 var LBOX={x:0.49,z:3.94,w:0.72,y:1.25,h:0.6};
-var CHIME={x:7.15,z:7.62,y:2.42};
+var CHIME={x:8.55,z:5.35,y:2.42};
 var LIGHTS=[];
 
 function has(id){ return S.unlocked.indexOf(id)>=0; }
@@ -631,16 +629,16 @@ function buildScene(){
     for(z=0;z<9;z++){
       var dx=x+0.5-4.5, dz=z+0.5-4.5;
       var r=Math.max(Math.abs(dx),Math.abs(dz))/4.5;
-      var dh=3.0-2.1*Math.pow(clamp(r,0,1),2.1);
+      var dh=2.5-1.75*Math.pow(clamp(r,0,1),2.1);
       cube(x,z,-dh,1,1,dh,DIRTS[Math.floor(R()*DIRTS.length)]);
       cube(x,z,0,1,1,0.3,GREENS[Math.floor(R()*GREENS.length)]);
     }
   }
   /* 岛下的岩层 */
-  cube(2.7,2.7,-4.2,3.6,3.6,1.2,'#948b7f');
-  cube(3.2,3.2,-5.3,2.6,2.6,1.1,'#8a8175');
-  cube(3.7,3.7,-6.2,1.6,1.6,1.0,'#7d756a');
-  cube(4.05,4.05,-7.0,0.9,0.9,0.85,'#716a60');
+  cube(2.7,2.7,-3.4,3.6,3.6,1.0,'#948b7f');
+  cube(3.2,3.2,-4.4,2.6,2.6,1.1,'#8a8175');
+  cube(3.7,3.7,-5.3,1.6,1.6,1.0,'#7d756a');
+  cube(4.05,4.05,-6.1,0.9,0.9,0.85,'#716a60');
   /* 飘着的小石头 */
   cube(0.95,2.35,-4.6,0.72,0.72,0.55,'#a79d92');
   cube(7.4,6.6,-4.3,0.58,0.58,0.46,'#a79d92');
@@ -707,11 +705,11 @@ function buildScene(){
   cube(2.85,6.35,0.3,0.8,0.55,0.11,'#8a9a72');
   cube(TX+1.55,TZ-0.52,0.3,0.72,0.5,0.1,'#8a9a72');
 
-  /* 风铃架（右前角，横梁伸向院心） */
-  cube(8.3,7.6,0,0.26,0.26,2.55,'#9b7a52');
-  cube(8.24,7.54,2.55,0.38,0.38,0.14,'#8d6e48');
-  cube(6.8,7.59,2.55,1.5,0.2,0.14,'#9b7a52');
-  cube(6.72,7.53,2.68,0.16,0.3,0.09,'#8d6e48');
+  /* 风铃架（右沿，横梁伸向院心） */
+  cube(8.55,4.5,0,0.26,0.26,2.55,'#9b7a52');
+  cube(8.49,4.44,2.55,0.38,0.38,0.14,'#8d6e48');
+  cube(8.5,4.55,2.55,0.22,1.5,0.14,'#9b7a52');
+  cube(8.44,6.0,2.68,0.3,0.16,0.09,'#8d6e48');
 
   /* 解锁：小竹丛（左前角） */
   if(has('bamboo')){
@@ -1522,7 +1520,7 @@ function drawScreenFx(t){
   // 暗角
   var vg=ctx.createRadialGradient(CW/2,CH*0.46,Math.min(CW,CH)*0.28,CW/2,CH*0.5,Math.max(CW,CH)*0.78);
   vg.addColorStop(0,'rgba(40,35,26,0)');
-  vg.addColorStop(1,'rgba(40,35,26,0.17)');
+  vg.addColorStop(1,'rgba(40,35,26,0.10)');
   ctx.fillStyle=vg;
   ctx.fillRect(0,0,CW,CH);
 }
@@ -1556,7 +1554,7 @@ function render(t){
   if(pal.night<0.75){
     setWorld(wctx);
     var wg=wctx.createRadialGradient(-150,-90,10,-150,-90,430);
-    wg.addColorStop(0,'rgba(255,228,178,'+(0.13*(1-pal.night))+')');
+    wg.addColorStop(0,'rgba(255,228,178,'+(0.055*(1-pal.night))+')');
     wg.addColorStop(1,'rgba(255,228,178,0)');
     wctx.fillStyle=wg;
     wctx.fillRect(-280,-200,620,560);
