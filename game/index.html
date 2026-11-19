@@ -1802,10 +1802,9 @@ function resize(){
   cv.style.width=CW+'px';
   cv.style.height=CH+'px';
   var vw=VB.x1-VB.x0, vh=VB.y1-VB.y0;
-  SC=Math.min(CW/vw, CH/(vh*0.88));
+  var cy0=-36, cy1=272;
+  SC=Math.min(CW/vw, CH/((cy1-cy0)+44));
   OX=CW/2 - ((VB.x0+VB.x1)/2)*SC;
-  // 按“画面内容”上下居中，别把小树切成一半
-  var cy0=-14, cy1=268;
   OY=(CH-(cy1-cy0)*SC)/2 - cy0*SC;
   scn.width=Math.round(CW*DPR);
   scn.height=Math.round(CH*DPR);
