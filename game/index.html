@@ -35,8 +35,8 @@
   }
   .app{
     position:relative; z-index:1; width:100%; max-width:800px; margin:0 auto;
-    min-height:100dvh; display:flex; flex-direction:column; justify-content:flex-start;
-    gap:10px;
+    min-height:100dvh; display:flex; flex-direction:column; justify-content:center;
+    justify-content:safe center; gap:10px;
     padding:16px 14px calc(16px + env(safe-area-inset-bottom));
   }
   /* ---------- header ---------- */
@@ -55,7 +55,7 @@
   }
   /* ---------- stage ---------- */
   .stage{
-    position:relative; flex:0 0 auto; height:clamp(238px,40vh,352px); border-radius:20px; overflow:hidden;
+    position:relative; flex:0 0 auto; height:clamp(250px,40vh,352px); border-radius:20px; overflow:hidden;
     background:#dfe8ea; box-shadow:0 10px 30px -18px rgba(59,53,44,.45), inset 0 0 0 1px rgba(255,255,255,.5);
     isolation:isolate;
   }
@@ -617,8 +617,8 @@ function has(id){ return S.unlocked.indexOf(id)>=0; }
 
 function buildScene(){
   var R=rng(hashStr('xiaoyuan-scene-v2'));
-  var GREENS=['#a6c477','#9fbf6e','#accc80','#a2c272','#a9c77b'];
-  var DIRTS=['#9c7c58','#967552','#a2805c','#997855'];
+  var GREENS=['#9dbe6b','#96b766','#a3c473','#99ba68','#a0c06f'];
+  var DIRTS=['#957350','#8f6e4d','#9a7855','#92714f'];
   var i,x,z;
 
   /* 浮空的草地与泥土（边缘变薄，像被云托着） */
