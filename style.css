@@ -1107,3 +1107,21 @@ body {
 
   .about-mini { margin-top: 18px; padding-top: 6px; font-size: 11.5px; }
 }
+
+/* ---------- 广告位：只有真正放入 <ins> 或显式激活时才占位 ----------
+   （原来 :not(:empty) 会被注释里的空白字符判成"非空"，在板块之间撑出一块带
+   Sponsored 字样的空白；改用 :has(ins) 判断，空位彻底不占高度） */
+
+.ad-slot,
+.ad-slot:not(:empty) { display: none; }
+
+.ad-slot:has(ins),
+.ad-slot.ad-slot--active {
+  display: block;
+  position: relative;
+  width: 100%;
+  max-width: 728px;
+  margin: clamp(18px, 2.4vw, 28px) auto;
+  text-align: center;
+  overflow: hidden;
+}
