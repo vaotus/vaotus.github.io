@@ -476,27 +476,26 @@ body.has-filter .group.has-pager .group-head { padding-right: 0; }
   letter-spacing: 0;
 }
 
-/* 分区超过 5 条：标题行右侧一组 ‹ 1/2 ›（形制对齐 vvotzs 的板块翻页：正圆胶囊键
-   + 等宽页码，颜色换成本站的温褐色，不加薄荷绿；无 JS 时不出现，靠横滑即可） */
-.group.has-pager .group-head { padding-right: 84px; }
+/* 分区超过 5 条：卡片区横滑分页（每页 5 条，一页一屏），卡片下方居中一排 ‹ 1/2 ›。
+   形制对齐 vvotzs 的板块翻页：页码在卡片下方、居中、正圆胶囊键 + 等宽页码；
+   颜色换成本站的温褐色。无 JS 时不出现，靠横滑即可。 */
+.group.has-pager .group-head { padding-right: 0; }
 .group-pager {
-  position: absolute;
-  top: -3px;
-  right: 0;
   display: none;
   align-items: center;
-  gap: 6px;
-  margin: 0;
+  justify-content: center;
+  gap: 10px;
+  margin: 6px 0 0;
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: .02em;
   line-height: 1;
   color: var(--ink-4);
 }
-html.js .group.has-pager .group-pager { display: inline-flex; }
+html.js .group.has-pager .group-pager { display: flex; }
 .group-pager .pg {
-  width: 22px;
-  height: 22px;
+  width: 28px;
+  height: 28px;
   display: grid;
   place-items: center;
   padding: 0;
@@ -505,7 +504,7 @@ html.js .group.has-pager .group-pager { display: inline-flex; }
   background: #FFFDF9;
   color: var(--accent-deep);
   font-family: var(--mono);
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1;
   cursor: pointer;
   box-shadow: 0 1px 2px rgba(31, 35, 40, .04);
@@ -519,7 +518,7 @@ html.js .group.has-pager .group-pager { display: inline-flex; }
   cursor: default;
   box-shadow: none;
 }
-.group-pager .pg-label { min-width: 34px; text-align: center; font-feature-settings: "tnum"; }
+.group-pager .pg-label { min-width: 46px; text-align: center; font-feature-settings: "tnum"; }
 
 /* 分区分页容器：每页 5 条，一页一屏，左右横滑 / 点页码键翻 */
 .group-pages {
