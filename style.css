@@ -338,6 +338,8 @@ a.stats-pill:hover { border-color: var(--accent-line); }
 .minis {
   min-width: 0;
   max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -349,6 +351,8 @@ a.stats-pill:hover { border-color: var(--accent-line); }
   align-items: center;
   min-width: 0;
   max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
   gap: 8px;
   padding: 7px 10px;
   border: 1px solid var(--line);
@@ -358,10 +362,20 @@ a.stats-pill:hover { border-color: var(--accent-line); }
 }
 .mini:hover { border-color: var(--accent-line); }
 .mini:active { transform: scale(.995); }
-.mini-main { flex: 1 1 auto; min-width: 0; max-width: 100%; display: flex; flex-direction: column; gap: 2px; }
+.mini-main {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
 /* 速览条：标题与副行都只占一行、超出用省略号，5 条高度完全一致 */
 .mini-title {
   display: block;
+  flex: 1 1 auto;
+  max-width: 100%;
   font-size: 12.9px;
   font-weight: 600;
   line-height: 1.35;
@@ -374,7 +388,9 @@ a.stats-pill:hover { border-color: var(--accent-line); }
 }
 .mini-sub {
   display: block;
+  flex: 1 1 auto;
   min-width: 0;
+  max-width: 100%;
   font-size: 10.8px;
   line-height: 1.3;
   color: var(--ink-3);
@@ -389,8 +405,8 @@ body.has-filter .slider { display: none; }
    标签栏下面直接就是卡片，中间只留一道呼吸缝。 */
 /* 两个精选区块：手机上一块一块显示（点顶部标签切换，不做横向滑动，
    免得跟上下滚动打架），桌面端左右并列 */
-.panes { display: block; min-width: 0; max-width: 100%; }
-.panes > .panel { min-width: 0; max-width: 100%; }
+.panes { display: block; min-width: 0; max-width: 100%; box-sizing: border-box; overflow: hidden; }
+.panes > .panel { min-width: 0; max-width: 100%; box-sizing: border-box; overflow: hidden; }
 .panel[hidden] { display: none; }
 .panel { padding: 10px 0 6px; }
 
@@ -519,6 +535,7 @@ body.has-filter .slider { display: none; }
 /* 卡片标题前的分类小标签：一眼看出这条属于哪个板块 */
 .cat-tag {
   display: inline-block;
+  flex: none;
   margin-right: 5px;
   padding: 0 5px;
   border-radius: 5px;

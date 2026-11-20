@@ -106,7 +106,7 @@
       if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
         openCard(card.classList.contains("open") ? null : card);
-        }
+      }
     });
   });
 
@@ -115,7 +115,7 @@
     if (!cards.some(function (c) { return c.classList.contains("open"); })) return;
     var t = e.target && e.target.nodeType === 1 ? e.target : (e.target && e.target.parentElement);
     if (!t || !t.closest) return;
-    if (t.closest(".card, .board, .modal, .rail-dock, .topbar")) return;
+    if (t.closest(".card, .mini, .board, .panes, .modal, .rail-dock, .topbar")) return;
     closeAll();
   });
 
