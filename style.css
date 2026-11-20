@@ -628,17 +628,29 @@ body.has-filter .slider { display: none; }
   margin-top: 5px;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
+  flex-wrap: nowrap;
+  overflow: hidden;
   font-size: 10.9px;
   color: var(--ink-3);
   min-width: 0;
   flex-wrap: wrap;
 }
-/* 状态与发布日期之间的小圆点由 CSS 画：紧跟在状态后面，换行时不会留在行尾 */
-.row3 .status + .date::before {
-  content: "·";
-  margin-right: 6px;
-  opacity: .45;
+/* 卡片底部的小 tag：浅灰底、单行不折、过长自己省略 */
+.row3 .tag {
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 62%;
+  padding: 1px 5px;
+  border-radius: 4px;
+  border: 1px solid var(--line);
+  background: var(--paper-deep);
+  color: var(--ink-3);
+  font-size: 10.5px;
+  line-height: 1.45;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .row3 .status { color: var(--ink-2); }
 .row3 .grow { flex: 1 1 auto; min-width: 6px; }
@@ -1178,7 +1190,8 @@ footer {
   .value { font-size: 9.8px; padding: 0 5px; max-width: 40%; }
   .cat-tag { font-size: 9px; padding: 0 4px; margin-right: 4px; line-height: 1.7; }
   .row2 { font-size: 11.1px; line-height: 1.46; margin-top: 3px; }
-  .row3 { font-size: 10.1px; gap: 4px; margin-top: 4px; }
+  .row3 { font-size: 10px; gap: 4px; margin-top: 4px; }
+  .row3 .tag { font-size: 9.6px; padding: 0 4px; max-width: 58%; }
   .row3 .go { flex: 0 0 auto; padding: 2px 7px; border: 1px solid var(--accent-line); border-radius: 999px; background: var(--accent-soft); font-size: 10px; }
   .go-full { display: none; }
   .go-short { display: inline; }
