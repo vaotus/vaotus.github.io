@@ -1333,6 +1333,12 @@ footer {
    两栏都是 minmax(0, 1fr) 且 gap 14px，左栏今日简报固定 5 条不横滑 */
 @media (min-width: 768px) {
   .board { display: none; }
+  /* 三列卡片较窄：底部 tag 缩小一档、收起「详情」二字（只留小三角），
+     保证状态与日期 tags 完整排在同一行不省略 */
+  .row3 { font-size: 10px; }
+  .row3 .tag { font-size: 10px; padding: 1px 4px; }
+  .toggle { padding: 2px 2px; }
+  .toggle .tg-text { display: none; }
   .panes {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
