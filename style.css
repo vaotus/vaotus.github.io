@@ -228,7 +228,7 @@ a.stats-pill:hover { border-color: var(--accent-line); }
   align-items: center;
   gap: 12px;
   flex-wrap: wrap;
-  padding: 5px 0 2px;
+  padding: 5px 0 0;
 }
 .hero-tag {
   margin: 0;
@@ -303,7 +303,7 @@ a.stats-pill:hover { border-color: var(--accent-line); }
   min-width: 0;
   border: 0;
   background: transparent;
-  padding: 5px 2px 6px;
+  padding: 3px 2px 6px;
   font-size: 13px;
   line-height: 1.4;
   color: var(--ink-3);
@@ -1422,7 +1422,7 @@ footer {
 
   /* 速览板 */
   .board { margin: 0; }
-  .board-tab { padding: 5px 0 6px; font-size: 12.2px; gap: 4px; letter-spacing: -.01em; }
+  .board-tab { padding: 3px 0 6px; font-size: 12.2px; gap: 4px; letter-spacing: -.01em; }
   .board-tab b { font-size: 9.5px; }
   .board-tab::after { width: 22px; }
   .panel { padding: 4px 0 0; }
