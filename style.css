@@ -990,8 +990,9 @@ body {
 .card .meta {
   display: block;
   margin: 0;
-  font-size: 11px;
-  line-height: 1.45;
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: var(--ink-faint);
   overflow-wrap: anywhere;
 }
 
@@ -1062,14 +1063,7 @@ body {
   padding: clamp(14px, 2vw, 22px) 0 clamp(24px, 3.4vw, 38px);
 }
 
-/* ---------- 宽屏：双列卡片（参考站密度） ---------- */
-
-@media (min-width: 760px) {
-  .items {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 9px;
-  }
-}
+/* ---------- 宽屏：单列卡片（每板块 3 条，避免双列留空位） ---------- */
 
 /* ---------- 窄屏：单列，节奏再紧一档 ---------- */
 
@@ -1106,7 +1100,7 @@ body {
   .card { border-radius: 10px; padding: 9px 10px 7px; }
   .card h3 { font-size: 14.5px; line-height: 1.34; margin-bottom: 3px; }
   .summary { font-size: 12.5px; line-height: 1.5; margin-bottom: 5px; }
-  .card .meta { font-size: 10.5px; line-height: 1.4; gap: 1px 7px; }
+  .card .meta { font-size: 11px; line-height: 1.45; }
   .card .meta .pill { font-size: 9.5px; padding: 0 5px; }
   .detail-toggle { min-height: 20px; font-size: 10px; padding: 0 1px; }
   .detail { margin-top: 2px; }
