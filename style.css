@@ -256,6 +256,8 @@ a.stats-pill:hover { border-color: var(--accent-line); }
   background: var(--sage);
   box-shadow: 0 0 0 3px rgba(95, 111, 91, .14);
 }
+/* 桌面显示完整时间，手机只显示短时间（.hm-short 在手机媒体查询里打开） */
+.hm-short { display: none; }
 
 /* --------------------------------------------------- 4 速览板（标签页） */
 
@@ -366,9 +368,6 @@ a.stats-pill:hover { border-color: var(--accent-line); }
 .jump-meta {
   flex: 1 1 auto;
   min-width: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   color: var(--ink-4);
 }
 .jump-arrow { width: 10px; height: 10px; color: var(--ink-4); }
@@ -536,13 +535,15 @@ a.stats-pill:hover { border-color: var(--accent-line); }
   margin-top: 7px;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   font-size: 11.3px;
   color: var(--ink-3);
   min-width: 0;
   flex-wrap: wrap;
 }
-.row3 .sep { opacity: .45; }
+/* 旧版构建会插 <span class="sep">·</span> 当分隔符；改用 gap 之后不再显示，
+   免得状态与日期换行时留下一个孤零零的小圆点 */
+.row3 .sep { display: none; }
 .row3 .status { color: var(--ink-2); }
 .row3 .grow { flex: 1 1 auto; min-width: 6px; }
 .row3 .date { white-space: nowrap; font-feature-settings: "tnum"; }
