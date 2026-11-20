@@ -1002,7 +1002,15 @@ footer {
     overflow: visible;
     height: auto !important;
   }
-  .panes > .panel { width: auto; min-width: 0; padding: 12px 0 4px; }
+  .panes > .panel { width: auto; min-width: 0; padding: 12px 0 4px; overflow: visible; }
+  /* 左栏「今日简报」干净放 5 条，不做任何横向滚动；
+     横滑能力只留在右栏「本周热门」自己身上（内容超出时它自己滑，不动整页）。 */
+  .panes > .panel + .panel {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+  }
+  .panes > .panel + .panel::-webkit-scrollbar { display: none; }
   .panel > h2.sr-only {
     position: static;
     width: auto; height: auto;
