@@ -247,8 +247,15 @@ a.stats-pill:hover { border-color: var(--accent-line); }
 }
 .hero-badge .brand-i { width: 20px; height: 20px; }
 .hero-badge:hover { transform: translateY(-1px); filter: brightness(1.05); }
+/* 桌面：标语在左，两枚官方徽标与更新时间一起靠右 */
+.hero-side {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
 .hero-meta {
-  margin: 0 0 0 auto;
+  margin: 0;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -1072,6 +1079,7 @@ footer {
   }
   .hero-badge { width: 18px; height: 18px; }
   .hero-badge .brand-i { width: 18px; height: 18px; }
+  .hero-side { gap: 6px; margin-left: 0; }
   .hero-meta { margin: 0; flex: 0 0 auto; font-size: 10px; gap: 4px; }
   .hero-meta .dot { width: 4px; height: 4px; }
   .hm-long { display: none; }
