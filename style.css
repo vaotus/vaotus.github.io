@@ -1017,7 +1017,7 @@ footer {
 /* 页脚两枚官方品牌徽标：Telegram 天蓝圆底、YouTube 红底，原色不描边，
    视觉体量与一行 11.6px 的文字齐平（手机上略小一号） */
 .foot-badge {
-  width: 26px; height: 26px;
+  width: 20px; height: 20px;
   flex: none;
   display: grid; place-items: center;
   border: 0;
@@ -1025,7 +1025,7 @@ footer {
   color: var(--ink-2);
   transition: transform .15s ease, filter .15s ease;
 }
-.foot-badge .brand-i { width: 26px; height: 26px; }
+.foot-badge .brand-i { width: 18px; height: 18px; }
 .foot-badge:hover { transform: translateY(-1px); filter: brightness(1.04); }
 .foot-top {
   color: var(--ink-3);
@@ -1471,8 +1471,8 @@ footer {
   .foot-brand .brand-mark { width: 16px; height: 16px; }
   .foot-up { font-size: 10.4px; overflow: hidden; text-overflow: ellipsis; }
   .foot-badges { gap: 5px; }
-  .foot-badge { width: 24px; height: 24px; }
-  .foot-badge .brand-i { width: 24px; height: 24px; }
+  .foot-badge { width: 18px; height: 18px; }
+  .foot-badge .brand-i { width: 18px; height: 18px; }
   .foot-top { display: none; }
   .about-line { font-size: 11px; margin-top: 10px; }
 }
