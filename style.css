@@ -436,7 +436,7 @@ body.has-filter .slider { display: none; }
 }
 
 /* 全量区里的板块分组：一行很轻的小标题 */
-.group { min-width: 0; max-width: 100%; margin-bottom: 8px; scroll-margin-top: 64px; }
+.group { min-width: 0; max-width: 100%; margin-bottom: 6px; scroll-margin-top: 64px; }
 .group:last-child { margin-bottom: 0; }
 .group-head {
   display: flex;
@@ -984,7 +984,7 @@ body.filtering .no-match { display: block; }
 /* -------------------------------------------------- 9 广告位 / 页脚 */
 
 .ad-slot {
-  margin: 12px 0;
+  margin: 0;
   min-height: 0;
   height: 0;
   overflow: hidden;
@@ -995,7 +995,7 @@ footer {
   z-index: 1;
   margin-top: auto;
   border-top: 1px solid var(--line-soft);
-  padding: 9px 0 calc(9px + env(safe-area-inset-bottom, 0px));
+  padding: 6px 0 calc(6px + env(safe-area-inset-bottom, 0px));
   background: rgba(255, 255, 255, .5);
 }
 .foot-line {
@@ -1045,7 +1045,7 @@ footer {
 
 /* 关于这一句放在页脚上方，一行小字 */
 .about-line {
-  margin: 14px 0 0;
+  margin: 6px 0 0;
   font-size: 11.8px;
   line-height: 1.7;
   color: var(--ink-3);
