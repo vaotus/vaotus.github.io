@@ -2,12 +2,13 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>按月归档 · AI早报</title>
-<meta name="description" content="AI早报按月归档：2026 年 11 月起每日一期，收录 AI 热点、限免活动、折扣信息与 AI 应用展现，点日期进当天完整存档。">
-<meta name="keywords" content="AI早报归档,AI 日报,AI 热点,AI 限免,AI 折扣,AI 应用展现">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AI早报 · 按月归档</title>
+<meta name="description" content="AI早报每期存档：AI 热点、限免活动、折扣信息与 AI 应用展现，逐日可查。">
+<meta name="keywords" content="AI早报,AI 日报存档,往期,AI 热点归档">
 <meta name="author" content="AI早报">
 <meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#FAF9F5">
 <link rel="canonical" href="https://vaotus.github.io/archive.html">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
@@ -16,126 +17,160 @@
 <meta property="og:site_name" content="AI早报">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:type" content="website">
-<meta property="og:title" content="按月归档 · AI早报">
-<meta property="og:description" content="AI早报按月归档：2026 年 11 月起每日一期，收录 AI 热点、限免活动、折扣信息与 AI 应用展现，点日期进当天完整存档。">
+<meta property="og:title" content="AI早报 · 按月归档">
+<meta property="og:description" content="AI早报每期存档：AI 热点、限免活动、折扣信息与 AI 应用展现，逐日可查。">
 <meta property="og:url" content="https://vaotus.github.io/archive.html">
 <meta property="og:image" content="https://vaotus.github.io/logo.png">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="按月归档 · AI早报">
-<meta name="twitter:description" content="AI早报按月归档：2026 年 11 月起每日一期，收录 AI 热点、限免活动、折扣信息与 AI 应用展现，点日期进当天完整存档。">
+<meta name="twitter:title" content="AI早报 · 按月归档">
+<meta name="twitter:description" content="AI早报每期存档：AI 热点、限免活动、折扣信息与 AI 应用展现，逐日可查。">
 <meta name="twitter:image" content="https://vaotus.github.io/logo.png">
 <!-- AdSense：启用时把下面这行取消注释并换成自己的 client（pub id）
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
 -->
 <link rel="stylesheet" href="style.css">
+<script src="app.js" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "CollectionPage",
-      "@id": "https://vaotus.github.io/archive.html#collection",
+      "@id": "https://vaotus.github.io/archive.html#page",
       "url": "https://vaotus.github.io/archive.html",
-      "name": "按月归档 · AI早报",
-      "description": "AI早报按月归档：2026 年 11 月起每日一期，点日期进当天完整存档。",
+      "name": "AI早报 · 按月归档",
+      "description": "AI早报每期存档：AI 热点、限免活动、折扣信息与 AI 应用展现。",
       "inLanguage": "zh-CN",
       "isPartOf": {
         "@id": "https://vaotus.github.io/#website"
-      },
-      "mainEntity": {
-        "@type": "ItemList",
-        "numberOfItems": 3,
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "2026-11-20 周五 · 每日精选 AI 热点、限免、折扣与应用",
-            "url": "https://vaotus.github.io/posts/2026-11-20.html"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "2026-11-19 周四 · 每日精选 AI 热点、限免、折扣与应用",
-            "url": "https://vaotus.github.io/posts/2026-11-19.html"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "2026-11-18 周三 · 每日精选 AI 热点、限免、折扣与应用",
-            "url": "https://vaotus.github.io/posts/2026-11-18.html"
-          }
-        ]
       }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "AI早报",
+          "item": "https://vaotus.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "按月归档",
+          "item": "https://vaotus.github.io/archive.html"
+        }
+      ]
     }
   ]
 }
 </script>
 </head>
-<body>
-
-<header class="site-header">
-  <div class="wrap">
-    <a class="brand" href="index.html">AI早报</a>
-    <nav class="nav">
-      <a href="index.html">今日早报</a> <a href="archive.html" aria-current="page">按月归档</a> <a href="index.html#about">关于</a>
-    </nav>
+<body id="top">
+<svg class="sprite" style="display:none" aria-hidden="true" focusable="false"><symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.6" cy="10.6" r="6.2"/><path d="m15.3 15.3 4.2 4.2"/></symbol><symbol id="i-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m6.5 9.2 5.5 5.6 5.5-5.6"/></symbol><symbol id="i-arrow-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19.2V4.8"/><path d="m5.6 11.2 6.4-6.4 6.4 6.4"/></symbol><symbol id="i-external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6"/><path d="M20 4 10.4 13.6"/><path d="M18 14.4v4.4a1.6 1.6 0 0 1-1.6 1.6H5.6A1.6 1.6 0 0 1 4 18.8V7.2a1.6 1.6 0 0 1 1.6-1.6h4.6"/></symbol><symbol id="i-hot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.4c3 3.4 4.7 6.1 4.7 8.9a4.7 4.7 0 1 1-9.4 0c0-2.8 1.7-5.5 4.7-8.9Z"/><path d="M12 10.6c1.3 1.5 2 2.7 2 3.9a2 2 0 1 1-4 0c0-1.2.7-2.4 2-3.9Z"/></symbol><symbol id="i-gift" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4.2 9.6h15.6v9.6a1.8 1.8 0 0 1-1.8 1.8H6A1.8 1.8 0 0 1 4.2 19.2Z"/><path d="M3.2 6.2h17.6v3.4H3.2z"/><path d="M12 6.2v14.8"/><path d="M12 6c-1.4-3.2-2.7-4.2-4.1-4.2a2 2 0 0 0 0 4.2Z"/><path d="M12 6c1.4-3.2 2.7-4.2 4.1-4.2a2 2 0 0 1 0 4.2Z"/></symbol><symbol id="i-tag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4.4 4.4h7.4l7.8 7.8-7.3 7.3-7.9-7.9Z"/><circle cx="8.4" cy="8.4" r="1.3"/></symbol><symbol id="i-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.6 13.9 9l5.5 1.9-5.5 1.9L12 18.4l-1.9-5.6L4.6 10.9 10.1 9Z"/><path d="M18.4 16.4l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7Z"/></symbol><symbol id="i-archive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4.8h16v4H4z"/><path d="M5.4 8.8v9.4a1.8 1.8 0 0 0 1.8 1.8h9.6a1.8 1.8 0 0 0 1.8-1.8V8.8"/><path d="M9.6 12.8h4.8"/></symbol><symbol id="i-send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 4.2 3.8 11l5.9 2.2 2.2 6z"/><path d="M20.5 4.2 9.7 13.2"/></symbol><symbol id="i-yt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.2"/><path d="m10.2 8.4 5.4 3.6-5.4 3.6z" fill="currentColor" stroke="none"/></symbol><symbol id="i-game" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.6" y="7.2" width="18.8" height="9.8" rx="4.4"/><path d="M7.6 10.4v3.4M5.9 12.1h3.4"/><circle cx="16.1" cy="11.1" r="1.05"/><circle cx="18.1" cy="13.3" r="1.05"/></symbol><symbol id="i-tg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.2"/><path d="m7.2 12.2 9.4-4-2.2 8.2-2.4-2.6-2.2 2.1.2-2.9-2.8-1.2Z" fill="currentColor" stroke="none"/></symbol></svg>
+<header class="topbar">
+  <div class="shell topbar-in">
+    <a class="brand" href="/" aria-label="AI早报 首页">
+      <span class="brand-mark" aria-hidden="true"><img src="/icon-192x192.png" alt="" width="28" height="28"></span>
+      <span class="brand-text">
+        <span class="brand-name">AI早报</span>
+        <span class="brand-sub">每日精选 · 素朴速读</span>
+      </span>
+    </a>
+    <button class="search-btn" id="open-search" type="button" aria-haspopup="dialog" aria-label="搜索条目与关键词">
+      <span class="sb-q"><svg class="i" aria-hidden="true"><use href="#i-search"/></svg><span class="sb-text">搜索条目、关键词…</span></span>
+      <kbd>⌘K</kbd>
+    </button>
+    <div class="topbar-stats">
+      <a class="stats-pill accent" href="#top">今日 <b>12</b></a>
+      <a class="stats-pill" href="#free">限免 <b>3</b></a>
+      <a class="stats-pill" href="archive.html">归档 <b>3</b></a>
+    </div>
   </div>
 </header>
-
-<main class="wrap">
-
-  <section class="masthead">
-    <p class="date">ARCHIVE</p>
-    <h1>按月归档</h1>
-  </section>
-
-  <section class="section">
-    <div class="section-head">
-      <h2>2026 年 11 月</h2>
-      <span class="count">3 期</span>
-    </div>
-    <div class="section-rule"></div>
-
-    <ul class="archive-list">
-      <li>
-        <a class="archive-item" href="posts/2026-11-20.html">
-          <time class="archive-date" datetime="2026-11-20">2026-11-20</time>
-          <span class="archive-title">周五 · 十二件事</span>
-          <span class="archive-tags">热点 3 · 限免 3 · 折扣 3 · 站点 3</span>
-        </a>
-      </li>
-      <li>
-        <a class="archive-item" href="posts/2026-11-19.html">
-          <time class="archive-date" datetime="2026-11-19">2026-11-19</time>
-          <span class="archive-title">周四 · 十二件事</span>
-          <span class="archive-tags">热点 3 · 限免 3 · 折扣 3 · 站点 3</span>
-        </a>
-      </li>
-      <li>
-        <a class="archive-item" href="posts/2026-11-18.html">
-          <time class="archive-date" datetime="2026-11-18">2026-11-18</time>
-          <span class="archive-title">周三 · 十二件事</span>
-          <span class="archive-tags">热点 3 · 限免 3 · 折扣 3 · 站点 3</span>
-        </a>
-      </li>
-    </ul>
-
-    <p class="empty">2026 年 11 月之前没有存档——第 1 期是 2026-11-18。</p>
-  </section>
-
-  <p class="about-mini" id="about">关于 · 每日更新 AI 热点、限免、折扣与 AI 应用展现。</p>
-
+<main class="shell">
+<header class="post-head">
+  <p class="date">ARCHIVE</p>
+  <h1>按月归档</h1>
+</header>
+<section class="archive-group" aria-labelledby="h-2026-11">
+  <header class="module-head">
+    <span class="module-badge" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-archive"/></svg></span>
+    <h2 id="h-2026-11">2026 年 11 月 <span class="count">3 期</span></h2>
+    <p class="module-desc">每期都保留当天的全部条目与原文链接。</p>
+  </header>
+  <ul class="archive-list">
+<li>
+  <a class="archive-item" href="posts/2026-11-20.html">
+    <time class="archive-date" datetime="2026-11-20">2026-11-20</time>
+    <span class="archive-title">周五 · 周五 · 十二件事</span>
+    <span class="archive-tags">热点 3 · 限免 3 · 折扣 3 · 站点 3</span>
+  </a>
+</li>
+<li>
+  <a class="archive-item" href="posts/2026-11-19.html">
+    <time class="archive-date" datetime="2026-11-19">2026-11-19</time>
+    <span class="archive-title">周四 · 周四 · 十二件事</span>
+    <span class="archive-tags">热点 3 · 限免 3 · 折扣 3 · 站点 3</span>
+  </a>
+</li>
+<li>
+  <a class="archive-item" href="posts/2026-11-18.html">
+    <time class="archive-date" datetime="2026-11-18">2026-11-18</time>
+    <span class="archive-title">周三 · 周三 · 十二件事</span>
+    <span class="archive-tags">热点 3 · 限免 3 · 折扣 3 · 站点 3</span>
+  </a>
+</li>
+  </ul>
+  <p class="about-line">2026 年 11 月之前没有存档——第 1 期是 2026-11-18。</p>
+</section>
+<p class="about-line" id="about">关于 · 每天挑 AI 热点、限免、折扣与一个用 AI 做出来的站点，每条都附原链接与日期，不编数字。</p>
 </main>
-
-<footer class="site-footer">
-  <div class="wrap footer-row">
-    <span class="foot-meta">AI早报 · 2026-11-20</span>
-    <span class="footer-links">
-      <a class="foot-badge foot-badge--tg" href="https://t.me/+aAqP0DbW_YMxMmNh" target="_blank" rel="noopener" aria-label="加入 Telegram 交流群" title="加入 Telegram 交流群"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.62 7.06-1.53 7.2c-.11.51-.42.63-.85.39l-2.34-1.73-1.13 1.09c-.13.13-.24.24-.48.24l.17-2.4 4.38-3.95c.19-.17-.04-.27-.29-.1l-5.41 3.41-2.33-.73c-.5-.16-.51-.5.11-.74l9.11-3.51c.42-.15.79.1.65.83Z"/></svg></a>
-      <a class="foot-badge foot-badge--yt" href="https://www.youtube.com/channel/UCU8-2CnA20XqZEnuVS-L90Q" target="_blank" rel="noopener" aria-label="YouTube 频道「AI 试验室」" title="YouTube 频道「AI 试验室」"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm-2.2 6.1 6.1 3.9-6.1 3.9V8.1Z"/></svg></a>
+<div class="rail-dock">
+  <a class="rail-tg" href="https://t.me/+aAqP0DbW_YMxMmNh" target="_blank" rel="noopener"
+     aria-label="加入 Telegram 交流群" title="加入 Telegram 交流群"><svg class="i" aria-hidden="true"><use href="#i-tg"/></svg><span>交流</span></a>
+  <nav class="rail" aria-label="板块导航">
+<a href="#hot" data-target="hot" aria-label="AI 热点" title="AI 热点"><svg class="i" aria-hidden="true"><use href="#i-hot"/></svg><span>热点</span></a><a href="#free" data-target="free" aria-label="限免活动" title="限免活动"><svg class="i" aria-hidden="true"><use href="#i-gift"/></svg><span>限免</span></a><a href="#deal" data-target="deal" aria-label="折扣信息" title="折扣信息"><svg class="i" aria-hidden="true"><use href="#i-tag"/></svg><span>折扣</span></a><a href="#sites" data-target="sites" aria-label="AI 应用展现 / 新兴站点" title="AI 应用展现 / 新兴站点"><svg class="i" aria-hidden="true"><use href="#i-spark"/></svg><span>应用</span></a>
+    <a href="/game/" aria-label="方块小院 · 网页小游戏" title="方块小院 · 网页小游戏"><svg class="i" aria-hidden="true"><use href="#i-game"/></svg><span>小院</span></a>
+    <div class="rail-sep" aria-hidden="true"></div>
+    <a class="rail-top" href="#top" aria-label="回到顶部" title="回到顶部"><svg class="i" aria-hidden="true"><use href="#i-arrow-up"/></svg><span>顶部</span></a>
+  </nav>
+</div>
+<div class="modal" id="search-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="搜索与筛选">
+  <div class="modal-bg" data-close></div>
+  <div class="sheet">
+    <div class="sheet-top">
+      <h2>搜索与筛选</h2>
+      <button class="sheet-close" type="button" data-close aria-label="关闭">✕</button>
+    </div>
+    <div class="input-wrap">
+      <svg class="i" aria-hidden="true"><use href="#i-search"/></svg>
+      <input id="q" type="search" aria-label="搜索条目" placeholder="搜标题、公司或关键词，例如 Anthropic / 黑五 / eSIM" autocomplete="off" spellcheck="false">
+    </div>
+    <div class="filter-row">
+      <div class="filter-label">板块</div>
+      <div class="chips" data-group="cat">
+        <button class="chip on" type="button" data-value="all">全部</button><button class="chip" type="button" data-value="hot">AI 热点</button><button class="chip" type="button" data-value="free">限免</button><button class="chip" type="button" data-value="deal">折扣</button><button class="chip" type="button" data-value="sites">AI 应用</button>
+      </div>
+    </div>
+    <div class="sheet-foot">
+      <span class="result-count">匹配 <b data-result>0</b> 条</span>
+      <span class="grow"></span>
+      <button class="link-btn" type="button" data-reset>重置</button>
+      <button class="solid-btn" type="button" data-close>完成</button>
+    </div>
+  </div>
+</div>
+<footer>
+  <div class="shell foot-line">
+    <span class="foot-brand"><span class="brand-mark" aria-hidden="true"><img src="/icon-192x192.png" alt="" width="18" height="18"></span>AI早报 · 2026</span>
+    <span class="foot-up">更新 2026-11-20</span>
+    <span class="foot-badges">
+      <a class="foot-badge" href="https://t.me/+aAqP0DbW_YMxMmNh" target="_blank" rel="noopener" aria-label="加入 Telegram 交流群" title="加入 Telegram 交流群"><svg class="i" aria-hidden="true"><use href="#i-tg"/></svg></a>
+      <a class="foot-badge" href="https://www.youtube.com/channel/UCU8-2CnA20XqZEnuVS-L90Q" target="_blank" rel="noopener" aria-label="YouTube 频道「AI 试验室」" title="YouTube 频道「AI 试验室」"><svg class="i" aria-hidden="true"><use href="#i-yt"/></svg></a>
     </span>
+    <a class="foot-top" href="#top">回到顶部 ↑</a>
   </div>
 </footer>
-
 </body>
 </html>
