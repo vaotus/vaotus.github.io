@@ -1428,7 +1428,8 @@ footer {
   /* 速览板 */
   .board { margin: 0; }
   .board-tab { flex: 0 0 auto; width: auto; padding: 6px 14px; font-size: 12.4px; gap: 4px; letter-spacing: -.01em; }
-  .board-tabs { gap: 4px; }
+  /* 手机：两个页签靠左聚拢，热区只包住文字，远离右上角 TG/YT 徽标避免误触 */
+  .board-tabs { justify-content: flex-start; gap: 16px; }
   .board-tab b { font-size: 9.5px; }
   .board-tab::after { width: 22px; }
   .panel { padding: 4px 0 0; }
