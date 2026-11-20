@@ -628,6 +628,23 @@ body.has-filter .slider { display: none; }
 .detail-body .src a { color: var(--accent-deep); text-decoration: underline; text-underline-offset: 2px; }
 .detail-body .src .note { color: var(--ink-3); }
 
+/* 折叠态：标题最多两行、概述最多一行，超出用省略号；
+   点开展开详情后不再限制，标题、概述和来源完整显示。 */
+.card:not(.open) .row1 h3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.card:not(.open) .row2 {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.card.open .row1 h3 { display: block; overflow: visible; }
+.card.open .row2 { white-space: normal; overflow: visible; text-overflow: clip; }
+
 /* 深链接定位后轻闪一下，确认落点 */
 .card.flash { animation: cardFlash 1.1s ease; }
 @keyframes cardFlash {
