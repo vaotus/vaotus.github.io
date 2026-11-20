@@ -1194,9 +1194,11 @@ body {
   color: #A82620;
 }
 
-.site-footer a.foot-badge svg {
+.site-footer a.foot-badge svg,
+.site-footer svg.footer-icon {
   width: 14px;
   height: 14px;
+  flex-shrink: 0;
   display: block;
 }
 
@@ -1205,4 +1207,12 @@ body {
   .site-footer a.foot-badge { width: 24px; height: 24px; }
   .site-footer a.foot-badge svg { width: 13px; height: 13px; }
   .site-footer .footer-links { width: auto; flex-direction: row; align-items: center; margin-left: auto; }
+}
+
+/* 兜底：页脚图标任何情况下都不拉伸（防 CSS 未加载时的巨图） */
+.site-footer svg {
+  width: 14px;
+  height: 14px;
+  max-width: 14px;
+  flex-shrink: 0;
 }
