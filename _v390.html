@@ -13,7 +13,13 @@
 <body>
 <figure>
   <figcaption>390 × 844</figcaption>
-  <iframe src="/?v=m1" title="AI早报 手机视口"></iframe>
+  <iframe id="f" src="/?v=m1" title="AI早报 手机视口"></iframe>
 </figure>
+<script>
+  (function () {
+    var u = new URLSearchParams(location.search).get("u");
+    if (u) document.getElementById("f").src = u;
+  })();
+</script>
 </body>
 </html>
