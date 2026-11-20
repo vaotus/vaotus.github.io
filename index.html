@@ -28,8 +28,8 @@
 <!-- AdSense：启用时把下面这行取消注释并换成自己的 client（pub id）
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
 -->
-<link rel="stylesheet" href="style.css?v=ef7c3c18">
-<script src="app.js?v=12f79127" defer></script>
+<link rel="stylesheet" href="style.css?v=72299a03">
+<script src="app.js?v=35f36dc0" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -168,7 +168,7 @@
     </button>
     <div class="topbar-stats">
       <a class="stats-pill accent" href="#all">全部 <b>12</b></a>
-      <a class="stats-pill" href="#panel-week" data-target="week">本周 <b>5</b></a>
+      <a class="stats-pill" href="#panel-week" data-target="week">本周 <b>10</b></a>
       <a class="stats-pill" href="archive.html">归档 <b>3</b></a>
     </div>
   </div>
@@ -187,7 +187,7 @@
 </section>
 <div class="board">
   <div class="board-tabs" role="tablist" aria-label="简报切换">
-<button class="board-tab on" id="tab-today" role="tab" type="button" data-tab="today" aria-selected="true" aria-controls="panel-today" tabindex="0">今日简报<b>5</b></button><button class="board-tab" id="tab-week" role="tab" type="button" data-tab="week" aria-selected="false" aria-controls="panel-week" tabindex="-1">本周热门<b>5</b></button>
+<button class="board-tab on" id="tab-today" role="tab" type="button" data-tab="today" aria-selected="true" aria-controls="panel-today" tabindex="0">今日简报<b>5</b></button><button class="board-tab" id="tab-week" role="tab" type="button" data-tab="week" aria-selected="false" aria-controls="panel-week" tabindex="-1">本周热门<b>10</b></button>
   </div>
 </div>
 <div class="slider" id="slider">
@@ -229,9 +229,10 @@
   </ul>
 </section>
 <section class="panel" id="panel-week" data-panel="week" role="tabpanel" aria-labelledby="tab-week" hidden>
-  <h2 class="sr-only">本周热门 · 精选 5 条</h2>
-  <ul class="minis">
-<li><a class="mini" href="#card-hot-1" data-card="hot-1">
+  <h2 class="sr-only">本周热门 · 精选 10 条，每页 5 条</h2>
+  <button class="week-pager" id="week-pager" type="button" aria-label="本周热门下一页"><span class="wp-now">1</span>/<span class="wp-all">2</span> ›</button>
+  <div class="week-track" id="week-track">
+<div class="week-page"><ul class="minis"><li><a class="mini" href="#card-hot-1" data-card="hot-1">
   <span class="mini-main">
     <span class="mini-title"><span class="cat-tag">AI 热点</span>Anthropic 上市首日：定价 83 美元，开盘市值冲到 2 万亿美元</span>
     <span class="mini-sub">已上市 · 交易代码 ANT · 交割预计 11-20</span>
@@ -241,6 +242,30 @@
   <span class="mini-main">
     <span class="mini-title"><span class="cat-tag">AI 热点</span>Gemini 4 Neon：3 美元/百万输入，Google 的「日常主力」</span>
     <span class="mini-sub">已发布 · 分批推送 · 未注明截止日期</span>
+  </span>
+  <span class="mini-go" aria-hidden="true">›</span>
+</a></li><li><a class="mini" href="#card-hot-3" data-card="hot-3">
+  <span class="mini-main">
+    <span class="mini-title"><span class="cat-tag">AI 热点</span>Kling Image 4.0：原生 8K、单图 2000 字，一次出 10 张连贯组图</span>
+    <span class="mini-sub">已上线 · 网页版 + API · 未注明截止日期</span>
+  </span>
+  <span class="mini-go" aria-hidden="true">›</span>
+</a></li><li><a class="mini" href="#card-free-1" data-card="free-1">
+  <span class="mini-main">
+    <span class="mini-title"><span class="cat-tag">限免</span>SoSIM 香港新卡：33 港币拿最高 100GB，11 月 30 日截止</span>
+    <span class="mini-sub">进行中 · 截止 2026-11-30（需在活动期内激活）</span>
+  </span>
+  <span class="mini-go" aria-hidden="true">›</span>
+</a></li><li><a class="mini" href="#card-deal-1" data-card="deal-1">
+  <span class="mini-main">
+    <span class="mini-title"><span class="cat-tag">折扣</span>Adobe 黑五：Firefly Pro 首 6 个月 5 折、Pro Plus 6 折，12 月 6 日截止</span>
+    <span class="mini-sub">进行中 · 截止 2026-12-06（Firefly 两档）</span>
+  </span>
+  <span class="mini-go" aria-hidden="true">›</span>
+</a></li></ul></div><div class="week-page"><ul class="minis"><li><a class="mini" href="posts/2026-11-19.html#card-hot-2">
+  <span class="mini-main">
+    <span class="mini-title"><span class="cat-tag">AI 热点</span>微软 Ignite 一次发七个模型：Opus 5.5 的 96% 表现，5% 的价格</span>
+    <span class="mini-sub">已发布 · 11-19</span>
   </span>
   <span class="mini-go" aria-hidden="true">›</span>
 </a></li><li><a class="mini" href="posts/2026-11-19.html#card-free-1">
@@ -261,8 +286,14 @@
     <span class="mini-sub">在线 · 开源 · MIT 许可 · 可直接 fork · 11-19</span>
   </span>
   <span class="mini-go" aria-hidden="true">›</span>
-</a></li>
-  </ul>
+</a></li><li><a class="mini" href="posts/2026-11-18.html#card-hot-1">
+  <span class="mini-main">
+    <span class="mini-title"><span class="cat-tag">AI 热点</span>OpenAI 发布 GPT-6.2 Astra 与 GPT-6.2 Sol</span>
+    <span class="mini-sub">已上线 · 11-18</span>
+  </span>
+  <span class="mini-go" aria-hidden="true">›</span>
+</a></li></ul></div>
+  </div>
 </section>
 </div>
 </div>

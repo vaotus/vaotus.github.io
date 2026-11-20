@@ -532,6 +532,48 @@ body.has-filter .slider { display: none; }
   color: var(--ink);
   overflow-wrap: anywhere;
 }
+/* 本周热门：每页 5 条，只在这块内部左右翻页（点右上角 1/2 › 也能翻） */
+.week-track {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.week-track::-webkit-scrollbar { display: none; }
+.week-page {
+  flex: 0 0 100%;
+  min-width: 0;
+  max-width: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.week-pager {
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
+  float: right;
+  margin: 0 0 4px;
+  padding: 1px 8px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--ink-3);
+  font-family: var(--mono);
+  font-size: 10.5px;
+  line-height: 1.6;
+  cursor: pointer;
+}
+.week-pager:hover { border-color: var(--accent-line); color: var(--accent-deep); }
+.week-pager .wp-all { color: var(--ink-4); }
+
 /* 卡片标题前的分类小标签：一眼看出这条属于哪个板块 */
 .cat-tag {
   display: inline-block;

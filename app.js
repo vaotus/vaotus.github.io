@@ -140,6 +140,35 @@
     });
   });
 
+  // 本周热门：内部按 5 条一页左右翻，右上角按钮显示 1/2 并翻页
+  var weekTrack = document.getElementById("week-track");
+  var weekPager = document.getElementById("week-pager");
+  if (weekTrack && weekPager) {
+    var wpNow = weekPager.querySelector(".wp-now");
+    var wpAll = weekPager.querySelector(".wp-all");
+    var pageCount = weekTrack.querySelectorAll(".week-page").length;
+    if (wpAll) wpAll.textContent = pageCount;
+
+    function weekPage() {
+      var w = Math.max(1, weekTrack.clientWidth);
+      return Math.max(0, Math.min(pageCount - 1, Math.round(weekTrack.scrollLeft / w)));
+    }
+    function syncPager() {
+      if (wpNow) wpNow.textContent = weekPage() + 1;
+    }
+    weekTrack.addEventListener("scroll", function () {
+      clearTimeout(weekTrack._t);
+      weekTrack._t = setTimeout(syncPager, 100);
+    }, { passive: true });
+
+    weekPager.addEventListener("click", function () {
+      var next = (weekPage() + 1) % pageCount;
+      weekTrack.scrollTo({ left: next * weekTrack.clientWidth, behavior: "smooth" });
+      if (wpNow) wpNow.textContent = next + 1;
+    });
+    syncPager();
+  }
+
   /* ------------------------------------------------- 4 搜索弹层 */
   var modal = document.getElementById("search-modal");
   var q = document.getElementById("q");
