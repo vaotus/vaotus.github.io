@@ -1217,7 +1217,7 @@ body {
 
 /* ---------- 折叠态只留状态与日期；来源与备注放进展开区 ---------- */
 
-.card .meta .date { color: var(--ink-faint); }
+.card .meta .date { color: var(--ink-faint); white-space: nowrap; }
 
 .detail-body .src {
   margin: 10px 0 4px;
