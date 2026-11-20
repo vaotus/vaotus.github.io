@@ -40,13 +40,23 @@
 
   var current = "today";
 
+  // 吸顶顶栏高度 + 10px 留白：跳转后标题行不被顶栏盖住
+  function stickyOffset() {
+    var bar = document.querySelector(".topbar");
+    var h = bar ? bar.getBoundingClientRect().height : 52;
+    return h + 10;
+  }
+
   function goTo(name, scrollPage) {
     current = name;
     setActive(name);
     renderPanels(name);
     if (scrollPage) {
       var box = document.getElementById("panes");
-      if (box) box.scrollIntoView({ behavior: "smooth", block: "start" });
+      if (box) {
+        var top = box.getBoundingClientRect().top + window.pageYOffset - stickyOffset();
+        window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+      }
     }
   }
 

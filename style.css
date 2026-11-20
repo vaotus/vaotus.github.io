@@ -418,13 +418,14 @@ body.has-filter .slider { display: none; }
    标签栏下面直接就是卡片，中间只留一道呼吸缝。 */
 /* 两个精选区块：手机上一块一块显示（点顶部标签切换，不做横向滑动，
    免得跟上下滚动打架），桌面端左右并列 */
-.panes { display: block; min-width: 0; max-width: 100%; box-sizing: border-box; overflow: hidden; }
+.panes { display: block; min-width: 0; max-width: 100%; box-sizing: border-box; overflow: hidden; scroll-margin-top: 64px; }
+.panel, #all, .fullflow { scroll-margin-top: 64px; }
 .panes > .panel { min-width: 0; max-width: 100%; box-sizing: border-box; overflow: hidden; }
 .panel[hidden] { display: none; }
 .panel { position: relative; padding: 8px 0 2px; }
 
 /* 下方「当日全部条目」：去掉过渡行与横线，紧接速览板（8px 缝） */
-.fullflow { min-width: 0; max-width: 100%; margin-top: 8px; border-top: 0; padding-top: 0; }
+.fullflow { min-width: 0; max-width: 100%; margin-top: 8px; border-top: 0; padding-top: 0; scroll-margin-top: 64px; }
 /* 存档页没有上面的精选页签，这一段直接接标题 */
 .fullflow--plain { margin-top: 6px; border-top: 0; padding-top: 0; }
 .fullflow-head {
@@ -435,7 +436,7 @@ body.has-filter .slider { display: none; }
 }
 
 /* 全量区里的板块分组：一行很轻的小标题 */
-.group { min-width: 0; max-width: 100%; margin-bottom: 10px; scroll-margin-top: 74px; }
+.group { min-width: 0; max-width: 100%; margin-bottom: 10px; scroll-margin-top: 64px; }
 .group:last-child { margin-bottom: 0; }
 .group-head {
   display: flex;
@@ -487,7 +488,7 @@ body.has-filter .slider { display: none; }
   box-shadow: var(--shadow-1);
   transition: border-color .2s ease, box-shadow .2s ease;
   overflow: hidden;
-  scroll-margin-top: 76px;
+  scroll-margin-top: 64px;
 }
 .card:hover { border-color: #D8D3C7; }
 .card.open {
