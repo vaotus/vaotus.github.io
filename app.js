@@ -14,6 +14,8 @@
   var tabs = Array.prototype.slice.call(document.querySelectorAll(".board-tab"));
   var panels = Array.prototype.slice.call(document.querySelectorAll(".panel[data-panel]"));
   var panes = document.getElementById("panes");
+  var slider = document.getElementById("slider");
+  var paneNext = document.getElementById("pane-next");
   var railLinks = Array.prototype.slice.call(document.querySelectorAll(".rail a[data-target]"));
 
   function panelIndex(name) {
@@ -33,6 +35,7 @@
     railLinks.forEach(function (a) {
       a.classList.toggle("on", a.getAttribute("data-target") === name);
     });
+    if (slider) slider.classList.toggle("is-week", name === "week");
   }
 
   // 当前停在哪一页（按横滑位移算）
@@ -102,6 +105,10 @@
       goTo(a.getAttribute("data-target"), true, true);
     });
   });
+
+  if (paneNext) {
+    paneNext.addEventListener("click", function () { goTo("week", true, false); });
+  }
 
   if (tabs.length) goTo(tabs[0].getAttribute("data-tab"), false, false);
   window.addEventListener("resize", function () { scheduleSize(120); });
