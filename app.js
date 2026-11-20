@@ -10,18 +10,13 @@
   var docEl = document.documentElement;
   docEl.classList.add("js");
 
-  /* ------------------------- 1 两个精选页签（今日简报 / 本周热门，可横滑） */
+  /* ---------------- 1 两个精选页签（手机点标签切换 / 桌面左右并列） */
   var tabs = Array.prototype.slice.call(document.querySelectorAll(".board-tab"));
   var panels = Array.prototype.slice.call(document.querySelectorAll(".panel[data-panel]"));
-  var panes = document.getElementById("panes");
-  var slider = document.getElementById("slider");
   var railLinks = Array.prototype.slice.call(document.querySelectorAll(".rail a[data-target]"));
 
-  function panelIndex(name) {
-    for (var i = 0; i < panels.length; i++) {
-      if (panels[i].getAttribute("data-panel") === name) return i;
-    }
-    return 0;
+  function isWide() {
+    return window.matchMedia && window.matchMedia("(min-width: 860px)").matches;
   }
 
   function setActive(name) {
@@ -36,85 +31,47 @@
     });
   }
 
-  // 当前停在哪一页（按横滑位移算）
-  function activeIndex() {
-    if (!panes || !panels.length) return 0;
-    var w = Math.max(1, panes.clientWidth);
-    var i = Math.round(panes.scrollLeft / w);
-    return Math.max(0, Math.min(panels.length - 1, i));
+  // 手机：一次只显示一页；桌面：两页都在，[hidden] 由媒体查询放行
+  function renderPanels(name) {
+    panels.forEach(function (p) {
+      p.hidden = !isWide() && p.getAttribute("data-panel") !== name;
+    });
   }
 
-  // 把横滑外框的高度贴合到当前页的真实高度：短的那页不留空、展开详情也不会被裁
-  function isWide() {
-    return window.matchMedia && window.matchMedia("(min-width: 860px)").matches;
-  }
+  var current = "today";
 
-  function sizePanes() {
-    if (!panes) return;
-    if (isWide()) { panes.style.height = ""; return; }
-    var p = panels[activeIndex()];
-    if (!p) return;
-    panes.style.height = "auto";
-    var h = p.offsetHeight;
-    if (h) panes.style.height = h + "px";
-  }
-
-  var sizeTimer = null;
-  function scheduleSize(delay) {
-    clearTimeout(sizeTimer);
-    sizeTimer = setTimeout(sizePanes, delay || 320);
-  }
-
-  function goTo(name, smooth, scrollPage) {
+  function goTo(name, scrollPage) {
+    current = name;
     setActive(name);
-    var idx = panelIndex(name);
-    if (panes && panes.scrollWidth > panes.clientWidth + 4) {
-      panes.scrollTo({ left: idx * panes.clientWidth, behavior: smooth ? "smooth" : "auto" });
-      scheduleSize(smooth ? 380 : 0);
-    }
+    renderPanels(name);
     if (scrollPage) {
-      var box = panes || document.getElementById("panel-" + name);
+      var box = document.getElementById("panes");
       if (box) box.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   }
 
-  if (panes) {
-    var scrollEnd = null;
-    panes.addEventListener("scroll", function () {
-      var p = panels[activeIndex()];
-      if (p) setActive(p.getAttribute("data-panel"));
-      clearTimeout(scrollEnd);
-      scrollEnd = setTimeout(sizePanes, 120);
-    }, { passive: true });
-  }
-
   tabs.forEach(function (t) {
-    t.addEventListener("click", function () { goTo(t.getAttribute("data-tab"), true, false); });
+    t.addEventListener("click", function () { goTo(t.getAttribute("data-tab"), false); });
     t.addEventListener("keydown", function (e) {
       var i = tabs.indexOf(t);
       if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
         e.preventDefault();
         var n = (i + (e.key === "ArrowRight" ? 1 : -1) + tabs.length) % tabs.length;
         tabs[n].focus();
-        goTo(tabs[n].getAttribute("data-tab"), true, false);
+        goTo(tabs[n].getAttribute("data-tab"), false);
       }
     });
   });
 
-  // 右侧滑轨与顶栏胶囊：切到对应页，并把页面滚到横滑区
   railLinks.forEach(function (a) {
     a.addEventListener("click", function (e) {
       e.preventDefault();
-      goTo(a.getAttribute("data-target"), true, true);
+      goTo(a.getAttribute("data-target"), true);
     });
   });
 
-  if (tabs.length) goTo(tabs[0].getAttribute("data-tab"), false, false);
-  window.addEventListener("resize", function () { scheduleSize(120); });
-  window.addEventListener("load", function () { scheduleSize(0); });
-  if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(function () { scheduleSize(0); });
-  }
+  if (tabs.length) goTo(tabs[0].getAttribute("data-tab"), false);
+  window.addEventListener("resize", function () { renderPanels(current); });
 
   /* --------------------------------------------- 2 卡片折叠 + 空白处收起 */
   var cards = Array.prototype.slice.call(document.querySelectorAll(".card"));
@@ -144,14 +101,12 @@
       // 卡片头部里的直达链接与「详情」按钮各自处理，不重复触发展开
       if (e.target.closest && e.target.closest("a.go")) return;
       openCard(card.classList.contains("open") ? null : card);
-      scheduleSize(340);
     });
     head.addEventListener("keydown", function (e) {
       if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
         openCard(card.classList.contains("open") ? null : card);
-        scheduleSize(340);
-      }
+        }
     });
   });
 
@@ -199,7 +154,6 @@
     document.body.classList.toggle("filtering", visible === 0);
     document.body.classList.toggle("has-filter", !!text || state.cat !== "all");
     if (resultEl) resultEl.textContent = visible;
-    scheduleSize(240);
   }
 
   function openModal() {
@@ -276,13 +230,12 @@
     var h = location.hash.replace(/^#/, "");
     if (!h) return;
     var pm = /^panel-(.+)$/.exec(h);
-    if (pm) { goTo(pm[1], false, false); return; }
+    if (pm) { goTo(pm[1], false); return; }
     var card = document.getElementById(h);
     if (card && card.classList.contains("card")) {
       var owner = card.closest(".panel");
-      if (owner) goTo(owner.getAttribute("data-panel"), false, false);
+      if (owner) goTo(owner.getAttribute("data-panel"), false);
       openCard(card);
-      scheduleSize(340);
     }
   }
   window.addEventListener("hashchange", openFromHash);
