@@ -1216,3 +1216,31 @@ body {
   max-width: 14px;
   flex-shrink: 0;
 }
+
+/* ---------- 折叠态只留状态与日期；来源与备注放进展开区 ---------- */
+
+.card .meta .date { color: var(--ink-faint); }
+
+.detail-body .src {
+  margin: 10px 0 4px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--line);
+  font-size: 11.5px;
+  line-height: 1.55;
+  color: var(--ink-faint);
+  overflow-wrap: anywhere;
+}
+
+.detail-body .src a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+}
+
+.detail-body .src a:hover { color: var(--accent); border-bottom-color: var(--accent-soft); }
+
+.detail-body .src .note { display: block; margin-top: 4px; }
+
+@media (max-width: 640px) {
+  .detail-body .src { font-size: 11px; line-height: 1.5; margin-top: 8px; padding-top: 6px; }
+}
