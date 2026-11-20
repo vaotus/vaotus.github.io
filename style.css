@@ -64,6 +64,9 @@ html, body { overflow-x: clip; }
 
 body {
   margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   background: var(--paper);
   color: var(--ink);
   font-family: var(--font);
@@ -77,6 +80,8 @@ body {
 a { color: inherit; text-decoration: none; }
 button { font-family: inherit; }
 ::selection { background: rgba(140, 90, 60, .18); color: #23180c; }
+
+main.shell { flex: 1 0 auto; }
 
 .shell {
   position: relative;
@@ -328,7 +333,7 @@ a.stats-pill:hover { border-color: var(--accent-line); }
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
   gap: 10px;
-  align-items: start;
+  align-items: stretch;
   min-width: 0;
 }
 
@@ -427,15 +432,18 @@ a.stats-pill:hover { border-color: var(--accent-line); }
   margin-top: 7px;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   font-size: 11.3px;
   color: var(--ink-3);
   min-width: 0;
   flex-wrap: wrap;
 }
-/* 旧版构建会插 <span class="sep">·</span> 当分隔符；改用 gap 之后不再显示，
-   免得状态与日期换行时留下一个孤零零的小圆点 */
-.row3 .sep { display: none; }
+/* 状态与发布日期之间的小圆点由 CSS 画：紧跟在状态后面，换行时不会留在行尾 */
+.row3 .status + .date::before {
+  content: "·";
+  margin-right: 6px;
+  opacity: .45;
+}
 .row3 .status { color: var(--ink-2); }
 .row3 .grow { flex: 1 1 auto; min-width: 6px; }
 .row3 .date { white-space: nowrap; font-feature-settings: "tnum"; }
@@ -733,7 +741,7 @@ body.filtering .no-match { display: block; }
 footer {
   position: relative;
   z-index: 1;
-  margin-top: 18px;
+  margin-top: auto;
   border-top: 1px solid var(--line-soft);
   padding: 9px 0 calc(9px + env(safe-area-inset-bottom, 0px));
   background: rgba(255, 255, 255, .5);
