@@ -96,24 +96,23 @@
 
   cards.forEach(function (card) {
     var head = card.querySelector(".card-head");
+    if (!head) return;
 
-    // 整张卡都可点：已展开再点一次就收起（链接与正在选中的文字除外）
-    card.addEventListener("click", function (e) {
+    // 只有头部摘要区（.card-head）响应点击：展开 / 二次点击收起。
+    // 展开后的正文 .detail 不绑任何点击，点里面、长按选词都不会收起，方便复制文本。
+    head.addEventListener("click", function (e) {
       if (e.target.closest && e.target.closest("a")) return;
       var sel = window.getSelection && window.getSelection();
       if (sel && String(sel).length > 0) return;
-      // 已展开 → 再点一次收起（openCard(null) 是空操作，这里必须走 closeAll）
       if (card.classList.contains("open")) { closeAll(); } else { openCard(card); }
     });
 
-    if (head) {
-      head.addEventListener("keydown", function (e) {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          if (card.classList.contains("open")) { closeAll(); } else { openCard(card); }
-        }
-      });
-    }
+    head.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        if (card.classList.contains("open")) { closeAll(); } else { openCard(card); }
+      }
+    });
   });
 
   // 点空白处（卡片与详情之外）收起全部展开的卡片
@@ -145,17 +144,19 @@
   var weekTrack = document.getElementById("week-track");
   var weekPager = document.getElementById("week-pager");
   if (weekTrack && weekPager) {
-    var wpNow = weekPager.querySelector(".wp-now");
-    var wpAll = weekPager.querySelector(".wp-all");
+    var wpArrow = weekPager.querySelector(".wp-arrow");
     var pageCount = weekTrack.querySelectorAll(".week-page").length;
-    if (wpAll) wpAll.textContent = pageCount;
 
     function weekPage() {
       var w = Math.max(1, weekTrack.clientWidth);
       return Math.max(0, Math.min(pageCount - 1, Math.round(weekTrack.scrollLeft / w)));
     }
+    // 悬浮圆钮：不在最后一页时显示 ›，到最后一页显示 ‹（点了回第 1 页）
     function syncPager() {
-      if (wpNow) wpNow.textContent = weekPage() + 1;
+      var last = weekPage() >= pageCount - 1;
+      if (wpArrow) wpArrow.textContent = last ? "‹" : "›";
+      weekPager.setAttribute("aria-label", last ? "本周热门上一页" : "本周热门下一页");
+      weekPager.setAttribute("title", last ? "本周热门上一页" : "本周热门下一页");
     }
     weekTrack.addEventListener("scroll", function () {
       clearTimeout(weekTrack._t);
@@ -163,9 +164,10 @@
     }, { passive: true });
 
     weekPager.addEventListener("click", function () {
-      var next = (weekPage() + 1) % pageCount;
+      var p = weekPage();
+      var next = p >= pageCount - 1 ? 0 : p + 1;
       weekTrack.scrollTo({ left: next * weekTrack.clientWidth, behavior: "smooth" });
-      if (wpNow) wpNow.textContent = next + 1;
+      if (wpArrow) wpArrow.textContent = next >= pageCount - 1 ? "‹" : "›";
     });
     syncPager();
   }
