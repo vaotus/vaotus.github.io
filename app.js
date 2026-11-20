@@ -102,14 +102,15 @@
       if (e.target.closest && e.target.closest("a")) return;
       var sel = window.getSelection && window.getSelection();
       if (sel && String(sel).length > 0) return;
-      openCard(card.classList.contains("open") ? null : card);
+      // 已展开 → 再点一次收起（openCard(null) 是空操作，这里必须走 closeAll）
+      if (card.classList.contains("open")) { closeAll(); } else { openCard(card); }
     });
 
     if (head) {
       head.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
-          openCard(card.classList.contains("open") ? null : card);
+          if (card.classList.contains("open")) { closeAll(); } else { openCard(card); }
         }
       });
     }

@@ -349,11 +349,12 @@ a.stats-pill:hover { border-color: var(--accent-line); }
 .mini {
   display: flex;
   align-items: center;
+  gap: 8px;
+  width: 100%;
   min-width: 0;
   max-width: 100%;
   box-sizing: border-box;
   overflow: hidden;
-  gap: 8px;
   padding: 7px 10px;
   border: 1px solid var(--line);
   border-radius: 12px;
@@ -363,7 +364,7 @@ a.stats-pill:hover { border-color: var(--accent-line); }
 .mini:hover { border-color: var(--accent-line); }
 .mini:active { transform: scale(.995); }
 .mini-main {
-  flex: 1 1 auto;
+  flex: 1 1 0;
   min-width: 0;
   max-width: 100%;
   overflow: hidden;
@@ -373,14 +374,20 @@ a.stats-pill:hover { border-color: var(--accent-line); }
 }
 /* 速览条：标题与副行都只占一行、超出用省略号，5 条高度完全一致 */
 .mini-title {
-  display: block;
-  flex: 1 1 auto;
-  max-width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  min-width: 0;
   font-size: 12.9px;
   font-weight: 600;
   line-height: 1.35;
   color: var(--ink);
   letter-spacing: .002em;
+}
+/* 标题文字自己触发省略号，而不是被外层裁掉 */
+.mini-t {
+  flex: 1 1 0;
   min-width: 0;
   white-space: nowrap;
   overflow: hidden;
@@ -388,7 +395,7 @@ a.stats-pill:hover { border-color: var(--accent-line); }
 }
 .mini-sub {
   display: block;
-  flex: 1 1 auto;
+  width: 100%;
   min-width: 0;
   max-width: 100%;
   font-size: 10.8px;
@@ -398,7 +405,7 @@ a.stats-pill:hover { border-color: var(--accent-line); }
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.mini-go { flex: none; color: var(--ink-4); font-size: 16px; line-height: 1; }
+.mini-go { flex: 0 0 auto; flex-shrink: 0; color: var(--ink-4); font-size: 16px; line-height: 1; }
 /* 搜索时把速览条收起来，只留命中的卡片 */
 body.has-filter .slider { display: none; }
 /* 标签已经写明了板块名与条数，面板里不再重复一行小标题：
