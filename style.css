@@ -829,7 +829,8 @@ body.has-filter .slider { display: none; }
 .rail a:hover { background: var(--paper-deep); color: var(--ink); }
 .rail a.on { background: var(--accent-soft); color: var(--accent-deep); }
 .rail-sep { width: 22px; height: 1px; background: var(--line); margin: 3px 0 2px; }
-.rail-top svg { transform: rotate(180deg); }
+/* 「顶部」用朝上的箭头（arrow-up 原方向），不要再旋转成朝下 */
+.rail-top svg { transform: none; }
 
 /* --------------------------------------------------------- 8 搜索弹层 */
 
