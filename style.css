@@ -228,7 +228,7 @@ a.stats-pill:hover { border-color: var(--accent-line); }
   align-items: center;
   gap: 12px;
   flex-wrap: wrap;
-  padding: 10px 0 2px;
+  padding: 5px 0 2px;
 }
 .hero-tag {
   margin: 0;
@@ -284,7 +284,7 @@ a.stats-pill:hover { border-color: var(--accent-line); }
    底色是纸色实心块，压住下面的卡片，滚动或切换时不会透出内容。 */
 .board {
   position: static;
-  margin: 2px 0 0;
+  margin: 0;
   background: var(--paper);
 }
 .board-tabs {
@@ -303,7 +303,7 @@ a.stats-pill:hover { border-color: var(--accent-line); }
   min-width: 0;
   border: 0;
   background: transparent;
-  padding: 7px 2px 9px;
+  padding: 5px 2px 6px;
   font-size: 13px;
   line-height: 1.4;
   color: var(--ink-3);
@@ -422,10 +422,10 @@ body.has-filter .slider { display: none; }
 .panel, #all, .fullflow { scroll-margin-top: 64px; }
 .panes > .panel { min-width: 0; max-width: 100%; box-sizing: border-box; overflow: hidden; }
 .panel[hidden] { display: none; }
-.panel { position: relative; padding: 8px 0 2px; }
+.panel { position: relative; padding: 4px 0 0; }
 
 /* 下方「当日全部条目」：去掉过渡行与横线，紧接速览板（8px 缝） */
-.fullflow { min-width: 0; max-width: 100%; margin-top: 8px; border-top: 0; padding-top: 0; scroll-margin-top: 64px; }
+.fullflow { min-width: 0; max-width: 100%; margin-top: 5px; border-top: 0; padding-top: 0; scroll-margin-top: 64px; }
 /* 存档页没有上面的精选页签，这一段直接接标题 */
 .fullflow--plain { margin-top: 6px; border-top: 0; padding-top: 0; }
 .fullflow-head {
@@ -436,13 +436,13 @@ body.has-filter .slider { display: none; }
 }
 
 /* 全量区里的板块分组：一行很轻的小标题 */
-.group { min-width: 0; max-width: 100%; margin-bottom: 10px; scroll-margin-top: 64px; }
+.group { min-width: 0; max-width: 100%; margin-bottom: 8px; scroll-margin-top: 64px; }
 .group:last-child { margin-bottom: 0; }
 .group-head {
   display: flex;
   align-items: center;
   gap: 6px;
-  margin: 0 0 7px;
+  margin: 0 0 5px;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: .06em;
@@ -473,7 +473,7 @@ body.has-filter .slider { display: none; }
   min-width: 0;
   max-width: 100%;
   grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
-  gap: 8px;
+  gap: 6px;
   align-items: stretch;
   min-width: 0;
 }
@@ -1415,11 +1415,11 @@ footer {
   .hm-word { display: none; }
 
   /* 速览板 */
-  .board { margin: 1px 0 0; }
-  .board-tab { padding: 6px 0 8px; font-size: 12.2px; gap: 4px; letter-spacing: -.01em; }
+  .board { margin: 0; }
+  .board-tab { padding: 5px 0 6px; font-size: 12.2px; gap: 4px; letter-spacing: -.01em; }
   .board-tab b { font-size: 9.5px; }
   .board-tab::after { width: 22px; }
-  .panel { padding: 8px 0 6px; }
+  .panel { padding: 4px 0 0; }
   .mini { padding: 6px 9px; gap: 7px; border-radius: 11px; }
   .mini-title { font-size: 12.4px; line-height: 1.34; }
   .mini-mini, .mini-sub { min-width: 0; }
