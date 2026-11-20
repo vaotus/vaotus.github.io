@@ -418,6 +418,12 @@ a.stats-pill:hover { border-color: var(--accent-line); }
 .mini-go { flex: 0 0 auto; flex-shrink: 0; color: var(--ink-4); font-size: 16px; line-height: 1; }
 /* 搜索时把速览条收起来，只留命中的卡片 */
 body.has-filter .slider { display: none; }
+/* 筛选时不再分页：页码收起，各页顺序铺开，免得命中的条目藏在第 2 页之后 */
+body.has-filter .group-pages { display: block; overflow: visible; }
+body.has-filter .group-page { width: auto; margin-bottom: 6px; }
+body.has-filter .group-page:last-child { margin-bottom: 0; }
+body.has-filter .group-pager { display: none !important; }
+body.has-filter .group.has-pager .group-head { padding-right: 0; }
 /* 标签已经写明了板块名与条数，面板里不再重复一行小标题：
    标签栏下面直接就是卡片，中间只留一道呼吸缝。 */
 /* 两个精选区块：手机上一块一块显示（点顶部标签切换，不做横向滑动，
@@ -440,7 +446,7 @@ body.has-filter .slider { display: none; }
 }
 
 /* 全量区里的板块分组：一行很轻的小标题 */
-.group { min-width: 0; max-width: 100%; margin-bottom: 6px; scroll-margin-top: 64px; }
+.group { position: relative; min-width: 0; max-width: 100%; margin-bottom: 6px; scroll-margin-top: 64px; }
 .group:last-child { margin-bottom: 0; }
 .group-head {
   display: flex;
@@ -468,6 +474,77 @@ body.has-filter .slider { display: none; }
   font-weight: 500;
   color: var(--ink-4);
   letter-spacing: 0;
+}
+
+/* 分区超过 5 条：标题行右侧一组 ‹ 1/2 ›（形制对齐 vvotzs 的板块翻页：正圆胶囊键
+   + 等宽页码，颜色换成本站的温褐色，不加薄荷绿；无 JS 时不出现，靠横滑即可） */
+.group.has-pager .group-head { padding-right: 84px; }
+.group-pager {
+  position: absolute;
+  top: -3px;
+  right: 0;
+  display: none;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .02em;
+  line-height: 1;
+  color: var(--ink-4);
+}
+html.js .group.has-pager .group-pager { display: inline-flex; }
+.group-pager .pg {
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid var(--accent-line);
+  border-radius: 999px;
+  background: #FFFDF9;
+  color: var(--accent-deep);
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(31, 35, 40, .04);
+  transition: background .18s ease, border-color .18s ease, color .18s ease;
+}
+.group-pager .pg:hover:not(:disabled) { background: var(--accent-soft); border-color: var(--accent); }
+.group-pager .pg:disabled {
+  color: var(--ink-4);
+  border-color: var(--line);
+  background: var(--paper-deep);
+  cursor: default;
+  box-shadow: none;
+}
+.group-pager .pg-label { min-width: 34px; text-align: center; font-feature-settings: "tnum"; }
+
+/* 分区分页容器：每页 5 条，一页一屏，左右横滑 / 点页码键翻 */
+.group-pages {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  box-sizing: border-box;
+}
+.group-pages::-webkit-scrollbar { display: none; }
+.group-page {
+  flex: 0 0 100%;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 /* -------------------------------------------------- 6 卡片 + 折叠详情 */

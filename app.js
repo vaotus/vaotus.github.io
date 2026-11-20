@@ -98,6 +98,7 @@
     if (!card) return;
     cards.forEach(function (c) { if (c !== card) setOpen(c, false); });
     setOpen(card, true);
+    revealCardPage(card);
   }
 
   function closeAll() {
@@ -130,7 +131,7 @@
     if (!cards.some(function (c) { return c.classList.contains("open"); })) return;
     var t = e.target && e.target.nodeType === 1 ? e.target : (e.target && e.target.parentElement);
     if (!t || !t.closest) return;
-    if (t.closest(".card, .mini, .board, .panes, .modal, .rail-dock, .topbar")) return;
+    if (t.closest(".card, .mini, .board, .panes, .modal, .rail-dock, .topbar, .group-pager")) return;
     closeAll();
   });
 
@@ -181,6 +182,61 @@
     });
     syncPager();
   }
+
+  /* ------------------------------------- 3 四块卡片分区：> 5 条按每页 5 条翻页 */
+  // 标题行右侧的 ‹ 1/2 ›（形制同 vvotzs 的板块翻页）只负责切页；
+  // 容器本身是横向吸附滚动，手机也能直接横滑。
+  var groupTracks = Array.prototype.slice.call(document.querySelectorAll(".group-pages"));
+
+  function groupIndex(track) {
+    var w = Math.max(1, track.clientWidth);
+    return Math.max(0, Math.round(track.scrollLeft / w));
+  }
+
+  // 卡片在别的页时（深链接 #card-xxx、顶部速览条点进来）先把那一页翻到眼前
+  function revealCardPage(card) {
+    if (!card || !card.closest) return;
+    var track = card.closest(".group-pages");
+    var page = card.closest(".group-page");
+    if (!track || !page) return;
+    var idx = Array.prototype.indexOf.call(track.children, page);
+    if (idx > 0) track.scrollTo({ left: idx * track.clientWidth, behavior: "smooth" });
+  }
+
+  groupTracks.forEach(function (track) {
+    var group = track.closest(".group");
+    var pager = group && group.querySelector(".group-pager");
+    var count = track.querySelectorAll(".group-page").length;
+    if (!pager || count < 2) return;
+
+    var prev = pager.querySelector("[data-prev]");
+    var next = pager.querySelector("[data-next]");
+    var label = pager.querySelector("[data-label]");
+
+    function paint(p) {
+      if (label) label.textContent = (p + 1) + " / " + count;
+      if (prev) prev.disabled = p <= 0;
+      if (next) next.disabled = p >= count - 1;
+    }
+    function goto(p) {
+      p = Math.max(0, Math.min(count - 1, p));
+      track.scrollTo({ left: p * track.clientWidth, behavior: "smooth" });
+      paint(p);
+    }
+
+    track.addEventListener("scroll", function () {
+      clearTimeout(track._pt);
+      track._pt = setTimeout(function () { paint(groupIndex(track)); }, 90);
+    }, { passive: true });
+    if (prev) prev.addEventListener("click", function () { goto(groupIndex(track) - 1); });
+    if (next) next.addEventListener("click", function () { goto(groupIndex(track) + 1); });
+    // 屏宽变了以后页宽也变了，重新对齐到当前页，不要停在半页中间
+    window.addEventListener("resize", function () {
+      var p = groupIndex(track);
+      track.scrollTo({ left: p * track.clientWidth, behavior: "auto" });
+    });
+    paint(0);
+  });
 
   /* ------------------------------------------------- 4 搜索弹层 */
   var modal = document.getElementById("search-modal");
