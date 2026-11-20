@@ -1126,44 +1126,50 @@ body {
   overflow: hidden;
 }
 
-/* ---------- 页脚：版权行 + 两个小徽标（对齐 vvotzs 的紧凑徽标样式） ---------- */
+/* ---------- 页脚：单行（左：AI早报 · 日期；右：TG / YouTube 两个小圆徽标） ---------- */
 
-.footer-row {
+.site-footer .footer-row {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 6px 12px;
+  flex-wrap: nowrap;
+  gap: 10px;
   margin: 0;
   padding: 0;
   font-size: 12.5px;
-  line-height: 1.6;
+  line-height: 1.4;
   color: var(--ink-faint);
 }
 
-.footer-row .foot-meta { flex: 0 1 auto; }
+.site-footer .footer-row .foot-meta {
+  flex: 0 1 auto;
+  min-width: 0;
+  white-space: nowrap;
+}
 
 .site-footer .footer-links {
   display: flex;
-  align-items: center;
-  gap: 6px;
-  margin: 0;
-  margin-left: auto;
-  padding: 0;
   flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 0 0 auto;
+  gap: 8px;
+  margin: 0 0 0 auto;
+  padding: 0;
+  width: auto;
 }
 
-.site-footer a.foot-badge,
-.site-footer a.foot-badge:hover,
-.site-footer a.foot-badge:focus-visible {
+.site-footer a.foot-badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 26px;
-  height: 26px;
+  width: 30px;
+  height: 30px;
   min-height: 0;
   padding: 0;
-  border-radius: 999px;
+  border-radius: 50%;
+  flex: 0 0 auto;
   text-decoration: none;
   line-height: 1;
 }
@@ -1196,25 +1202,17 @@ body {
 
 .site-footer a.foot-badge svg,
 .site-footer svg.footer-icon {
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   flex-shrink: 0;
   display: block;
 }
 
 @media (max-width: 640px) {
-  .footer-row { font-size: 11.5px; gap: 4px 8px; }
-  .site-footer a.foot-badge { width: 24px; height: 24px; }
-  .site-footer a.foot-badge svg { width: 13px; height: 13px; }
-  .site-footer .footer-links { width: auto; flex-direction: row; align-items: center; margin-left: auto; }
-}
-
-/* 兜底：页脚图标任何情况下都不拉伸（防 CSS 未加载时的巨图） */
-.site-footer svg {
-  width: 14px;
-  height: 14px;
-  max-width: 14px;
-  flex-shrink: 0;
+  .site-footer .footer-row { font-size: 11.5px; gap: 8px; }
+  .site-footer a.foot-badge { width: 30px; height: 30px; }
+  .site-footer a.foot-badge svg { width: 16px; height: 16px; }
+  .site-footer .footer-links { width: auto; flex-direction: row; align-items: center; }
 }
 
 /* ---------- 折叠态只留状态与日期；来源与备注放进展开区 ---------- */
@@ -1240,6 +1238,14 @@ body {
 .detail-body .src a:hover { color: var(--accent); border-bottom-color: var(--accent-soft); }
 
 .detail-body .src .note { display: block; margin-top: 4px; }
+
+/* 兜底：页脚图标任何情况下都不拉伸（防 CSS 未加载时的巨图） */
+.site-footer svg {
+  width: 16px;
+  height: 16px;
+  max-width: 16px;
+  flex-shrink: 0;
+}
 
 @media (max-width: 640px) {
   .detail-body .src { font-size: 11px; line-height: 1.5; margin-top: 8px; padding-top: 6px; }
