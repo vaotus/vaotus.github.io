@@ -197,11 +197,6 @@
       c.hidden = !show;
       if (show) visible++;
     });
-    // 面板里没有命中的卡片就把它整个收起（不再留一块空标题）
-    panels.forEach(function (p) {
-      var any = p.querySelectorAll(".card:not([hidden])").length > 0;
-      p.classList.toggle("is-empty", !any);
-    });
     document.body.classList.toggle("filtering", visible === 0);
     document.body.classList.toggle("has-filter", !!text || state.cat !== "all");
     if (resultEl) resultEl.textContent = visible;
