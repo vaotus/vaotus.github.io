@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>AI早报 · 390×844 视口验收</title>
+<style>
+  body { margin: 0; padding: 10px; background: #d8d5cd; display: flex; gap: 18px; align-items: flex-start; }
+  figure { margin: 0; }
+  figcaption { font: 12px/1.6 -apple-system, "PingFang SC", sans-serif; color: #333; }
+  iframe { width: 390px; height: 844px; border: 1px solid #999; background: #fff; display: block; }
+</style>
+</head>
+<body>
+<figure>
+  <figcaption>390 × 844</figcaption>
+  <iframe id="f" src="/?v=m1" title="AI早报 手机视口"></iframe>
+</figure>
+<script>
+  (function () {
+    var u = new URLSearchParams(location.search).get("u");
+    if (u) document.getElementById("f").src = u;
+  })();
+</script>
+</body>
+</html>

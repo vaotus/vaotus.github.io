@@ -1,5 +1,5 @@
 /* AI早报 · 页面交互（原生 JS，无依赖）
-   1 板块标签：四等分页签切换面板，右侧滑轨与顶栏胶囊同步
+   1 两个精选页签：今日简报 / 本周热门，可左右横滑切换，外框高度贴合当前页
    2 卡片折叠：单开互斥 + 点击空白处收起
    3 搜索弹层：关键词 + 板块筛选
    4 深链接 #panel-x / #card-xxx 直接定位
@@ -10,54 +10,105 @@
   var docEl = document.documentElement;
   docEl.classList.add("js");
 
-  /* ------------------------------------------- 1 板块标签（四等分切换） */
+  /* ------------------------- 1 两个精选页签（今日简报 / 本周热门，可横滑） */
   var tabs = Array.prototype.slice.call(document.querySelectorAll(".board-tab"));
   var panels = Array.prototype.slice.call(document.querySelectorAll(".panel[data-panel]"));
+  var panes = document.getElementById("panes");
   var railLinks = Array.prototype.slice.call(document.querySelectorAll(".rail a[data-target]"));
 
-  function showTab(name, scroll) {
+  function panelIndex(name) {
+    for (var i = 0; i < panels.length; i++) {
+      if (panels[i].getAttribute("data-panel") === name) return i;
+    }
+    return 0;
+  }
+
+  function setActive(name) {
     tabs.forEach(function (t) {
       var on = t.getAttribute("data-tab") === name;
       t.classList.toggle("on", on);
       t.setAttribute("aria-selected", on ? "true" : "false");
       t.tabIndex = on ? 0 : -1;
     });
-    panels.forEach(function (p) {
-      p.hidden = p.getAttribute("data-panel") !== name;
-    });
     railLinks.forEach(function (a) {
       a.classList.toggle("on", a.getAttribute("data-target") === name);
     });
-    if (scroll) {
-      var target = document.getElementById("panel-" + name);
-      if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  // 当前停在哪一页（按横滑位移算）
+  function activeIndex() {
+    if (!panes || !panels.length) return 0;
+    var w = Math.max(1, panes.clientWidth);
+    var i = Math.round(panes.scrollLeft / w);
+    return Math.max(0, Math.min(panels.length - 1, i));
+  }
+
+  // 把横滑外框的高度贴合到当前页的真实高度：短的那页不留空、展开详情也不会被裁
+  function sizePanes() {
+    if (!panes) return;
+    var p = panels[activeIndex()];
+    if (!p) return;
+    panes.style.height = "auto";
+    var h = p.offsetHeight;
+    if (h) panes.style.height = h + "px";
+  }
+
+  var sizeTimer = null;
+  function scheduleSize(delay) {
+    clearTimeout(sizeTimer);
+    sizeTimer = setTimeout(sizePanes, delay || 320);
+  }
+
+  function goTo(name, smooth, scrollPage) {
+    setActive(name);
+    var idx = panelIndex(name);
+    if (panes) {
+      panes.scrollTo({ left: idx * panes.clientWidth, behavior: smooth ? "smooth" : "auto" });
+      scheduleSize(smooth ? 380 : 0);
+    }
+    if (scrollPage) {
+      var box = panes || document.getElementById("panel-" + name);
+      if (box) box.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   }
 
-  function tabNameFor(el) { return el && el.getAttribute("data-tab"); }
+  if (panes) {
+    var scrollEnd = null;
+    panes.addEventListener("scroll", function () {
+      var p = panels[activeIndex()];
+      if (p) setActive(p.getAttribute("data-panel"));
+      clearTimeout(scrollEnd);
+      scrollEnd = setTimeout(sizePanes, 120);
+    }, { passive: true });
+  }
 
   tabs.forEach(function (t) {
-    t.addEventListener("click", function () { showTab(tabNameFor(t), false); });
+    t.addEventListener("click", function () { goTo(t.getAttribute("data-tab"), true, false); });
     t.addEventListener("keydown", function (e) {
       var i = tabs.indexOf(t);
       if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
         e.preventDefault();
         var n = (i + (e.key === "ArrowRight" ? 1 : -1) + tabs.length) % tabs.length;
         tabs[n].focus();
-        showTab(tabNameFor(tabs[n]), false);
+        goTo(tabs[n].getAttribute("data-tab"), true, false);
       }
     });
   });
 
-  // 右侧滑轨与顶栏胶囊：先切到对应板块，再滚到该板块顶部
+  // 右侧滑轨与顶栏胶囊：切到对应页，并把页面滚到横滑区
   railLinks.forEach(function (a) {
     a.addEventListener("click", function (e) {
       e.preventDefault();
-      showTab(a.getAttribute("data-target"), true);
+      goTo(a.getAttribute("data-target"), true, true);
     });
   });
 
-  if (tabs.length) showTab(tabNameFor(tabs[0]), false);
+  if (tabs.length) goTo(tabs[0].getAttribute("data-tab"), false, false);
+  window.addEventListener("resize", function () { scheduleSize(120); });
+  window.addEventListener("load", function () { scheduleSize(0); });
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () { scheduleSize(0); });
+  }
 
   /* --------------------------------------------- 2 卡片折叠 + 空白处收起 */
   var cards = Array.prototype.slice.call(document.querySelectorAll(".card"));
@@ -87,11 +138,13 @@
       // 卡片头部里的直达链接与「详情」按钮各自处理，不重复触发展开
       if (e.target.closest && e.target.closest("a.go")) return;
       openCard(card.classList.contains("open") ? null : card);
+      scheduleSize(340);
     });
     head.addEventListener("keydown", function (e) {
       if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
         openCard(card.classList.contains("open") ? null : card);
+        scheduleSize(340);
       }
     });
   });
@@ -128,6 +181,7 @@
     });
     document.body.classList.toggle("filtering", visible === 0);
     if (resultEl) resultEl.textContent = visible;
+    scheduleSize(240);
   }
 
   function openModal() {
@@ -204,12 +258,13 @@
     var h = location.hash.replace(/^#/, "");
     if (!h) return;
     var pm = /^panel-(.+)$/.exec(h);
-    if (pm) { showTab(pm[1], false); return; }
+    if (pm) { goTo(pm[1], false, false); return; }
     var card = document.getElementById(h);
     if (card && card.classList.contains("card")) {
       var owner = card.closest(".panel");
-      if (owner) showTab(owner.getAttribute("data-panel"), false);
+      if (owner) goTo(owner.getAttribute("data-panel"), false, false);
       openCard(card);
+      scheduleSize(340);
     }
   }
   window.addEventListener("hashchange", openFromHash);

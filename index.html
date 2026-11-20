@@ -28,8 +28,8 @@
 <!-- AdSense：启用时把下面这行取消注释并换成自己的 client（pub id）
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
 -->
-<link rel="stylesheet" href="style.css?v=e98a8365">
-<script src="app.js?v=6379342c" defer></script>
+<link rel="stylesheet" href="style.css?v=6dfb9278">
+<script src="app.js?v=f4360d58" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -188,6 +188,7 @@
 <button class="board-tab on" id="tab-today" role="tab" type="button" data-tab="today" aria-selected="true" aria-controls="panel-today" tabindex="0">今日简报<b>5</b></button><button class="board-tab" id="tab-week" role="tab" type="button" data-tab="week" aria-selected="false" aria-controls="panel-week" tabindex="-1">本周热门<b>5</b></button>
   </div>
 </div>
+<div class="panes" id="panes">
 <section class="panel" id="panel-today" data-panel="today" role="tabpanel" aria-labelledby="tab-today">
   <h2 class="sr-only">今日简报 · 精选 5 条</h2>
   <div class="track">
@@ -294,7 +295,7 @@
 </article>
   </div>
 </section>
-<section class="panel" id="panel-week" data-panel="week" role="tabpanel" aria-labelledby="tab-week" hidden>
+<section class="panel" id="panel-week" data-panel="week" role="tabpanel" aria-labelledby="tab-week">
   <h2 class="sr-only">本周热门 · 精选 5 条</h2>
   <div class="track">
 <article class="card" id="card-w1" data-cat="hot" data-text="AI 热点 Anthropic 上市首日：定价 83 美元，开盘市值冲到 2 万亿美元 募资 813 亿美元、史上最大 IPO；开盘 111.50 美元，午后回落到 1.78 万亿，没能带起整个板块。 交易代码 ANT · 交割预计 11-20 已上市">
@@ -400,6 +401,7 @@
 </article>
   </div>
 </section>
+</div>
 <div class="fullflow" id="all">
   <p class="fullflow-head">当日全部 12 条 · 按板块</p>
 <div class="group" id="g-hot">

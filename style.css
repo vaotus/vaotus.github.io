@@ -323,8 +323,34 @@ a.stats-pill:hover { border-color: var(--accent-line); }
 /* --------------------------------------- 5 板块面板（标签页的内容区） */
 /* 标签已经写明了板块名与条数，面板里不再重复一行小标题：
    标签栏下面直接就是卡片，中间只留一道呼吸缝。 */
+/* 两个精选面板并排成一条横滑带：手指左右滑就能切换，页签跟着高亮。
+   只在这条带子里横向滚动，页面本身不会出现横向溢出。 */
+.panes {
+  display: flex;
+  align-items: flex-start;
+  height: auto;
+  transition: height .28s ease;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.panes::-webkit-scrollbar { display: none; }
+.panes > .panel {
+  flex: 0 0 100%;
+  width: 100%;
+  min-width: 0;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+/* 没有 JS 时退回上下叠放，内容不会丢 */
+html:not(.js) .panes { display: block; height: auto; }
+html:not(.js) .panes > .panel { width: auto; }
+
 .panel { padding: 10px 0 6px; }
-.panel[hidden] { display: none; }
 .panel.is-empty { display: none; }
 
 /* 下方「当日全部条目」：一行小说明 + 四个板块分组 */
