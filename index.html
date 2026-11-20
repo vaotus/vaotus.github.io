@@ -168,7 +168,7 @@
     </button>
     <div class="topbar-stats">
       <a class="stats-pill accent" href="#top">今日 <b>12</b></a>
-      <a class="stats-pill" href="#free">限免 <b>3</b></a>
+      <a class="stats-pill" href="#panel-free">限免 <b>3</b></a>
       <a class="stats-pill" href="archive.html">归档 <b>3</b></a>
     </div>
   </div>
@@ -183,98 +183,13 @@
      aria-label="YouTube 频道「AI 试验室」" title="YouTube 频道「AI 试验室」"><svg class="i brand-i" aria-hidden="true"><use href="#i-yt-brand"/></svg></a>
   <p class="hero-meta"><span class="dot" aria-hidden="true"></span><span class="hm-long">北京时间 2026-11-20 周五 更新</span><span class="hm-short">11-20<span class="hm-word"> 更新</span></span></p>
 </section>
-<section class="board" aria-label="今日速览">
-  <div class="board-tabs" role="tablist" aria-label="按板块速览">
-<button class="board-tab on" role="tab" type="button" data-tab="hot" aria-selected="true" tabindex="0">AI 热点<b>3</b></button><button class="board-tab" role="tab" type="button" data-tab="free" aria-selected="false" tabindex="-1">限免<b>3</b></button><button class="board-tab" role="tab" type="button" data-tab="deal" aria-selected="false" tabindex="-1">折扣<b>3</b></button><button class="board-tab" role="tab" type="button" data-tab="sites" aria-selected="false" tabindex="-1">AI 应用<b>3</b></button>
+<div class="board">
+  <div class="board-tabs" role="tablist" aria-label="板块切换">
+<button class="board-tab on" id="tab-hot" role="tab" type="button" data-tab="hot" aria-selected="true" aria-controls="panel-hot" tabindex="0">AI 热点<b>3</b></button><button class="board-tab" id="tab-free" role="tab" type="button" data-tab="free" aria-selected="false" aria-controls="panel-free" tabindex="-1">限免<b>3</b></button><button class="board-tab" id="tab-deal" role="tab" type="button" data-tab="deal" aria-selected="false" aria-controls="panel-deal" tabindex="-1">折扣<b>3</b></button><button class="board-tab" id="tab-sites" role="tab" type="button" data-tab="sites" aria-selected="false" aria-controls="panel-sites" tabindex="-1">AI 应用<b>3</b></button>
   </div>
-<div class="board-panel" role="tabpanel" data-panel="hot">
-  <ul class="board-list">
-<li><button class="jump" type="button" data-jump="hot-1" aria-label="展开：Anthropic 上市首日：定价 83 美元，开盘市值冲到 2 万亿美元">
-  <span class="jump-no" aria-hidden="true">01</span>
-  <span class="jump-main"><span class="jump-title">Anthropic 上市首日：定价 83 美元，开盘市值冲到 2 万亿美元</span>
-  <span class="jump-sub"><span class="value plain">已上市</span><span class="jump-meta">交易代码 ANT · 交割预计 11-20 · 2026-11-19</span></span></span>
-  <svg class="i jump-arrow" aria-hidden="true"><use href="#i-chevron"/></svg>
-</button></li><li><button class="jump" type="button" data-jump="hot-2" aria-label="展开：Gemini 4 Neon：3 美元/百万输入，Google 的「日常主力」">
-  <span class="jump-no" aria-hidden="true">02</span>
-  <span class="jump-main"><span class="jump-title">Gemini 4 Neon：3 美元/百万输入，Google 的「日常主力」</span>
-  <span class="jump-sub"><span class="value plain">已发布</span><span class="jump-meta">分批推送 · 未注明截止日期 · 2026-11-18</span></span></span>
-  <svg class="i jump-arrow" aria-hidden="true"><use href="#i-chevron"/></svg>
-</button></li><li><button class="jump" type="button" data-jump="hot-3" aria-label="展开：Kling Image 4.0：原生 8K、单图 2000 字，一次出 10 张连贯组图">
-  <span class="jump-no" aria-hidden="true">03</span>
-  <span class="jump-main"><span class="jump-title">Kling Image 4.0：原生 8K、单图 2000 字，一次出 10 张连贯组图</span>
-  <span class="jump-sub"><span class="value plain">已上线</span><span class="jump-meta">网页版 + API · 未注明截止日期 · 2026-11-17</span></span></span>
-  <svg class="i jump-arrow" aria-hidden="true"><use href="#i-chevron"/></svg>
-</button></li>
-  </ul>
-</div><div class="board-panel" role="tabpanel" data-panel="free" hidden>
-  <ul class="board-list">
-<li><button class="jump" type="button" data-jump="free-1" aria-label="展开：SoSIM 香港新卡：33 港币拿最高 100GB，11 月 30 日截止">
-  <span class="jump-no" aria-hidden="true">01</span>
-  <span class="jump-main"><span class="jump-title">SoSIM 香港新卡：33 港币拿最高 100GB，11 月 30 日截止</span>
-  <span class="jump-sub"><span class="value">进行中</span><span class="jump-meta">截止 <time datetime="2026-11-30">2026-11-30</time>（需在活动期内激活） · 2026-11-20</span></span></span>
-  <svg class="i jump-arrow" aria-hidden="true"><use href="#i-chevron"/></svg>
-</button></li><li><button class="jump" type="button" data-jump="free-2" aria-label="展开：Eskimo：新用户领 250MB 全球 eSIM，111 个国家和地区、不过期">
-  <span class="jump-no" aria-hidden="true">02</span>
-  <span class="jump-main"><span class="jump-title">Eskimo：新用户领 250MB 全球 eSIM，111 个国家和地区、不过期</span>
-  <span class="jump-sub"><span class="value sage">长期免费</span><span class="jump-meta">仅限新用户 · 页面未注明截止日期 · 2026-11-20</span></span></span>
-  <svg class="i jump-arrow" aria-hidden="true"><use href="#i-chevron"/></svg>
-</button></li><li><button class="jump" type="button" data-jump="free-3" aria-label="展开：DeepSeek：模型自己联网搜、抓网页，不单独收费了">
-  <span class="jump-no" aria-hidden="true">03</span>
-  <span class="jump-main"><span class="jump-title">DeepSeek：模型自己联网搜、抓网页，不单独收费了</span>
-  <span class="jump-sub"><span class="value sage">长期生效</span><span class="jump-meta">2026-11-18 12:00 起 · 未注明截止日期 · 2026-11-18</span></span></span>
-  <svg class="i jump-arrow" aria-hidden="true"><use href="#i-chevron"/></svg>
-</button></li>
-  </ul>
-</div><div class="board-panel" role="tabpanel" data-panel="deal" hidden>
-  <ul class="board-list">
-<li><button class="jump" type="button" data-jump="deal-1" aria-label="展开：Adobe 黑五：Firefly Pro 首 6 个月 5 折、Pro Plus 6 折，12 月 6 日截止">
-  <span class="jump-no" aria-hidden="true">01</span>
-  <span class="jump-main"><span class="jump-title">Adobe 黑五：Firefly Pro 首 6 个月 5 折、Pro Plus 6 折，12 月 6 日截止</span>
-  <span class="jump-sub"><span class="value">进行中</span><span class="jump-meta">截止 <time datetime="2026-12-06">2026-12-06</time>（Firefly 两档） · 2026-11-20</span></span></span>
-  <svg class="i jump-arrow" aria-hidden="true"><use href="#i-chevron"/></svg>
-</button></li><li><button class="jump" type="button" data-jump="deal-2" aria-label="展开：PostNitro 黑五：Creator+ / Team+ 年付 40% off，11 月 30 日截止">
-  <span class="jump-no" aria-hidden="true">02</span>
-  <span class="jump-main"><span class="jump-title">PostNitro 黑五：Creator+ / Team+ 年付 40% off，11 月 30 日截止</span>
-  <span class="jump-sub"><span class="value">进行中</span><span class="jump-meta">截止 <time datetime="2026-11-30">2026-11-30</time> · 2026-11-20</span></span></span>
-  <svg class="i jump-arrow" aria-hidden="true"><use href="#i-chevron"/></svg>
-</button></li><li><button class="jump" type="button" data-jump="deal-3" aria-label="展开：Higgsfield 黑五 64% off：年付 Plus 33 美元/月，倒计时不到 5 小时">
-  <span class="jump-no" aria-hidden="true">03</span>
-  <span class="jump-main"><span class="jump-title">Higgsfield 黑五 64% off：年付 Plus 33 美元/月，倒计时不到 5 小时</span>
-  <span class="jump-sub"><span class="value">进行中</span><span class="jump-meta">仅倒计时未见日期 · 实测约 2026-11-20 08:00 结束 · 2026-11-20</span></span></span>
-  <svg class="i jump-arrow" aria-hidden="true"><use href="#i-chevron"/></svg>
-</button></li>
-  </ul>
-</div><div class="board-panel" role="tabpanel" data-panel="sites" hidden>
-  <ul class="board-list">
-<li><button class="jump" type="button" data-jump="sites-1" aria-label="展开：听雨：一个 HTML 文件的雨天院子，雨滴落在哪件器物上就响哪件">
-  <span class="jump-no" aria-hidden="true">01</span>
-  <span class="jump-main"><span class="jump-title">听雨：一个 HTML 文件的雨天院子，雨滴落在哪件器物上就响哪件</span>
-  <span class="jump-sub"><span class="value sage">在线 · 免费</span><span class="jump-meta">打开即玩，无需登录 · 2026-11-17</span></span></span>
-  <svg class="i jump-arrow" aria-hidden="true"><use href="#i-chevron"/></svg>
-</button></li><li><button class="jump" type="button" data-jump="sites-2" aria-label="展开：票根 Stub：给「AI 做的网页游戏」配一张生成小票">
-  <span class="jump-no" aria-hidden="true">02</span>
-  <span class="jump-main"><span class="jump-title">票根 Stub：给「AI 做的网页游戏」配一张生成小票</span>
-  <span class="jump-sub"><span class="value plain">在线 · 开源</span><span class="jump-meta">免费浏览，点开即玩 · 2026-11-14</span></span></span>
-  <svg class="i jump-arrow" aria-hidden="true"><use href="#i-chevron"/></svg>
-</button></li><li><button class="jump" type="button" data-jump="sites-3" aria-label="展开：SYNFIELD：20 个用手就能推得动的世界">
-  <span class="jump-no" aria-hidden="true">03</span>
-  <span class="jump-main"><span class="jump-title">SYNFIELD：20 个用手就能推得动的世界</span>
-  <span class="jump-sub"><span class="value sage">在线 · 免费</span><span class="jump-meta">无需安装、无需注册 · 2026-11-04</span></span></span>
-  <svg class="i jump-arrow" aria-hidden="true"><use href="#i-chevron"/></svg>
-</button></li>
-  </ul>
 </div>
-</section>
-<aside class="ad-slot" data-ad="top" aria-hidden="true"><!-- AdSense：顶部 / 首屏下横幅，留空时不占高度
-  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-       data-ad-slot="0000000000" data-ad-format="auto" data-full-width-responsive="true"></ins>
---></aside>
-<section class="module" id="hot" aria-labelledby="h-hot">
-  <header class="module-head">
-    <span class="module-badge" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-hot"/></svg></span>
-    <h2 id="h-hot">AI 热点 <span class="count">3 条</span></h2>
-    <p class="module-desc">当日 AI 圈最该知道的三件事，每条都能点开看原文与日期。</p>
-  </header>
+<section class="panel" id="panel-hot" data-panel="hot" role="tabpanel" aria-labelledby="tab-hot">
+  <h2 class="sr-only">AI 热点（3 条）</h2>
   <div class="track">
 <article class="card" id="card-hot-1" data-cat="hot" data-text="AI 热点 Anthropic 上市首日：定价 83 美元，开盘市值冲到 2 万亿美元 募资 813 亿美元、史上最大 IPO；开盘 111.50 美元，午后回落到 1.78 万亿，没能带起整个板块。 交易代码 ANT · 交割预计 11-20 已上市">
   <div class="card-head" role="button" tabindex="0" aria-expanded="false" aria-controls="detail-hot-1">
@@ -341,12 +256,8 @@
 </article>
   </div>
 </section>
-<section class="module" id="free" aria-labelledby="h-free">
-  <header class="module-head">
-    <span class="module-badge" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-gift"/></svg></span>
-    <h2 id="h-free">限免活动 <span class="count">3 条</span></h2>
-    <p class="module-desc">限免活动与长期免费额度，写明结束时间、适用地区与门槛。</p>
-  </header>
+<section class="panel" id="panel-free" data-panel="free" role="tabpanel" aria-labelledby="tab-free" hidden>
+  <h2 class="sr-only">限免活动（3 条）</h2>
   <div class="track">
 <article class="card" id="card-free-1" data-cat="free" data-text="限免活动 SoSIM 香港新卡：33 港币拿最高 100GB，11 月 30 日截止 活动期内 33 港币开卡，激活后选 50GB 香港套餐，前 30 天合计 100GB；另可免费转 eSIM、8 港币改号。 截止 <time datetime=＂2026-11-30＂>2026-11-30</time>（需在活动期内激活） 进行中">
   <div class="card-head" role="button" tabindex="0" aria-expanded="false" aria-controls="detail-free-1">
@@ -413,12 +324,8 @@
 </article>
   </div>
 </section>
-<section class="module" id="deal" aria-labelledby="h-deal">
-  <header class="module-head">
-    <span class="module-badge" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-tag"/></svg></span>
-    <h2 id="h-deal">折扣信息 <span class="count">3 条</span></h2>
-    <p class="module-desc">正在进行的折扣，标清力度、截止日与是否需要订阅。</p>
-  </header>
+<section class="panel" id="panel-deal" data-panel="deal" role="tabpanel" aria-labelledby="tab-deal" hidden>
+  <h2 class="sr-only">折扣信息（3 条）</h2>
   <div class="track">
 <article class="card" id="card-deal-1" data-cat="deal" data-text="折扣信息 Adobe 黑五：Firefly Pro 首 6 个月 5 折、Pro Plus 6 折，12 月 6 日截止 实测定价页：Firefly Pro 含 4000 credits、Pro Plus 含 10000；Creative Cloud Pro 另有首 3 个月 5 折。 截止 <time datetime=＂2026-12-06＂>2026-12-06</time>（Firefly 两档） 进行中">
   <div class="card-head" role="button" tabindex="0" aria-expanded="false" aria-controls="detail-deal-1">
@@ -485,12 +392,8 @@
 </article>
   </div>
 </section>
-<section class="module" id="sites" aria-labelledby="h-sites">
-  <header class="module-head">
-    <span class="module-badge" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-spark"/></svg></span>
-    <h2 id="h-sites">AI 应用展现 / 新兴站点 <span class="count">3 条</span></h2>
-    <p class="module-desc">用 AI 做出来的站点与互动作品，点开就能上手玩。</p>
-  </header>
+<section class="panel" id="panel-sites" data-panel="sites" role="tabpanel" aria-labelledby="tab-sites" hidden>
+  <h2 class="sr-only">AI 应用展现 / 新兴站点（3 条）</h2>
   <div class="track">
 <article class="card" id="card-sites-1" data-cat="sites" data-text="AI 应用展现 / 新兴站点 听雨：一个 HTML 文件的雨天院子，雨滴落在哪件器物上就响哪件 点一下开始下雨，缸、竹筒、铜钟各发各的声音，合起来是一首循环曲；整院状态能写成一行网址分享。 打开即玩，无需登录 在线 · 免费">
   <div class="card-head" role="button" tabindex="0" aria-expanded="false" aria-controls="detail-sites-1">
@@ -557,13 +460,17 @@
 </article>
   </div>
 </section>
+<aside class="ad-slot" data-ad="top" aria-hidden="true"><!-- AdSense：板块之间 / 页尾上方横幅，留空时不占高度
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+       data-ad-slot="0000000000" data-ad-format="auto" data-full-width-responsive="true"></ins>
+--></aside>
 <p class="about-line" id="about">关于 · 每天挑 AI 热点、限免、折扣与一个用 AI 做出来的站点，每条都附原链接与日期，不编数字。</p>
 </main>
 <div class="rail-dock">
   <a class="rail-tg" href="https://t.me/+aAqP0DbW_YMxMmNh" target="_blank" rel="noopener"
      aria-label="加入 Telegram 交流群" title="加入 Telegram 交流群"><svg class="i" aria-hidden="true"><use href="#i-tg"/></svg><span>交流</span></a>
   <nav class="rail" aria-label="板块导航">
-<a href="#hot" data-target="hot" aria-label="AI 热点" title="AI 热点"><svg class="i" aria-hidden="true"><use href="#i-hot"/></svg><span>热点</span></a><a href="#free" data-target="free" aria-label="限免活动" title="限免活动"><svg class="i" aria-hidden="true"><use href="#i-gift"/></svg><span>限免</span></a><a href="#deal" data-target="deal" aria-label="折扣信息" title="折扣信息"><svg class="i" aria-hidden="true"><use href="#i-tag"/></svg><span>折扣</span></a><a href="#sites" data-target="sites" aria-label="AI 应用展现 / 新兴站点" title="AI 应用展现 / 新兴站点"><svg class="i" aria-hidden="true"><use href="#i-spark"/></svg><span>应用</span></a>
+<a href="#panel-hot" data-target="hot" aria-label="AI 热点" title="AI 热点"><svg class="i" aria-hidden="true"><use href="#i-hot"/></svg><span>热点</span></a><a href="#panel-free" data-target="free" aria-label="限免活动" title="限免活动"><svg class="i" aria-hidden="true"><use href="#i-gift"/></svg><span>限免</span></a><a href="#panel-deal" data-target="deal" aria-label="折扣信息" title="折扣信息"><svg class="i" aria-hidden="true"><use href="#i-tag"/></svg><span>折扣</span></a><a href="#panel-sites" data-target="sites" aria-label="AI 应用展现 / 新兴站点" title="AI 应用展现 / 新兴站点"><svg class="i" aria-hidden="true"><use href="#i-spark"/></svg><span>应用</span></a>
     <a href="/game/" aria-label="方块小院 · 网页小游戏" title="方块小院 · 网页小游戏"><svg class="i" aria-hidden="true"><use href="#i-game"/></svg><span>小院</span></a>
     <div class="rail-sep" aria-hidden="true"></div>
     <a class="rail-top" href="#top" aria-label="回到顶部" title="回到顶部"><svg class="i" aria-hidden="true"><use href="#i-arrow-up"/></svg><span>顶部</span></a>

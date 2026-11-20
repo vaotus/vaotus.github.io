@@ -1,9 +1,8 @@
 /* AI早报 · 页面交互（原生 JS，无依赖）
-   1 速览板标签页切换
-   2 卡片折叠：单开互斥 + 点击空白处收起 + 跳转卡定位展开
-   3 右侧滑轨当前板块高亮
-   4 搜索弹层：关键词 + 板块筛选
-   5 深链接 #card-xxx 直接展开
+   1 板块标签：四等分页签切换面板，右侧滑轨与顶栏胶囊同步
+   2 卡片折叠：单开互斥 + 点击空白处收起
+   3 搜索弹层：关键词 + 板块筛选
+   4 深链接 #panel-x / #card-xxx 直接定位
 */
 (function () {
   "use strict";
@@ -11,11 +10,12 @@
   var docEl = document.documentElement;
   docEl.classList.add("js");
 
-  /* ------------------------------------------------ 1 速览板标签页 */
+  /* ------------------------------------------- 1 板块标签（四等分切换） */
   var tabs = Array.prototype.slice.call(document.querySelectorAll(".board-tab"));
-  var panels = Array.prototype.slice.call(document.querySelectorAll(".board-panel"));
+  var panels = Array.prototype.slice.call(document.querySelectorAll(".panel[data-panel]"));
+  var railLinks = Array.prototype.slice.call(document.querySelectorAll(".rail a[data-target]"));
 
-  function showTab(name) {
+  function showTab(name, scroll) {
     tabs.forEach(function (t) {
       var on = t.getAttribute("data-tab") === name;
       t.classList.toggle("on", on);
@@ -25,23 +25,39 @@
     panels.forEach(function (p) {
       p.hidden = p.getAttribute("data-panel") !== name;
     });
+    railLinks.forEach(function (a) {
+      a.classList.toggle("on", a.getAttribute("data-target") === name);
+    });
+    if (scroll) {
+      var target = document.getElementById("panel-" + name);
+      if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   }
 
+  function tabNameFor(el) { return el && el.getAttribute("data-tab"); }
+
   tabs.forEach(function (t) {
-    t.addEventListener("click", function () {
-      showTab(t.getAttribute("data-tab"));
-    });
+    t.addEventListener("click", function () { showTab(tabNameFor(t), false); });
     t.addEventListener("keydown", function (e) {
       var i = tabs.indexOf(t);
       if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
         e.preventDefault();
         var n = (i + (e.key === "ArrowRight" ? 1 : -1) + tabs.length) % tabs.length;
         tabs[n].focus();
-        showTab(tabs[n].getAttribute("data-tab"));
+        showTab(tabNameFor(tabs[n]), false);
       }
     });
   });
-  if (tabs.length) showTab(tabs[0].getAttribute("data-tab"));
+
+  // 右侧滑轨与顶栏胶囊：先切到对应板块，再滚到该板块顶部
+  railLinks.forEach(function (a) {
+    a.addEventListener("click", function (e) {
+      e.preventDefault();
+      showTab(a.getAttribute("data-target"), true);
+    });
+  });
+
+  if (tabs.length) showTab(tabNameFor(tabs[0]), false);
 
   /* --------------------------------------------- 2 卡片折叠 + 空白处收起 */
   var cards = Array.prototype.slice.call(document.querySelectorAll(".card"));
@@ -89,37 +105,6 @@
     closeAll();
   });
 
-  // 速览板里的跳转卡：滚到对应卡片并展开
-  Array.prototype.slice.call(document.querySelectorAll(".jump")).forEach(function (j) {
-    j.addEventListener("click", function () {
-      var id = j.getAttribute("data-jump");
-      var target = id && document.getElementById("card-" + id);
-      if (!target) return;
-      openCard(target);
-      target.scrollIntoView({ behavior: "smooth", block: "center" });
-      target.classList.remove("flash");
-      void target.offsetWidth;
-      target.classList.add("flash");
-      setTimeout(function () { target.classList.remove("flash"); }, 1200);
-    });
-  });
-
-  /* --------------------------------------------- 3 滑轨高亮当前板块 */
-  var railLinks = Array.prototype.slice.call(document.querySelectorAll(".rail a[data-target]"));
-  var modules = Array.prototype.slice.call(document.querySelectorAll("section.module"));
-  if ("IntersectionObserver" in window && railLinks.length && modules.length) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        if (!en.isIntersecting) return;
-        var id = en.target.id;
-        railLinks.forEach(function (a) {
-          a.classList.toggle("on", a.getAttribute("data-target") === id);
-        });
-      });
-    }, { rootMargin: "-45% 0px -45% 0px", threshold: 0 });
-    modules.forEach(function (m) { io.observe(m); });
-  }
-
   /* ------------------------------------------------- 4 搜索弹层 */
   var modal = document.getElementById("search-modal");
   var q = document.getElementById("q");
@@ -136,9 +121,10 @@
       c.hidden = !show;
       if (show) visible++;
     });
-    modules.forEach(function (m) {
-      var any = m.querySelectorAll(".card:not([hidden])").length > 0;
-      m.classList.toggle("is-empty", !any);
+    // 面板里没有命中的卡片就把它整个收起（不再留一块空标题）
+    panels.forEach(function (p) {
+      var any = p.querySelectorAll(".card:not([hidden])").length > 0;
+      p.classList.toggle("is-empty", !any);
     });
     document.body.classList.toggle("filtering", visible === 0);
     if (resultEl) resultEl.textContent = visible;
@@ -217,12 +203,13 @@
   function openFromHash() {
     var h = location.hash.replace(/^#/, "");
     if (!h) return;
+    var pm = /^panel-(.+)$/.exec(h);
+    if (pm) { showTab(pm[1], false); return; }
     var card = document.getElementById(h);
     if (card && card.classList.contains("card")) {
+      var owner = card.closest(".panel");
+      if (owner) showTab(owner.getAttribute("data-panel"), false);
       openCard(card);
-    } else if (/^card-/.test(h)) {
-      var c2 = document.getElementById(h);
-      if (c2) openCard(c2);
     }
   }
   window.addEventListener("hashchange", openFromHash);
