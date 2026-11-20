@@ -60,7 +60,7 @@ html {
   scroll-padding-top: 70px;
   -webkit-text-size-adjust: 100%;
 }
-html, body { overflow-x: clip; }
+html, body { max-width: 100%; overflow-x: clip; }
 
 body {
   margin: 0;
@@ -87,9 +87,13 @@ main.shell { flex: 1 0 auto; }
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: var(--shell);
+  max-width: 100%;
+  box-sizing: border-box;
   margin: 0 auto;
   padding: 0 26px;
+}
+@media (min-width: 1081px) {
+  .shell { max-width: var(--shell); }
 }
 
 .i { display: block; flex: none; }
@@ -332,6 +336,8 @@ a.stats-pill:hover { border-color: var(--accent-line); }
 
 /* 顶部速览：5 条迷你条，每条约 52–62px，点一下滚到下方完整卡片 */
 .minis {
+  min-width: 0;
+  max-width: 100%;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -341,6 +347,8 @@ a.stats-pill:hover { border-color: var(--accent-line); }
 .mini {
   display: flex;
   align-items: center;
+  min-width: 0;
+  max-width: 100%;
   gap: 8px;
   padding: 7px 10px;
   border: 1px solid var(--line);
@@ -350,7 +358,7 @@ a.stats-pill:hover { border-color: var(--accent-line); }
 }
 .mini:hover { border-color: var(--accent-line); }
 .mini:active { transform: scale(.995); }
-.mini-main { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.mini-main { flex: 1 1 auto; min-width: 0; max-width: 100%; display: flex; flex-direction: column; gap: 2px; }
 /* 速览条：标题与副行都只占一行、超出用省略号，5 条高度完全一致 */
 .mini-title {
   display: block;
@@ -381,13 +389,13 @@ body.has-filter .slider { display: none; }
    标签栏下面直接就是卡片，中间只留一道呼吸缝。 */
 /* 两个精选区块：手机上一块一块显示（点顶部标签切换，不做横向滑动，
    免得跟上下滚动打架），桌面端左右并列 */
-.panes { display: block; }
-.panes > .panel { min-width: 0; }
+.panes { display: block; min-width: 0; max-width: 100%; }
+.panes > .panel { min-width: 0; max-width: 100%; }
 .panel[hidden] { display: none; }
 .panel { padding: 10px 0 6px; }
 
 /* 下方「当日全部条目」：一行小说明 + 四个板块分组 */
-.fullflow { margin-top: 12px; border-top: 1px solid var(--line-soft); padding-top: 12px; }
+.fullflow { min-width: 0; max-width: 100%; margin-top: 12px; border-top: 1px solid var(--line-soft); padding-top: 12px; }
 /* 存档页没有上面的精选页签，这一段直接接标题 */
 .fullflow--plain { margin-top: 6px; border-top: 0; padding-top: 0; }
 .fullflow-head {
@@ -398,7 +406,7 @@ body.has-filter .slider { display: none; }
 }
 
 /* 全量区里的板块分组：一行很轻的小标题 */
-.group { margin-bottom: 10px; scroll-margin-top: 74px; }
+.group { min-width: 0; max-width: 100%; margin-bottom: 10px; scroll-margin-top: 74px; }
 .group:last-child { margin-bottom: 0; }
 .group-head {
   display: flex;
@@ -432,6 +440,8 @@ body.has-filter .slider { display: none; }
 
 .track {
   display: grid;
+  min-width: 0;
+  max-width: 100%;
   grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
   gap: 8px;
   align-items: stretch;
@@ -440,6 +450,8 @@ body.has-filter .slider { display: none; }
 
 .card {
   position: relative;
+  min-width: 0;
+  max-width: 100%;;
   border-radius: var(--r-lg);
   border: 1px solid var(--line);
   background: var(--card);
@@ -1008,14 +1020,8 @@ footer {
   .panes > .panel { width: auto; min-width: 0; padding: 12px 0 4px; overflow: visible; }
   /* 桌面两栏都在，不受手机端的 hidden 影响 */
   .panes > .panel[hidden] { display: block; }
-  /* 左栏「今日简报」干净放 5 条，不做任何横向滚动；
-     横滑能力只留在右栏「本周热门」自己身上（内容超出时它自己滑，不动整页）。 */
-  .panes > .panel + .panel {
-    overflow-x: auto;
-    overflow-y: hidden;
-    scrollbar-width: none;
-  }
-  .panes > .panel + .panel::-webkit-scrollbar { display: none; }
+  /* 双栏都不做横向滚动，整页锁死不出现可拖动 */
+  .panes > .panel { overflow: visible; }
   .panel > h2.sr-only {
     position: static;
     width: auto; height: auto;
