@@ -228,18 +228,20 @@ a.stats-pill:hover { border-color: var(--accent-line); }
   color: var(--ink-2);
   letter-spacing: .01em;
 }
-.hero-tg {
+/* 标语行上的两枚官方品牌徽标（Telegram 天蓝圆底 / YouTube 红底），
+   与一行小字齐平，不参与行高计算 */
+.hero-badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 20px; height: 20px;
   flex: none;
-  border-radius: 50%;
-  border: 1px solid var(--accent-line);
-  background: var(--card);
-  color: var(--accent-deep);
+  border: 0;
+  background: transparent;
+  transition: transform .15s ease, filter .15s ease;
 }
-.hero-tg svg { width: 12px; height: 12px; }
+.hero-badge .brand-i { width: 20px; height: 20px; }
+.hero-badge:hover { transform: translateY(-1px); filter: brightness(1.05); }
 .hero-meta {
   margin: 0 0 0 auto;
   display: inline-flex;
@@ -265,22 +267,25 @@ a.stats-pill:hover { border-color: var(--accent-line); }
   margin: 2px 0 6px;
   border-bottom: 1px solid var(--line-soft);
 }
+/* 四个板块标签等分整行（手机 / 桌面同一套），文字与角标各自居中 */
 .board-tabs {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   align-items: stretch;
-  gap: 4px;
+  gap: 0;
   border-bottom: 1px solid var(--line-soft);
   margin-bottom: 9px;
-  overflow-x: auto;
-  scrollbar-width: none;
 }
-.board-tabs::-webkit-scrollbar { display: none; }
 .board-tab {
   position: relative;
-  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-width: 0;
   border: 0;
   background: transparent;
-  padding: 6px 10px 8px;
+  padding: 7px 2px 9px;
   font-size: 13px;
   line-height: 1.4;
   color: var(--ink-3);
@@ -292,13 +297,17 @@ a.stats-pill:hover { border-color: var(--accent-line); }
   font-size: 10px;
   font-weight: 600;
   color: var(--ink-4);
-  margin-left: 4px;
+  margin-left: 0;
 }
+.board-tab:first-child { border-radius: 8px 0 0 0; }
 .board-tab::after {
   content: "";
   position: absolute;
-  left: 10px; right: 10px; bottom: -1px;
+  left: 50%;
+  bottom: -1px;
+  width: 26px;
   height: 2px;
+  transform: translateX(-50%);
   background: transparent;
   border-radius: 2px;
 }
@@ -867,18 +876,20 @@ footer {
 .foot-brand .brand-mark { width: 18px; height: 18px; border-radius: 6px; }
 .foot-brand .brand-mark img { width: 100%; height: 100%; }
 .foot-up { white-space: nowrap; }
-.foot-badges { display: inline-flex; align-items: center; gap: 6px; margin-left: auto; }
+.foot-badges { display: inline-flex; align-items: center; gap: 8px; margin-left: auto; }
+/* 页脚两枚官方品牌徽标：Telegram 天蓝圆底、YouTube 红底，原色不描边，
+   视觉体量与一行 11.6px 的文字齐平（手机上略小一号） */
 .foot-badge {
-  width: 24px; height: 24px;
+  width: 26px; height: 26px;
   flex: none;
   display: grid; place-items: center;
-  border-radius: 50%;
-  border: 1px solid var(--line);
-  background: var(--card);
+  border: 0;
+  background: transparent;
   color: var(--ink-2);
+  transition: transform .15s ease, filter .15s ease;
 }
-.foot-badge svg { width: 13px; height: 13px; }
-.foot-badge:hover { border-color: var(--accent-line); color: var(--accent-deep); }
+.foot-badge .brand-i { width: 26px; height: 26px; }
+.foot-badge:hover { transform: translateY(-1px); filter: brightness(1.04); }
 .foot-top {
   color: var(--ink-3);
   white-space: nowrap;
@@ -990,30 +1001,34 @@ footer {
 
   /* 首屏一行：标语 + TG + 更新时间 */
   .hero {
-    gap: 7px;
+    gap: 6px;
     padding: 4px 0 0;
     flex-wrap: nowrap;
   }
   .hero-tag {
     flex: 1 1 auto;
     min-width: 0;
-    font-size: 11.6px;
+    font-size: 11.2px;
+    letter-spacing: 0;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
-  .hero-tg { width: 18px; height: 18px; }
-  .hero-tg svg { width: 10px; height: 10px; }
+  .hero-badge { width: 18px; height: 18px; }
+  .hero-badge .brand-i { width: 18px; height: 18px; }
   .hero-meta { margin: 0; flex: 0 0 auto; font-size: 10px; gap: 4px; }
   .hero-meta .dot { width: 4px; height: 4px; }
   .hm-long { display: none; }
   .hm-short { display: inline; }
+  /* 手机这一行挤：日期只留 MM-DD，省出「更新」两个字给两枚徽标 */
+  .hm-word { display: none; }
 
   /* 速览板 */
   .board { margin: 1px 0 4px; }
-  .board-tabs { gap: 2px; margin-bottom: 7px; }
-  .board-tab { padding: 5px 8px 7px; font-size: 12.4px; }
+  .board-tabs { margin-bottom: 7px; }
+  .board-tab { padding: 5px 0 7px; font-size: 12.2px; gap: 4px; letter-spacing: -.01em; }
   .board-tab b { font-size: 9.5px; }
+  .board-tab::after { width: 22px; }
   .board-list { gap: 6px; }
   .jump { padding: 6px 9px; gap: 7px; }
   .jump-title { font-size: 12.4px; }
@@ -1074,9 +1089,9 @@ footer {
   .foot-brand { font-size: 11.2px; gap: 5px; }
   .foot-brand .brand-mark { width: 16px; height: 16px; }
   .foot-up { font-size: 10.4px; overflow: hidden; text-overflow: ellipsis; }
-  .foot-badges { gap: 4px; }
-  .foot-badge { width: 22px; height: 22px; }
-  .foot-badge svg { width: 12px; height: 12px; }
+  .foot-badges { gap: 5px; }
+  .foot-badge { width: 24px; height: 24px; }
+  .foot-badge .brand-i { width: 24px; height: 24px; }
   .foot-top { display: none; }
   .about-line { font-size: 11px; margin-top: 10px; }
 }
