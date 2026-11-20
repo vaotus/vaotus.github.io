@@ -276,7 +276,7 @@ a.stats-pill:hover { border-color: var(--accent-line); }
 }
 .board-tabs {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   align-items: stretch;
   gap: 0;
   border-bottom: 1px solid var(--line-soft);
@@ -326,6 +326,48 @@ a.stats-pill:hover { border-color: var(--accent-line); }
 .panel { padding: 10px 0 6px; }
 .panel[hidden] { display: none; }
 .panel.is-empty { display: none; }
+
+/* 下方「当日全部条目」：一行小说明 + 四个板块分组 */
+.fullflow { margin-top: 12px; border-top: 1px solid var(--line-soft); padding-top: 12px; }
+/* 存档页没有上面的精选页签，这一段直接接标题 */
+.fullflow--plain { margin-top: 6px; border-top: 0; padding-top: 0; }
+.fullflow-head {
+  margin: 0 0 10px;
+  font-size: 11.5px;
+  letter-spacing: .06em;
+  color: var(--ink-4);
+}
+
+/* 全量区里的板块分组：一行很轻的小标题 */
+.group { margin-bottom: 12px; scroll-margin-top: 74px; }
+.group:last-child { margin-bottom: 0; }
+.group-head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 7px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  color: var(--ink-3);
+}
+.group-badge {
+  display: grid;
+  place-items: center;
+  width: 18px; height: 18px;
+  border-radius: 6px;
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-line);
+  color: var(--accent-deep);
+}
+.group-badge svg { width: 12px; height: 12px; }
+.group-n {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--ink-4);
+  letter-spacing: 0;
+}
 
 /* -------------------------------------------------- 6 卡片 + 折叠详情 */
 
@@ -403,6 +445,23 @@ a.stats-pill:hover { border-color: var(--accent-line); }
   color: var(--ink);
   overflow-wrap: anywhere;
 }
+/* 卡片标题前的分类小标签：一眼看出这条属于哪个板块 */
+.cat-tag {
+  display: inline-block;
+  margin-right: 5px;
+  padding: 0 5px;
+  border-radius: 5px;
+  border: 1px solid var(--line);
+  background: var(--paper-deep);
+  color: var(--ink-3);
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.6;
+  letter-spacing: .02em;
+  vertical-align: 1px;
+  white-space: nowrap;
+}
+
 .value {
   flex: 0 0 auto;
   max-width: 45%;
@@ -895,10 +954,11 @@ footer {
     padding: 4px 0 0;
     flex-wrap: nowrap;
   }
+  /* 标语跟着屏宽缩一点字号（360px 及以下也能整句放下，不靠省略号） */
   .hero-tag {
     flex: 1 1 auto;
     min-width: 0;
-    font-size: 11.2px;
+    font-size: clamp(10px, 2.9vw, 11.2px);
     letter-spacing: 0;
     white-space: nowrap;
     overflow: hidden;
@@ -927,6 +987,7 @@ footer {
   .row1 { gap: 6px; }
   .row1 h3 { font-size: 12.9px; line-height: 1.42; }
   .value { font-size: 9.8px; padding: 0 5px; max-width: 40%; }
+  .cat-tag { font-size: 9px; padding: 0 4px; margin-right: 4px; line-height: 1.7; }
   .row2 { font-size: 11.5px; line-height: 1.5; margin-top: 3px; }
   .row3 { font-size: 10.4px; gap: 4px; margin-top: 5px; }
   .row3 .go { flex: 0 0 auto; padding: 2px 7px; border: 1px solid var(--accent-line); border-radius: 999px; background: var(--accent-soft); font-size: 10px; }
