@@ -57,7 +57,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 72px;
+  scroll-padding-top: 108px;
   -webkit-text-size-adjust: 100%;
 }
 html, body { overflow-x: clip; }
@@ -271,7 +271,11 @@ a.stats-pill:hover { border-color: var(--accent-line); }
 /* 标签栏：四个板块等分整行（手机 / 桌面同一套），文字与角标各自居中。
    底色是纸色实心块，压住下面的卡片，滚动或切换时不会透出内容。 */
 .board {
+  position: sticky;
+  top: var(--topbar);
+  z-index: 50;
   margin: 2px 0 0;
+  padding-top: 2px;
   background: var(--paper);
 }
 .board-tabs {
@@ -320,7 +324,47 @@ a.stats-pill:hover { border-color: var(--accent-line); }
 .board-tab.on b { color: var(--accent); }
 .board-tab.on::after { background: var(--accent); }
 
-/* --------------------------------------- 5 板块面板（标签页的内容区） */
+/* --------------------------------------- 5 板块面板（页签的内容区） */
+
+/* 顶部速览：5 条迷你条，每条约 52–62px，点一下滚到下方完整卡片 */
+.minis {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+}
+.mini {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--card);
+  transition: border-color .16s ease, transform .16s ease;
+}
+.mini:hover { border-color: var(--accent-line); }
+.mini:active { transform: scale(.995); }
+.mini-main { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.mini-title {
+  font-size: 12.9px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--ink);
+  letter-spacing: .002em;
+}
+.mini-sub {
+  font-size: 10.8px;
+  line-height: 1.3;
+  color: var(--ink-3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.mini-go { flex: none; color: var(--ink-4); font-size: 16px; line-height: 1; }
+/* 搜索时把速览条收起来，只留命中的卡片 */
+body.has-filter .slider { display: none; }
 /* 标签已经写明了板块名与条数，面板里不再重复一行小标题：
    标签栏下面直接就是卡片，中间只留一道呼吸缝。 */
 /* 横滑区外壳：右侧放一枚「看本周热门」的小圆钮（只在手机出现） */
@@ -975,7 +1019,7 @@ footer {
 @media (max-width: 768px) {
   :root { --topbar: 52px; }
 
-  html { scroll-padding-top: 62px; }
+  html { scroll-padding-top: 104px; }
   .shell { padding: 0 46px 4px 14px; }
 
   /* 顶栏：品牌 + 搜索圆钮 + 三枚胶囊，一行放下 */
@@ -1026,8 +1070,12 @@ footer {
   .board-tab { padding: 6px 0 8px; font-size: 12.2px; gap: 4px; letter-spacing: -.01em; }
   .board-tab b { font-size: 9.5px; }
   .board-tab::after { width: 22px; }
-  .panel { padding: 8px 0 4px; }
-  .pane-next { display: grid; place-items: center; right: -4px; }
+  .panel { padding: 8px 0 6px; }
+  .pane-next { display: grid; place-items: center; right: -4px; top: 42%; }
+  .mini { padding: 6px 9px; gap: 7px; border-radius: 11px; }
+  .mini-title { font-size: 12.4px; line-height: 1.34; }
+  .mini-sub { font-size: 10.4px; }
+  .minis { gap: 5px; }
 
   /* 卡片：手机单列，行距压紧 */
   .track { display: flex; flex-direction: column; gap: 6px; }

@@ -165,6 +165,22 @@
     closeAll();
   });
 
+  // 顶部速览条：点一下滚到下方完整卡片并展开（不就地展开）
+  Array.prototype.slice.call(document.querySelectorAll(".mini[data-card]")).forEach(function (m) {
+    m.addEventListener("click", function (e) {
+      var id = m.getAttribute("data-card");
+      var card = id && document.getElementById("card-" + id);
+      if (!card) return;
+      e.preventDefault();
+      openCard(card);
+      card.scrollIntoView({ behavior: "smooth", block: "center" });
+      card.classList.remove("flash");
+      void card.offsetWidth;
+      card.classList.add("flash");
+      setTimeout(function () { card.classList.remove("flash"); }, 1200);
+    });
+  });
+
   /* ------------------------------------------------- 4 搜索弹层 */
   var modal = document.getElementById("search-modal");
   var q = document.getElementById("q");
@@ -187,6 +203,7 @@
       p.classList.toggle("is-empty", !any);
     });
     document.body.classList.toggle("filtering", visible === 0);
+    document.body.classList.toggle("has-filter", !!text || state.cat !== "all");
     if (resultEl) resultEl.textContent = visible;
     scheduleSize(240);
   }
