@@ -992,6 +992,31 @@ footer {
   .shell { padding-right: calc(26px + var(--rail)); }
 }
 
+/* 桌面端：两个精选区块左右并列，同屏看完，不再切换也不再横滑 */
+@media (min-width: 860px) {
+  .board { display: none; }
+  .panes {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    overflow: visible;
+    height: auto !important;
+  }
+  .panes > .panel { width: auto; min-width: 0; padding: 12px 0 4px; }
+  .panel > h2.sr-only {
+    position: static;
+    width: auto; height: auto;
+    margin: 0 0 8px; padding: 0;
+    clip: auto; clip-path: none;
+    white-space: normal; overflow: visible;
+    font-family: var(--serif);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: .06em;
+    color: var(--ink);
+  }
+}
+
 @media (max-width: 1080px) {
   .rail-dock { right: 6px; }
   .shell { padding-right: calc(24px + var(--rail)); }

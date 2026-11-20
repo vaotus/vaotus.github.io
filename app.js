@@ -45,8 +45,13 @@
   }
 
   // 把横滑外框的高度贴合到当前页的真实高度：短的那页不留空、展开详情也不会被裁
+  function isWide() {
+    return window.matchMedia && window.matchMedia("(min-width: 860px)").matches;
+  }
+
   function sizePanes() {
     if (!panes) return;
+    if (isWide()) { panes.style.height = ""; return; }
     var p = panels[activeIndex()];
     if (!p) return;
     panes.style.height = "auto";
@@ -63,7 +68,7 @@
   function goTo(name, smooth, scrollPage) {
     setActive(name);
     var idx = panelIndex(name);
-    if (panes) {
+    if (panes && panes.scrollWidth > panes.clientWidth + 4) {
       panes.scrollTo({ left: idx * panes.clientWidth, behavior: smooth ? "smooth" : "auto" });
       scheduleSize(smooth ? 380 : 0);
     }
