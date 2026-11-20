@@ -1125,3 +1125,84 @@ body {
   text-align: center;
   overflow: hidden;
 }
+
+/* ---------- 页脚：版权行 + 两个小徽标（对齐 vvotzs 的紧凑徽标样式） ---------- */
+
+.footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+  margin: 0;
+  padding: 0;
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--ink-faint);
+}
+
+.footer-row .foot-meta { flex: 0 1 auto; }
+
+.site-footer .footer-links {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  margin-left: auto;
+  padding: 0;
+  flex-direction: row;
+}
+
+.site-footer a.foot-badge,
+.site-footer a.foot-badge:hover,
+.site-footer a.foot-badge:focus-visible {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  min-height: 0;
+  padding: 0;
+  border-radius: 999px;
+  text-decoration: none;
+  line-height: 1;
+}
+
+.site-footer a.foot-badge--tg {
+  background: #EFF9FF;
+  border: 1px solid rgba(42, 171, 238, 0.26);
+  color: #0B79A8;
+}
+
+.site-footer a.foot-badge--tg:hover,
+.site-footer a.foot-badge--tg:focus-visible {
+  background: #E2F4FF;
+  border-color: rgba(42, 171, 238, 0.5);
+  color: #0A6C96;
+}
+
+.site-footer a.foot-badge--yt {
+  background: #FFF1F1;
+  border: 1px solid rgba(212, 45, 45, 0.24);
+  color: #C4302B;
+}
+
+.site-footer a.foot-badge--yt:hover,
+.site-footer a.foot-badge--yt:focus-visible {
+  background: #FFE6E6;
+  border-color: rgba(212, 45, 45, 0.48);
+  color: #A82620;
+}
+
+.site-footer a.foot-badge svg {
+  width: 14px;
+  height: 14px;
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .footer-row { font-size: 11.5px; gap: 4px 8px; }
+  .site-footer a.foot-badge { width: 24px; height: 24px; }
+  .site-footer a.foot-badge svg { width: 13px; height: 13px; }
+  .site-footer .footer-links { width: auto; flex-direction: row; align-items: center; margin-left: auto; }
+}
