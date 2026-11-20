@@ -719,6 +719,9 @@ body.has-filter .slider { display: none; }
 .card.open .detail { grid-template-rows: 1fr; }
 .detail-in { overflow: hidden; min-height: 0; }
 .detail-body {
+  cursor: auto;
+  user-select: text;
+  -webkit-user-select: text;
   padding: 9px 11px 11px 41px;
   font-size: 12.6px;
   line-height: 1.75;
