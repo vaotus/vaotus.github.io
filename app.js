@@ -96,18 +96,23 @@
 
   cards.forEach(function (card) {
     var head = card.querySelector(".card-head");
-    if (!head) return;
-    head.addEventListener("click", function (e) {
-      // 卡片头部里的直达链接与「详情」按钮各自处理，不重复触发展开
-      if (e.target.closest && e.target.closest("a.go")) return;
+
+    // 整张卡都可点：已展开再点一次就收起（链接与正在选中的文字除外）
+    card.addEventListener("click", function (e) {
+      if (e.target.closest && e.target.closest("a")) return;
+      var sel = window.getSelection && window.getSelection();
+      if (sel && String(sel).length > 0) return;
       openCard(card.classList.contains("open") ? null : card);
     });
-    head.addEventListener("keydown", function (e) {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        openCard(card.classList.contains("open") ? null : card);
-      }
-    });
+
+    if (head) {
+      head.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          openCard(card.classList.contains("open") ? null : card);
+        }
+      });
+    }
   });
 
   // 点空白处（卡片与详情之外）收起全部展开的卡片
