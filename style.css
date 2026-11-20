@@ -57,7 +57,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 108px;
+  scroll-padding-top: 70px;
   -webkit-text-size-adjust: 100%;
 }
 html, body { overflow-x: clip; }
@@ -278,11 +278,8 @@ a.stats-pill:hover { border-color: var(--accent-line); }
 /* 标签栏：四个板块等分整行（手机 / 桌面同一套），文字与角标各自居中。
    底色是纸色实心块，压住下面的卡片，滚动或切换时不会透出内容。 */
 .board {
-  position: sticky;
-  top: var(--topbar);
-  z-index: 50;
+  position: static;
   margin: 2px 0 0;
-  padding-top: 2px;
   background: var(--paper);
 }
 .board-tabs {
@@ -401,7 +398,7 @@ body.has-filter .slider { display: none; }
 }
 
 /* 全量区里的板块分组：一行很轻的小标题 */
-.group { margin-bottom: 12px; scroll-margin-top: 74px; }
+.group { margin-bottom: 10px; scroll-margin-top: 74px; }
 .group:last-child { margin-bottom: 0; }
 .group-head {
   display: flex;
@@ -436,7 +433,7 @@ body.has-filter .slider { display: none; }
 .track {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
-  gap: 10px;
+  gap: 8px;
   align-items: stretch;
   min-width: 0;
 }
@@ -467,8 +464,8 @@ body.has-filter .slider { display: none; }
 
 .card-head {
   display: flex;
-  gap: 9px;
-  padding: 11px 13px 10px;
+  gap: 8px;
+  padding: 9px 11px 8px;
   cursor: pointer;
   align-items: flex-start;
 }
@@ -477,7 +474,7 @@ body.has-filter .slider { display: none; }
 .card-no {
   flex: none;
   margin-top: 1px;
-  width: 24px; height: 24px;
+  width: 22px; height: 22px;
   display: grid; place-items: center;
   border-radius: 7px;
   background: var(--paper-deep);
@@ -498,10 +495,10 @@ body.has-filter .slider { display: none; }
 }
 .row1 h3 {
   margin: 0;
-  font-size: 14px;
+  font-size: 13.4px;
   font-weight: 600;
   letter-spacing: 0;
-  line-height: 1.5;
+  line-height: 1.45;
   flex: 1 1 auto;
   min-width: 0;
   color: var(--ink);
@@ -542,19 +539,19 @@ body.has-filter .slider { display: none; }
 .value.plain { color: var(--ink-2); background: var(--paper-deep); border-color: var(--line); }
 
 .row2 {
-  margin: 5px 0 0;
-  font-size: 12.4px;
-  line-height: 1.6;
+  margin: 4px 0 0;
+  font-size: 11.9px;
+  line-height: 1.5;
   color: var(--ink-2);
   overflow-wrap: anywhere;
 }
 
 .row3 {
-  margin-top: 7px;
+  margin-top: 5px;
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 11.3px;
+  font-size: 10.9px;
   color: var(--ink-3);
   min-width: 0;
   flex-wrap: wrap;
@@ -609,9 +606,9 @@ body.has-filter .slider { display: none; }
 .card.open .detail { grid-template-rows: 1fr; }
 .detail-in { overflow: hidden; min-height: 0; }
 .detail-body {
-  padding: 2px 13px 13px 46px;
-  font-size: 13.2px;
-  line-height: 1.85;
+  padding: 9px 11px 11px 41px;
+  font-size: 12.6px;
+  line-height: 1.75;
   color: var(--ink-2);
   border-top: 1px solid var(--line-soft);
   margin-top: 2px;
@@ -1024,7 +1021,7 @@ footer {
 @media (max-width: 768px) {
   :root { --topbar: 52px; }
 
-  html { scroll-padding-top: 104px; }
+  html { scroll-padding-top: 60px; }
   .shell { padding: 0 46px 4px 14px; }
 
   /* 顶栏：品牌 + 搜索圆钮 + 三枚胶囊，一行放下 */
@@ -1084,15 +1081,15 @@ footer {
   .minis { gap: 5px; }
 
   /* 卡片：手机单列，行距压紧 */
-  .track { display: flex; flex-direction: column; gap: 6px; }
-  .card-head { padding: 9px 10px; gap: 8px; }
-  .card-no { width: 21px; height: 21px; border-radius: 6px; font-size: 9.5px; margin-top: 0; }
+  .track { display: flex; flex-direction: column; gap: 5px; }
+  .card-head { padding: 8px 9px; gap: 7px; }
+  .card-no { width: 19px; height: 19px; border-radius: 6px; font-size: 9px; margin-top: 0; }
   .row1 { gap: 6px; }
-  .row1 h3 { font-size: 12.9px; line-height: 1.42; }
+  .row1 h3 { font-size: 12.4px; line-height: 1.38; }
   .value { font-size: 9.8px; padding: 0 5px; max-width: 40%; }
   .cat-tag { font-size: 9px; padding: 0 4px; margin-right: 4px; line-height: 1.7; }
-  .row2 { font-size: 11.5px; line-height: 1.5; margin-top: 3px; }
-  .row3 { font-size: 10.4px; gap: 4px; margin-top: 5px; }
+  .row2 { font-size: 11.1px; line-height: 1.46; margin-top: 3px; }
+  .row3 { font-size: 10.1px; gap: 4px; margin-top: 4px; }
   .row3 .go { flex: 0 0 auto; padding: 2px 7px; border: 1px solid var(--accent-line); border-radius: 999px; background: var(--accent-soft); font-size: 10px; }
   .go-full { display: none; }
   .go-short { display: inline; }
