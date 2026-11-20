@@ -28,8 +28,8 @@
 <!-- AdSense：启用时把下面这行取消注释并换成自己的 client（pub id）
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
 -->
-<link rel="stylesheet" href="../style.css?v=c64b3656">
-<script src="../app.js?v=6379342c" defer></script>
+<link rel="stylesheet" href="../style.css?v=ae3aa658">
+<script src="../app.js?v=61398b43" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -159,8 +159,8 @@
       <kbd>⌘K</kbd>
     </button>
     <div class="topbar-stats">
-      <a class="stats-pill accent" href="#top">今日 <b>12</b></a>
-      <a class="stats-pill" href="#panel-free">限免 <b>3</b></a>
+      <a class="stats-pill accent" href="#all">全部 <b>12</b></a>
+      <a class="stats-pill" href="#panel-week" data-target="week">本周 <b>5</b></a>
       <a class="stats-pill" href="../archive.html">归档 <b>3</b></a>
     </div>
   </div>
@@ -170,20 +170,16 @@
   <p class="date"><time datetime="2026-11-19">2026-11-19 周四 · 存档</time></p>
   <h1>每日精选 AI 热点、限免、折扣与应用</h1>
 </header>
-<div class="board">
-  <div class="board-tabs" role="tablist" aria-label="板块切换">
-<button class="board-tab on" id="tab-hot" role="tab" type="button" data-tab="hot" aria-selected="true" aria-controls="panel-hot" tabindex="0">AI 热点<b>3</b></button><button class="board-tab" id="tab-free" role="tab" type="button" data-tab="free" aria-selected="false" aria-controls="panel-free" tabindex="-1">限免<b>3</b></button><button class="board-tab" id="tab-deal" role="tab" type="button" data-tab="deal" aria-selected="false" aria-controls="panel-deal" tabindex="-1">折扣<b>3</b></button><button class="board-tab" id="tab-sites" role="tab" type="button" data-tab="sites" aria-selected="false" aria-controls="panel-sites" tabindex="-1">AI 应用<b>3</b></button>
-  </div>
-</div>
-<section class="panel" id="panel-hot" data-panel="hot" role="tabpanel" aria-labelledby="tab-hot">
-  <h2 class="sr-only">AI 热点（3 条）</h2>
+<div class="fullflow fullflow--plain" id="all">
+<div class="group" id="g-hot">
+  <h3 class="group-head"><span class="group-badge" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-hot"/></svg></span>AI 热点<span class="group-n">3</span></h3>
   <div class="track">
 <article class="card" id="card-hot-1" data-cat="hot" data-text="AI 热点 Genie 4 进 Project Genie：世界玩到一半，打字就能改 首次开放 Genie 4：边走边输入提示词就能换天气、加角色、改剧情，画面还第一次配上实时原生音频。  已推送">
   <div class="card-head" role="button" tabindex="0" aria-expanded="false" aria-controls="detail-hot-1">
     <span class="card-no" aria-hidden="true">01</span>
     <div class="card-body">
       <div class="row1">
-        <h3>Genie 4 进 Project Genie：世界玩到一半，打字就能改</h3>
+        <h3><span class="cat-tag">AI 热点</span>Genie 4 进 Project Genie：世界玩到一半，打字就能改</h3>
         <span class="value plain">已推送</span>
       </div>
       <p class="row2">首次开放 Genie 4：边走边输入提示词就能换天气、加角色、改剧情，画面还第一次配上实时原生音频。</p>
@@ -204,7 +200,7 @@
     <span class="card-no" aria-hidden="true">02</span>
     <div class="card-body">
       <div class="row1">
-        <h3>微软 Ignite 一次发七个模型：Opus 5.5 的 96% 表现，5% 的价格</h3>
+        <h3><span class="cat-tag">AI 热点</span>微软 Ignite 一次发七个模型：Opus 5.5 的 96% 表现，5% 的价格</h3>
         <span class="value plain">已发布</span>
       </div>
       <p class="row2">MAI Code 2 以约 40% 价格做到 GPT-6.1 Sol 的 98%；图像编辑登顶 Artificial Analysis，价格只有对手五分之一。</p>
@@ -225,7 +221,7 @@
     <span class="card-no" aria-hidden="true">03</span>
     <div class="card-body">
       <div class="row1">
-        <h3>英伟达董事会拒绝黄仁勋复职，CFO 代理 CEO</h3>
+        <h3><span class="cat-tag">AI 热点</span>英伟达董事会拒绝黄仁勋复职，CFO 代理 CEO</h3>
         <span class="value plain">已确认</span>
       </div>
       <p class="row2">董事会一致接受辞呈、不打算让他复任；同季营收 1160 亿美元同比翻倍，盘后股价涨 5.2%。</p>
@@ -242,16 +238,15 @@
   </div></div></div>
 </article>
   </div>
-</section>
-<section class="panel" id="panel-free" data-panel="free" role="tabpanel" aria-labelledby="tab-free" hidden>
-  <h2 class="sr-only">限免活动（3 条）</h2>
+</div><div class="group" id="g-free">
+  <h3 class="group-head"><span class="group-badge" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-gift"/></svg></span>限免<span class="group-n">3</span></h3>
   <div class="track">
 <article class="card" id="card-free-1" data-cat="free" data-text="限免活动 Meta 的 Muse：免费就能用，额度每周刷新 专属 AI agent，免费档有每周额度；Power 20 美元=5 亿词元/周，Maximum 100 美元=30 亿词元/周。 每周免费额度 · 未注明截止日期 长期免费">
   <div class="card-head" role="button" tabindex="0" aria-expanded="false" aria-controls="detail-free-1">
     <span class="card-no" aria-hidden="true">01</span>
     <div class="card-body">
       <div class="row1">
-        <h3>Meta 的 Muse：免费就能用，额度每周刷新</h3>
+        <h3><span class="cat-tag">限免</span>Meta 的 Muse：免费就能用，额度每周刷新</h3>
         <span class="value sage">长期免费</span>
       </div>
       <p class="row2">专属 AI agent，免费档有每周额度；Power 20 美元=5 亿词元/周，Maximum 100 美元=30 亿词元/周。</p>
@@ -272,7 +267,7 @@
     <span class="card-no" aria-hidden="true">02</span>
     <div class="card-body">
       <div class="row1">
-        <h3>Hark Pro 免费用，Handoff² 把网页任务跑快一倍</h3>
+        <h3><span class="cat-tag">限免</span>Hark Pro 免费用，Handoff² 把网页任务跑快一倍</h3>
         <span class="value sage">免费可用</span>
       </div>
       <p class="row2">让 AI 在真实网页上替你点、输、滚；免费档全功能，付费只提高额度，新版 agent 平均快约 2 倍。</p>
@@ -293,7 +288,7 @@
     <span class="card-no" aria-hidden="true">03</span>
     <div class="card-body">
       <div class="row1">
-        <h3>Jetpac Eterna：终身免费的旅行 eSIM，每年 4 次、每次 100MB</h3>
+        <h3><span class="cat-tag">限免</span>Jetpac Eterna：终身免费的旅行 eSIM，每年 4 次、每次 100MB</h3>
         <span class="value">进行中</span>
       </div>
       <p class="row2">一张不过期的 eSIM，每次合资格行程给 100MB；流量用完，WhatsApp、地图、Uber、Grab 还能用。</p>
@@ -310,16 +305,15 @@
   </div></div></div>
 </article>
   </div>
-</section>
-<section class="panel" id="panel-deal" data-panel="deal" role="tabpanel" aria-labelledby="tab-deal" hidden>
-  <h2 class="sr-only">折扣信息（3 条）</h2>
+</div><div class="group" id="g-deal">
+  <h3 class="group-head"><span class="group-badge" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-tag"/></svg></span>折扣<span class="group-n">3</span></h3>
   <div class="track">
 <article class="card" id="card-deal-1" data-cat="deal" data-text="折扣信息 Krea 黑五：年付 70% off，Basic 折到每月 5 美元 年付直减 70%、月付减 25%；Basic 年付 $5/月（原 $9），免费档每天 100 units 照旧。 页面未写明截止日期（仅倒计时） 进行中">
   <div class="card-head" role="button" tabindex="0" aria-expanded="false" aria-controls="detail-deal-1">
     <span class="card-no" aria-hidden="true">01</span>
     <div class="card-body">
       <div class="row1">
-        <h3>Krea 黑五：年付 70% off，Basic 折到每月 5 美元</h3>
+        <h3><span class="cat-tag">折扣</span>Krea 黑五：年付 70% off，Basic 折到每月 5 美元</h3>
         <span class="value">进行中</span>
       </div>
       <p class="row2">年付直减 70%、月付减 25%；Basic 年付 $5/月（原 $9），免费档每天 100 units 照旧。</p>
@@ -340,7 +334,7 @@
     <span class="card-no" aria-hidden="true">02</span>
     <div class="card-body">
       <div class="row1">
-        <h3>ElevenLabs 黑五最高省 55%，Starter 首月 1 美元</h3>
+        <h3><span class="cat-tag">折扣</span>ElevenLabs 黑五最高省 55%，Starter 首月 1 美元</h3>
         <span class="value">进行中</span>
       </div>
       <p class="row2">官网定价页挂出 Black Friday：Starter 首月 $1（之后 $6）、Creator 首月 $11（之后 $22）。</p>
@@ -361,7 +355,7 @@
     <span class="card-no" aria-hidden="true">03</span>
     <div class="card-body">
       <div class="row1">
-        <h3>Recraft 黑五：新年付首年 40% off，12 月 1 日截止</h3>
+        <h3><span class="cat-tag">折扣</span>Recraft 黑五：新年付首年 40% off，12 月 1 日截止</h3>
         <span class="value">进行中</span>
       </div>
       <p class="row2">首年任何新年付套餐打 6 折，之后按原价续；12 月 1 日 23:59（太平洋时间）结束。</p>
@@ -378,16 +372,15 @@
   </div></div></div>
 </article>
   </div>
-</section>
-<section class="panel" id="panel-sites" data-panel="sites" role="tabpanel" aria-labelledby="tab-sites" hidden>
-  <h2 class="sr-only">AI 应用展现 / 新兴站点（3 条）</h2>
+</div><div class="group" id="g-sites">
+  <h3 class="group-head"><span class="group-badge" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-spark"/></svg></span>AI 应用<span class="group-n">3</span></h3>
   <div class="track">
 <article class="card" id="card-sites-1" data-cat="sites" data-text="AI 应用展现 / 新兴站点 雪迹 Cold Smoke：1.7MB 的单文件滑雪游戏，山、极光、风都是代码现画 一个 HTML 文件装下整座雪山，没有一张贴图、一段音频；每天所有人滑同一条「今日雪山」。 打开即玩，无需登录 在线 · 免费">
   <div class="card-head" role="button" tabindex="0" aria-expanded="false" aria-controls="detail-sites-1">
     <span class="card-no" aria-hidden="true">01</span>
     <div class="card-body">
       <div class="row1">
-        <h3>雪迹 Cold Smoke：1.7MB 的单文件滑雪游戏，山、极光、风都是代码现画</h3>
+        <h3><span class="cat-tag">AI 应用</span>雪迹 Cold Smoke：1.7MB 的单文件滑雪游戏，山、极光、风都是代码现画</h3>
         <span class="value sage">在线 · 免费</span>
       </div>
       <p class="row2">一个 HTML 文件装下整座雪山，没有一张贴图、一段音频；每天所有人滑同一条「今日雪山」。</p>
@@ -408,7 +401,7 @@
     <span class="card-no" aria-hidden="true">02</span>
     <div class="card-body">
       <div class="row1">
-        <h3>HADAL：Perplexity 同事用 AI 写的 373KB 下潜游戏，一路潜到马里亚纳海沟底</h3>
+        <h3><span class="cat-tag">AI 应用</span>HADAL：Perplexity 同事用 AI 写的 373KB 下潜游戏，一路潜到马里亚纳海沟底</h3>
         <span class="value sage">在线 · 免费</span>
       </div>
       <p class="row2">没有引擎、没有 Three.js、没有素材：WebGPU 渲染器手写，地形、生物、潜艇和音效全由代码生成。</p>
@@ -429,7 +422,7 @@
     <span class="card-no" aria-hidden="true">03</span>
     <div class="card-body">
       <div class="row1">
-        <h3>Homecraft：把自己的主页做成一座「我的世界」3D 小院</h3>
+        <h3><span class="cat-tag">AI 应用</span>Homecraft：把自己的主页做成一座「我的世界」3D 小院</h3>
         <span class="value plain">在线 · 开源</span>
       </div>
       <p class="row2">MIT 开源模板，访客在你的体素小屋里走动、看作品与链接；社区已经用它搭出 17 个站点。</p>
@@ -446,7 +439,8 @@
   </div></div></div>
 </article>
   </div>
-</section>
+</div>
+</div>
 <p class="about-line" id="about">关于 · 每天挑 AI 热点、限免、折扣与一个用 AI 做出来的站点，每条都附原链接与日期，不编数字。</p>
 <nav class="post-nav">
   <a href="../index.html">← 回到今日早报</a>
@@ -456,8 +450,10 @@
 <div class="rail-dock">
   <a class="rail-tg" href="https://t.me/+aAqP0DbW_YMxMmNh" target="_blank" rel="noopener"
      aria-label="加入 Telegram 交流群" title="加入 Telegram 交流群"><svg class="i" aria-hidden="true"><use href="#i-tg"/></svg><span>交流</span></a>
-  <nav class="rail" aria-label="板块导航">
-<a href="#panel-hot" data-target="hot" aria-label="AI 热点" title="AI 热点"><svg class="i" aria-hidden="true"><use href="#i-hot"/></svg><span>热点</span></a><a href="#panel-free" data-target="free" aria-label="限免活动" title="限免活动"><svg class="i" aria-hidden="true"><use href="#i-gift"/></svg><span>限免</span></a><a href="#panel-deal" data-target="deal" aria-label="折扣信息" title="折扣信息"><svg class="i" aria-hidden="true"><use href="#i-tag"/></svg><span>折扣</span></a><a href="#panel-sites" data-target="sites" aria-label="AI 应用展现 / 新兴站点" title="AI 应用展现 / 新兴站点"><svg class="i" aria-hidden="true"><use href="#i-spark"/></svg><span>应用</span></a>
+  <nav class="rail" aria-label="简报切换">
+    <a href="#panel-today" data-target="today" aria-label="今日简报" title="今日简报"><svg class="i" aria-hidden="true"><use href="#i-spark"/></svg><span>今日</span></a>
+    <a href="#panel-week" data-target="week" aria-label="本周热门" title="本周热门"><svg class="i" aria-hidden="true"><use href="#i-hot"/></svg><span>本周</span></a>
+    <a href="#all" aria-label="当日全部条目" title="当日全部条目"><svg class="i" aria-hidden="true"><use href="#i-archive"/></svg><span>全部</span></a>
     <a href="/game/" aria-label="方块小院 · 网页小游戏" title="方块小院 · 网页小游戏"><svg class="i" aria-hidden="true"><use href="#i-game"/></svg><span>小院</span></a>
     <div class="rail-sep" aria-hidden="true"></div>
     <a class="rail-top" href="#top" aria-label="回到顶部" title="回到顶部"><svg class="i" aria-hidden="true"><use href="#i-arrow-up"/></svg><span>顶部</span></a>

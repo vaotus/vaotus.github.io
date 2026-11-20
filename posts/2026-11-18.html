@@ -28,8 +28,8 @@
 <!-- AdSense：启用时把下面这行取消注释并换成自己的 client（pub id）
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
 -->
-<link rel="stylesheet" href="../style.css?v=c64b3656">
-<script src="../app.js?v=6379342c" defer></script>
+<link rel="stylesheet" href="../style.css?v=ae3aa658">
+<script src="../app.js?v=61398b43" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -159,8 +159,8 @@
       <kbd>⌘K</kbd>
     </button>
     <div class="topbar-stats">
-      <a class="stats-pill accent" href="#top">今日 <b>12</b></a>
-      <a class="stats-pill" href="#panel-free">限免 <b>3</b></a>
+      <a class="stats-pill accent" href="#all">全部 <b>12</b></a>
+      <a class="stats-pill" href="#panel-week" data-target="week">本周 <b>5</b></a>
       <a class="stats-pill" href="../archive.html">归档 <b>3</b></a>
     </div>
   </div>
@@ -170,20 +170,16 @@
   <p class="date"><time datetime="2026-11-18">2026-11-18 周三 · 存档</time></p>
   <h1>每日精选 AI 热点、限免、折扣与应用</h1>
 </header>
-<div class="board">
-  <div class="board-tabs" role="tablist" aria-label="板块切换">
-<button class="board-tab on" id="tab-hot" role="tab" type="button" data-tab="hot" aria-selected="true" aria-controls="panel-hot" tabindex="0">AI 热点<b>3</b></button><button class="board-tab" id="tab-free" role="tab" type="button" data-tab="free" aria-selected="false" aria-controls="panel-free" tabindex="-1">限免<b>3</b></button><button class="board-tab" id="tab-deal" role="tab" type="button" data-tab="deal" aria-selected="false" aria-controls="panel-deal" tabindex="-1">折扣<b>3</b></button><button class="board-tab" id="tab-sites" role="tab" type="button" data-tab="sites" aria-selected="false" aria-controls="panel-sites" tabindex="-1">AI 应用<b>3</b></button>
-  </div>
-</div>
-<section class="panel" id="panel-hot" data-panel="hot" role="tabpanel" aria-labelledby="tab-hot">
-  <h2 class="sr-only">AI 热点（3 条）</h2>
+<div class="fullflow fullflow--plain" id="all">
+<div class="group" id="g-hot">
+  <h3 class="group-head"><span class="group-badge" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-hot"/></svg></span>AI 热点<span class="group-n">3</span></h3>
   <div class="track">
 <article class="card" id="card-hot-1" data-cat="hot" data-text="AI 热点 OpenAI 发布 GPT-6.2 Astra 与 GPT-6.2 Sol 一次上两个模型：Astra 打专业硬活、Sol 打日常，API 价按输入输出算比上一代低 20%。  已上线">
   <div class="card-head" role="button" tabindex="0" aria-expanded="false" aria-controls="detail-hot-1">
     <span class="card-no" aria-hidden="true">01</span>
     <div class="card-body">
       <div class="row1">
-        <h3>OpenAI 发布 GPT-6.2 Astra 与 GPT-6.2 Sol</h3>
+        <h3><span class="cat-tag">AI 热点</span>OpenAI 发布 GPT-6.2 Astra 与 GPT-6.2 Sol</h3>
         <span class="value plain">已上线</span>
       </div>
       <p class="row2">一次上两个模型：Astra 打专业硬活、Sol 打日常，API 价按输入输出算比上一代低 20%。</p>
@@ -204,7 +200,7 @@
     <span class="card-no" aria-hidden="true">02</span>
     <div class="card-body">
       <div class="row1">
-        <h3>商汤开源 SenseNova-Loop-9B 正式版，9B 参数跑到 512K 上下文</h3>
+        <h3><span class="cat-tag">AI 热点</span>商汤开源 SenseNova-Loop-9B 正式版，9B 参数跑到 512K 上下文</h3>
         <span class="value plain">已开源</span>
       </div>
       <p class="row2">24 个解码层跑两遍换等效深度，约 9B 参数、512K 上下文，Apache 2.0 全开源。</p>
@@ -225,7 +221,7 @@
     <span class="card-no" aria-hidden="true">03</span>
     <div class="card-body">
       <div class="row1">
-        <h3>Google 把 Gemini 的 Tasks 免费开放到六个国家</h3>
+        <h3><span class="cat-tag">AI 热点</span>Google 把 Gemini 的 Tasks 免费开放到六个国家</h3>
         <span class="value plain">已上线</span>
       </div>
       <p class="row2">Gemini 切到 Tasks 就能替你打电话比价、查库存、预约并付款，六国免费用户可用。</p>
@@ -242,16 +238,15 @@
   </div></div></div>
 </article>
   </div>
-</section>
-<section class="panel" id="panel-free" data-panel="free" role="tabpanel" aria-labelledby="tab-free" hidden>
-  <h2 class="sr-only">限免活动（3 条）</h2>
+</div><div class="group" id="g-free">
+  <h3 class="group-head"><span class="group-badge" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-gift"/></svg></span>限免<span class="group-n">3</span></h3>
   <div class="track">
 <article class="card" id="card-free-1" data-cat="free" data-text="限免活动 腾讯混元 Hy4 flash 在 WorkBuddy 限时免费 模型列表选 Hy4 flash 就免费聊：224B 总参数 / 12B 激活 / 1M 上下文，额度按天重置。 截止 2026-11-30 23:59 进行中">
   <div class="card-head" role="button" tabindex="0" aria-expanded="false" aria-controls="detail-free-1">
     <span class="card-no" aria-hidden="true">01</span>
     <div class="card-body">
       <div class="row1">
-        <h3>腾讯混元 Hy4 flash 在 WorkBuddy 限时免费</h3>
+        <h3><span class="cat-tag">限免</span>腾讯混元 Hy4 flash 在 WorkBuddy 限时免费</h3>
         <span class="value">进行中</span>
       </div>
       <p class="row2">模型列表选 Hy4 flash 就免费聊：224B 总参数 / 12B 激活 / 1M 上下文，额度按天重置。</p>
@@ -272,7 +267,7 @@
     <span class="card-no" aria-hidden="true">02</span>
     <div class="card-body">
       <div class="row1">
-        <h3>腾讯云 TokenHub 新人免费体验包：每个模型 100 万 Tokens</h3>
+        <h3><span class="cat-tag">限免</span>腾讯云 TokenHub 新人免费体验包：每个模型 100 万 Tokens</h3>
         <span class="value">进行中</span>
       </div>
       <p class="row2">每个主账号一次，每模型 100 万 Tokens、有效期 1 年；领取会预冻结部分金额，删 endpoint 退回。</p>
@@ -293,7 +288,7 @@
     <span class="card-no" aria-hidden="true">03</span>
     <div class="card-body">
       <div class="row1">
-        <h3>阿里云百炼新人免费额度：每个模型通常 100 万 Token</h3>
+        <h3><span class="cat-tag">限免</span>阿里云百炼新人免费额度：每个模型通常 100 万 Token</h3>
         <span class="value sage">长期可用</span>
       </div>
       <p class="row2">首次开通即发放，每模型通常 100 万 Token、90 天；可设「用完即停」不再自动扣费。</p>
@@ -310,16 +305,15 @@
   </div></div></div>
 </article>
   </div>
-</section>
-<section class="panel" id="panel-deal" data-panel="deal" role="tabpanel" aria-labelledby="tab-deal" hidden>
-  <h2 class="sr-only">折扣信息（3 条）</h2>
+</div><div class="group" id="g-deal">
+  <h3 class="group-head"><span class="group-badge" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-tag"/></svg></span>折扣<span class="group-n">3</span></h3>
   <div class="track">
 <article class="card" id="card-deal-1" data-cat="deal" data-text="折扣信息 千问办公个人版双 11 首月特惠，低至 3.1 折 个人版首月 29.9 / 69.9 元，之后按标准价续费、可随时取消，仅限新账号且每人一次。 截止 2026-11-30 00:00（北京时间） 进行中">
   <div class="card-head" role="button" tabindex="0" aria-expanded="false" aria-controls="detail-deal-1">
     <span class="card-no" aria-hidden="true">01</span>
     <div class="card-body">
       <div class="row1">
-        <h3>千问办公个人版双 11 首月特惠，低至 3.1 折</h3>
+        <h3><span class="cat-tag">折扣</span>千问办公个人版双 11 首月特惠，低至 3.1 折</h3>
         <span class="value">进行中</span>
       </div>
       <p class="row2">个人版首月 29.9 / 69.9 元，之后按标准价续费、可随时取消，仅限新账号且每人一次。</p>
@@ -340,7 +334,7 @@
     <span class="card-no" aria-hidden="true">02</span>
     <div class="card-body">
       <div class="row1">
-        <h3>阿里云百炼 Token Plan：Qwen4-Max-Preview 预览期 Credits 2 折</h3>
+        <h3><span class="cat-tag">折扣</span>阿里云百炼 Token Plan：Qwen4-Max-Preview 预览期 Credits 2 折</h3>
         <span class="value">进行中</span>
       </div>
       <p class="row2">预览期 Credits 只按标准费率 2 折，个人版 22:00–08:00 再 4 折，合 8%。</p>
@@ -361,7 +355,7 @@
     <span class="card-no" aria-hidden="true">03</span>
     <div class="card-body">
       <div class="row1">
-        <h3>腾讯云 TokenHub 上的 Hy4 flash API 限时 5 折</h3>
+        <h3><span class="cat-tag">折扣</span>腾讯云 TokenHub 上的 Hy4 flash API 限时 5 折</h3>
         <span class="value">进行中</span>
       </div>
       <p class="row2">Hy4 flash 的 API 五折：每百万 token 输入 0.5 元、输出 2 元、缓存命中 0.02 元。</p>
@@ -378,16 +372,15 @@
   </div></div></div>
 </article>
   </div>
-</section>
-<section class="panel" id="panel-sites" data-panel="sites" role="tabpanel" aria-labelledby="tab-sites" hidden>
-  <h2 class="sr-only">AI 应用展现 / 新兴站点（3 条）</h2>
+</div><div class="group" id="g-sites">
+  <h3 class="group-head"><span class="group-badge" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-spark"/></svg></span>AI 应用<span class="group-n">3</span></h3>
   <div class="track">
 <article class="card" id="card-sites-1" data-cat="sites" data-text="AI 应用展现 / 新兴站点 산사 Sansa：一座浏览器里的韩国山寺 进站变成小和尚，在 3D 山寺里走动、行礼、拨 108 颗念珠；多人静坐，蒲团满了要排队。 上线 2026 年 10 月下旬 可访问 · 村落版施工中">
   <div class="card-head" role="button" tabindex="0" aria-expanded="false" aria-controls="detail-sites-1">
     <span class="card-no" aria-hidden="true">01</span>
     <div class="card-body">
       <div class="row1">
-        <h3>산사 Sansa：一座浏览器里的韩国山寺</h3>
+        <h3><span class="cat-tag">AI 应用</span>산사 Sansa：一座浏览器里的韩国山寺</h3>
         <span class="value plain">可访问 · 村落版施工中</span>
       </div>
       <p class="row2">进站变成小和尚，在 3D 山寺里走动、行礼、拨 108 颗念珠；多人静坐，蒲团满了要排队。</p>
@@ -408,7 +401,7 @@
     <span class="card-no" aria-hidden="true">02</span>
     <div class="card-body">
       <div class="row1">
-        <h3>Fable 5.2 Games：一条提示词生成的游戏，打开就能玩</h3>
+        <h3><span class="cat-tag">AI 应用</span>Fable 5.2 Games：一条提示词生成的游戏，打开就能玩</h3>
         <span class="value sage">在线 · 免费</span>
       </div>
       <p class="row2">87 个浏览器小游戏由 Claude 从一条提示词写出来，能直接玩、看提示词与源码、下载 .html。</p>
@@ -429,7 +422,7 @@
     <span class="card-no" aria-hidden="true">03</span>
     <div class="card-body">
       <div class="row1">
-        <h3>Tiny València：把整座城市重画成一张会走动的地图</h3>
+        <h3><span class="cat-tag">AI 应用</span>Tiny València：把整座城市重画成一张会走动的地图</h3>
         <span class="value sage">在线 · 免费</span>
       </div>
       <p class="row2">真实 3D 城市数据被逐块重绘成像素风瓦伦西亚，可拖动缩放，复制链接就能带人看同一街区。</p>
@@ -446,7 +439,8 @@
   </div></div></div>
 </article>
   </div>
-</section>
+</div>
+</div>
 <p class="about-line" id="about">关于 · 每天挑 AI 热点、限免、折扣与一个用 AI 做出来的站点，每条都附原链接与日期，不编数字。</p>
 <nav class="post-nav">
   <a href="../index.html">← 回到今日早报</a>
@@ -456,8 +450,10 @@
 <div class="rail-dock">
   <a class="rail-tg" href="https://t.me/+aAqP0DbW_YMxMmNh" target="_blank" rel="noopener"
      aria-label="加入 Telegram 交流群" title="加入 Telegram 交流群"><svg class="i" aria-hidden="true"><use href="#i-tg"/></svg><span>交流</span></a>
-  <nav class="rail" aria-label="板块导航">
-<a href="#panel-hot" data-target="hot" aria-label="AI 热点" title="AI 热点"><svg class="i" aria-hidden="true"><use href="#i-hot"/></svg><span>热点</span></a><a href="#panel-free" data-target="free" aria-label="限免活动" title="限免活动"><svg class="i" aria-hidden="true"><use href="#i-gift"/></svg><span>限免</span></a><a href="#panel-deal" data-target="deal" aria-label="折扣信息" title="折扣信息"><svg class="i" aria-hidden="true"><use href="#i-tag"/></svg><span>折扣</span></a><a href="#panel-sites" data-target="sites" aria-label="AI 应用展现 / 新兴站点" title="AI 应用展现 / 新兴站点"><svg class="i" aria-hidden="true"><use href="#i-spark"/></svg><span>应用</span></a>
+  <nav class="rail" aria-label="简报切换">
+    <a href="#panel-today" data-target="today" aria-label="今日简报" title="今日简报"><svg class="i" aria-hidden="true"><use href="#i-spark"/></svg><span>今日</span></a>
+    <a href="#panel-week" data-target="week" aria-label="本周热门" title="本周热门"><svg class="i" aria-hidden="true"><use href="#i-hot"/></svg><span>本周</span></a>
+    <a href="#all" aria-label="当日全部条目" title="当日全部条目"><svg class="i" aria-hidden="true"><use href="#i-archive"/></svg><span>全部</span></a>
     <a href="/game/" aria-label="方块小院 · 网页小游戏" title="方块小院 · 网页小游戏"><svg class="i" aria-hidden="true"><use href="#i-game"/></svg><span>小院</span></a>
     <div class="rail-sep" aria-hidden="true"></div>
     <a class="rail-top" href="#top" aria-label="回到顶部" title="回到顶部"><svg class="i" aria-hidden="true"><use href="#i-arrow-up"/></svg><span>顶部</span></a>
