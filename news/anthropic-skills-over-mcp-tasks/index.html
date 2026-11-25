@@ -121,7 +121,7 @@
 <article class="entry">
   <p class="entry-kicker">AI 热点 · 早报 2026-11-26</p>
   <h1>MCP 两周年：服务器可以把「技能」一起发过来，长任务与中途提问转正</h1>
-  <div class="entry-meta"><span class="pill">开放</span><span class="tag">11-24 公测</span><span class="tag">Pro/Max/Ultra 默认开</span><span class="tag">发布 <time datetime="2026-11-24">2026-11-24</time></span></div>
+  <div class="entry-meta"><span class="pill">开放</span><span class="tag">11-24 公测</span><span class="tag">Pro 起默认</span><span class="tag">发布 <time datetime="2026-11-24">2026-11-24</time></span></div>
   <div class="entry-body">
 <p>三个东西各解决一半问题：Skills 让服务器交出工作流而不是一串工具名（Shopify 用它带着 Claude 从头改店面、HubSpot 用来做客户上手、Atlassian 取组织上下文）；Tasks 让服务器在后台跑长任务、跑完再回话（ZoomInfo 用它做以前要好几轮提示的账号与联系人研究）；Elicitation 让服务器在花钱、删数据这类动作前弹表单或链接要授权（Supabase 建付费项目前确认费用，GitHub 要求输入仓库名才允许删除）。</p><p>开放范围写得很细：Skills over MCP 在 Claude 与 Claude Code 公测，Pro / Max / Ultra 默认开，Team 要管理员打开，Enterprise 待上线；Tasks 与 Elicitation 对 Pro / Max / Ultra 正式可用，Team 与 Enterprise 在灰度；File Uploads 会先把 Intuit 与 Dropbox 接进来。三者都是 MCP 扩展而非核心协议，别的客户端也能支持。</p><p>安全是这里唯一需要读者自己做功课的地方：技能本质是「能左右模型行为的文本」，规范要求客户端把技能内容当作不可信输入、带代码或 allowed-tools 的技能逐项批准、文件一变就撤销批准。Anthropic 的发布文没有描述逐项批准流程——服务器一更新技能，批准还作不作数，要看各家客户端的实现。</p>
   </div>

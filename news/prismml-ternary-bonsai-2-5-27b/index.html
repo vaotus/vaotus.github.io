@@ -121,7 +121,7 @@
 <article class="entry">
   <p class="entry-kicker">AI 热点 · 早报 2026-11-26</p>
   <h1>Ternary Bonsai 2.5 27B：5.9GB 的三值模型，SWE-bench 从 60.8 拉到 75.6</h1>
-  <div class="entry-meta"><span class="pill">开源</span><span class="tag">11-24 发布</span><span class="tag">Apache 2.0</span><span class="tag">5.9GB</span><span class="tag">发布 <time datetime="2026-11-24">2026-11-24</time></span></div>
+  <div class="entry-meta"><span class="pill">开源</span><span class="tag">11-24 发布</span><span class="tag">5.9GB</span><span class="tag">发布 <time datetime="2026-11-24">2026-11-24</time></span></div>
   <div class="entry-body">
 <p>这次补的是「长链条工具调用」：官方说前代在长序列调用里会过度思考、循环重复，2.5 用更少轮次、更少 token 完成同样的任务，官方称小错误在多轮调用里会累积、一次跑偏毁掉整条任务，所以重点压「多轮一致性」而不是单轮分数。</p><p>速度是它的卖点：单张 H100 上 291 tokens/s（开 MTP）、2000 token 提示处理 3200 tokens/s；消费级 RTX 4090 上 204 tokens/s、约 3060 tokens/s 的提示处理。跑法覆盖 llama.cpp（NVIDIA 与 Intel GPU）与 MLX（Mac / iPhone / iPad）。</p><p>怎么读这些数字：三项都低于全精度底座（SWE-bench 差 5 分、Terminal-Bench 差 10.7 分、LiveCodeBench 也低），换来的是能塞进 6GB 显存/内存、离线处理私有文件。真正要自己验的是它在你机器上的实际轮次与失败模式，白皮书与权重都可直接下载。</p>
   </div>
